@@ -1,0 +1,590 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3201DCD626CD238100E9243C /* TinmeyMacOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3201DCD526CD238100E9243C /* TinmeyMacOSApp.swift */; };
+		3201DCD826CD238100E9243C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3201DCD726CD238100E9243C /* ContentView.swift */; };
+		3201DCDA26CD238300E9243C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3201DCD926CD238300E9243C /* Assets.xcassets */; };
+		3201DCDD26CD238300E9243C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3201DCDC26CD238300E9243C /* Preview Assets.xcassets */; };
+		3201DCE926CD238300E9243C /* TinmeyMacOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3201DCE826CD238300E9243C /* TinmeyMacOSTests.swift */; };
+		3201DCF426CD238300E9243C /* TinmeyMacOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3201DCF326CD238300E9243C /* TinmeyMacOSUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3201DCE526CD238300E9243C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3201DCCA26CD238100E9243C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3201DCD126CD238100E9243C;
+			remoteInfo = TinmeyMacOS;
+		};
+		3201DCF026CD238300E9243C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3201DCCA26CD238100E9243C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3201DCD126CD238100E9243C;
+			remoteInfo = TinmeyMacOS;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3201DCD226CD238100E9243C /* TinmeyMacOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinmeyMacOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3201DCD526CD238100E9243C /* TinmeyMacOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinmeyMacOSApp.swift; sourceTree = "<group>"; };
+		3201DCD726CD238100E9243C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3201DCD926CD238300E9243C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3201DCDC26CD238300E9243C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3201DCDE26CD238300E9243C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3201DCDF26CD238300E9243C /* TinmeyMacOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TinmeyMacOS.entitlements; sourceTree = "<group>"; };
+		3201DCE426CD238300E9243C /* TinmeyMacOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinmeyMacOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3201DCE826CD238300E9243C /* TinmeyMacOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinmeyMacOSTests.swift; sourceTree = "<group>"; };
+		3201DCEA26CD238300E9243C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3201DCEF26CD238300E9243C /* TinmeyMacOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinmeyMacOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3201DCF326CD238300E9243C /* TinmeyMacOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinmeyMacOSUITests.swift; sourceTree = "<group>"; };
+		3201DCF526CD238300E9243C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3201DCCF26CD238100E9243C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3201DCE126CD238300E9243C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3201DCEC26CD238300E9243C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3201DCC926CD238100E9243C = {
+			isa = PBXGroup;
+			children = (
+				3201DCD426CD238100E9243C /* TinmeyMacOS */,
+				3201DCE726CD238300E9243C /* TinmeyMacOSTests */,
+				3201DCF226CD238300E9243C /* TinmeyMacOSUITests */,
+				3201DCD326CD238100E9243C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3201DCD326CD238100E9243C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3201DCD226CD238100E9243C /* TinmeyMacOS.app */,
+				3201DCE426CD238300E9243C /* TinmeyMacOSTests.xctest */,
+				3201DCEF26CD238300E9243C /* TinmeyMacOSUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3201DCD426CD238100E9243C /* TinmeyMacOS */ = {
+			isa = PBXGroup;
+			children = (
+				3201DCD526CD238100E9243C /* TinmeyMacOSApp.swift */,
+				3201DCD726CD238100E9243C /* ContentView.swift */,
+				3201DCD926CD238300E9243C /* Assets.xcassets */,
+				3201DCDE26CD238300E9243C /* Info.plist */,
+				3201DCDF26CD238300E9243C /* TinmeyMacOS.entitlements */,
+				3201DCDB26CD238300E9243C /* Preview Content */,
+			);
+			path = TinmeyMacOS;
+			sourceTree = "<group>";
+		};
+		3201DCDB26CD238300E9243C /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				3201DCDC26CD238300E9243C /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3201DCE726CD238300E9243C /* TinmeyMacOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				3201DCE826CD238300E9243C /* TinmeyMacOSTests.swift */,
+				3201DCEA26CD238300E9243C /* Info.plist */,
+			);
+			path = TinmeyMacOSTests;
+			sourceTree = "<group>";
+		};
+		3201DCF226CD238300E9243C /* TinmeyMacOSUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3201DCF326CD238300E9243C /* TinmeyMacOSUITests.swift */,
+				3201DCF526CD238300E9243C /* Info.plist */,
+			);
+			path = TinmeyMacOSUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3201DCD126CD238100E9243C /* TinmeyMacOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3201DCF826CD238300E9243C /* Build configuration list for PBXNativeTarget "TinmeyMacOS" */;
+			buildPhases = (
+				3201DCCE26CD238100E9243C /* Sources */,
+				3201DCCF26CD238100E9243C /* Frameworks */,
+				3201DCD026CD238100E9243C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TinmeyMacOS;
+			productName = TinmeyMacOS;
+			productReference = 3201DCD226CD238100E9243C /* TinmeyMacOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3201DCE326CD238300E9243C /* TinmeyMacOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3201DCFB26CD238300E9243C /* Build configuration list for PBXNativeTarget "TinmeyMacOSTests" */;
+			buildPhases = (
+				3201DCE026CD238300E9243C /* Sources */,
+				3201DCE126CD238300E9243C /* Frameworks */,
+				3201DCE226CD238300E9243C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3201DCE626CD238300E9243C /* PBXTargetDependency */,
+			);
+			name = TinmeyMacOSTests;
+			productName = TinmeyMacOSTests;
+			productReference = 3201DCE426CD238300E9243C /* TinmeyMacOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3201DCEE26CD238300E9243C /* TinmeyMacOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3201DCFE26CD238300E9243C /* Build configuration list for PBXNativeTarget "TinmeyMacOSUITests" */;
+			buildPhases = (
+				3201DCEB26CD238300E9243C /* Sources */,
+				3201DCEC26CD238300E9243C /* Frameworks */,
+				3201DCED26CD238300E9243C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3201DCF126CD238300E9243C /* PBXTargetDependency */,
+			);
+			name = TinmeyMacOSUITests;
+			productName = TinmeyMacOSUITests;
+			productReference = 3201DCEF26CD238300E9243C /* TinmeyMacOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3201DCCA26CD238100E9243C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					3201DCD126CD238100E9243C = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					3201DCE326CD238300E9243C = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = 3201DCD126CD238100E9243C;
+					};
+					3201DCEE26CD238300E9243C = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = 3201DCD126CD238100E9243C;
+					};
+				};
+			};
+			buildConfigurationList = 3201DCCD26CD238100E9243C /* Build configuration list for PBXProject "TinmeyMacOS" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3201DCC926CD238100E9243C;
+			productRefGroup = 3201DCD326CD238100E9243C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3201DCD126CD238100E9243C /* TinmeyMacOS */,
+				3201DCE326CD238300E9243C /* TinmeyMacOSTests */,
+				3201DCEE26CD238300E9243C /* TinmeyMacOSUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3201DCD026CD238100E9243C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3201DCDD26CD238300E9243C /* Preview Assets.xcassets in Resources */,
+				3201DCDA26CD238300E9243C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3201DCE226CD238300E9243C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3201DCED26CD238300E9243C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3201DCCE26CD238100E9243C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3201DCD826CD238100E9243C /* ContentView.swift in Sources */,
+				3201DCD626CD238100E9243C /* TinmeyMacOSApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3201DCE026CD238300E9243C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3201DCE926CD238300E9243C /* TinmeyMacOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3201DCEB26CD238300E9243C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3201DCF426CD238300E9243C /* TinmeyMacOSUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3201DCE626CD238300E9243C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3201DCD126CD238100E9243C /* TinmeyMacOS */;
+			targetProxy = 3201DCE526CD238300E9243C /* PBXContainerItemProxy */;
+		};
+		3201DCF126CD238300E9243C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3201DCD126CD238100E9243C /* TinmeyMacOS */;
+			targetProxy = 3201DCF026CD238300E9243C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		3201DCF626CD238300E9243C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3201DCF726CD238300E9243C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		3201DCF926CD238300E9243C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TinmeyMacOS/TinmeyMacOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"TinmeyMacOS/Preview Content\"";
+				DEVELOPMENT_TEAM = UU896HB87U;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = TinmeyMacOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.borodindr.TinmeyMacOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		3201DCFA26CD238300E9243C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TinmeyMacOS/TinmeyMacOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"TinmeyMacOS/Preview Content\"";
+				DEVELOPMENT_TEAM = UU896HB87U;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = TinmeyMacOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.borodindr.TinmeyMacOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		3201DCFC26CD238300E9243C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = UU896HB87U;
+				INFOPLIST_FILE = TinmeyMacOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.borodindr.TinmeyMacOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TinmeyMacOS.app/Contents/MacOS/TinmeyMacOS";
+			};
+			name = Debug;
+		};
+		3201DCFD26CD238300E9243C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = UU896HB87U;
+				INFOPLIST_FILE = TinmeyMacOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.borodindr.TinmeyMacOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TinmeyMacOS.app/Contents/MacOS/TinmeyMacOS";
+			};
+			name = Release;
+		};
+		3201DCFF26CD238300E9243C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = UU896HB87U;
+				INFOPLIST_FILE = TinmeyMacOSUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.borodindr.TinmeyMacOSUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = TinmeyMacOS;
+			};
+			name = Debug;
+		};
+		3201DD0026CD238300E9243C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = UU896HB87U;
+				INFOPLIST_FILE = TinmeyMacOSUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.borodindr.TinmeyMacOSUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = TinmeyMacOS;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3201DCCD26CD238100E9243C /* Build configuration list for PBXProject "TinmeyMacOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3201DCF626CD238300E9243C /* Debug */,
+				3201DCF726CD238300E9243C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3201DCF826CD238300E9243C /* Build configuration list for PBXNativeTarget "TinmeyMacOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3201DCF926CD238300E9243C /* Debug */,
+				3201DCFA26CD238300E9243C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3201DCFB26CD238300E9243C /* Build configuration list for PBXNativeTarget "TinmeyMacOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3201DCFC26CD238300E9243C /* Debug */,
+				3201DCFD26CD238300E9243C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3201DCFE26CD238300E9243C /* Build configuration list for PBXNativeTarget "TinmeyMacOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3201DCFF26CD238300E9243C /* Debug */,
+				3201DD0026CD238300E9243C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3201DCCA26CD238100E9243C /* Project object */;
+}
