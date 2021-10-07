@@ -3,67 +3,129 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3201DCD626CD238100E9243C /* TinmeyMacOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3201DCD526CD238100E9243C /* TinmeyMacOSApp.swift */; };
-		3201DCD826CD238100E9243C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3201DCD726CD238100E9243C /* ContentView.swift */; };
-		3201DCDA26CD238300E9243C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3201DCD926CD238300E9243C /* Assets.xcassets */; };
-		3201DCDD26CD238300E9243C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3201DCDC26CD238300E9243C /* Preview Assets.xcassets */; };
-		3201DCE926CD238300E9243C /* TinmeyMacOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3201DCE826CD238300E9243C /* TinmeyMacOSTests.swift */; };
-		3201DCF426CD238300E9243C /* TinmeyMacOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3201DCF326CD238300E9243C /* TinmeyMacOSUITests.swift */; };
+		32196022270B69F9002A0E11 /* WorksListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32196021270B69F9002A0E11 /* WorksListView.swift */; };
+		32196024270B6C8A002A0E11 /* WorkViewImageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32196023270B6C8A002A0E11 /* WorkViewImageBox.swift */; };
+		32196026270B7357002A0E11 /* WorkViewBodyBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32196025270B7357002A0E11 /* WorkViewBodyBox.swift */; };
+		32196028270B7363002A0E11 /* WorkViewLargeBodyBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32196027270B7363002A0E11 /* WorkViewLargeBodyBox.swift */; };
+		3219602C270C936E002A0E11 /* EditWorkViewBodyBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3219602B270C936E002A0E11 /* EditWorkViewBodyBox.swift */; };
+		3219602E270C9944002A0E11 /* MultilineTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3219602D270C9944002A0E11 /* MultilineTextView.swift */; };
+		32196034270DE3AB002A0E11 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 32196033270DE3AB002A0E11 /* SwiftUIX */; };
+		3236C78526DC0EBC002122B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C78426DC0EBC002122B3 /* AppDelegate.swift */; };
+		3236C78A26DC0EBC002122B3 /* TinmeyMacOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3236C78826DC0EBC002122B3 /* TinmeyMacOS.xcdatamodeld */; };
+		3236C78C26DC0EBF002122B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3236C78B26DC0EBF002122B3 /* Assets.xcassets */; };
+		3236C78F26DC0EBF002122B3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3236C78E26DC0EBF002122B3 /* Preview Assets.xcassets */; };
+		3236C79226DC0EBF002122B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3236C79026DC0EBF002122B3 /* Main.storyboard */; };
+		3236C79E26DC0EBF002122B3 /* TinmeyMacOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C79D26DC0EBF002122B3 /* TinmeyMacOSTests.swift */; };
+		3236C7A926DC0EBF002122B3 /* TinmeyMacOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7A826DC0EBF002122B3 /* TinmeyMacOSUITests.swift */; };
+		3236C7BA26DC0EFB002122B3 /* APIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7B726DC0EFB002122B3 /* APIModels.swift */; };
+		3236C7BB26DC0EFB002122B3 /* BookCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7B826DC0EFB002122B3 /* BookCover.swift */; };
+		3236C7BC26DC0EFB002122B3 /* AppSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7B926DC0EFB002122B3 /* AppSection.swift */; };
+		3236C7BF26DC0F42002122B3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3236C7BE26DC0F42002122B3 /* Preview Assets.xcassets */; };
+		3236C7C526DC0F63002122B3 /* WorksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7C126DC0F63002122B3 /* WorksListViewModel.swift */; };
+		3236C7C626DC0F63002122B3 /* EditWorksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7C226DC0F63002122B3 /* EditWorksViewModel.swift */; };
+		3236C7C726DC0F63002122B3 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7C326DC0F63002122B3 /* RootViewModel.swift */; };
+		3236C7C826DC0F63002122B3 /* WorkPreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7C426DC0F63002122B3 /* WorkPreviewViewModel.swift */; };
+		3236C7D226DC0F6C002122B3 /* WorkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7CA26DC0F6C002122B3 /* WorkView.swift */; };
+		3236C7D326DC0F6C002122B3 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7CB26DC0F6C002122B3 /* BlurView.swift */; };
+		3236C7D426DC0F6C002122B3 /* WorkPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7CC26DC0F6C002122B3 /* WorkPreview.swift */; };
+		3236C7D526DC0F6C002122B3 /* TabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7CD26DC0F6C002122B3 /* TabButton.swift */; };
+		3236C7D626DC0F6C002122B3 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7CE26DC0F6C002122B3 /* RootView.swift */; };
+		3236C7D726DC0F6C002122B3 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7CF26DC0F6C002122B3 /* TestView.swift */; };
+		3236C7D826DC0F6C002122B3 /* EditWorkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7D026DC0F6C002122B3 /* EditWorkView.swift */; };
+		3236C7D926DC0F6C002122B3 /* WorksListViewOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7D126DC0F6C002122B3 /* WorksListViewOld.swift */; };
+		3236C7DC26DC0F9A002122B3 /* TinmeyCore in Frameworks */ = {isa = PBXBuildFile; productRef = 3236C7DB26DC0F9A002122B3 /* TinmeyCore */; };
+		3236C7DF26DC0FCF002122B3 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3236C7DE26DC0FCF002122B3 /* Alamofire */; };
+		3236C7E326DC105E002122B3 /* WorksAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7E126DC105E002122B3 /* WorksAPIService.swift */; };
+		3236C7E426DC105E002122B3 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7E226DC105E002122B3 /* APIService.swift */; };
+		326EA03026DE67B500C94B5E /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326EA02F26DE67B500C94B5E /* ImageLoader.swift */; };
+		326EA03226DE67C000C94B5E /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326EA03126DE67C000C94B5E /* AsyncImage.swift */; };
+		326EA03426DE751600C94B5E /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326EA03326DE751600C94B5E /* ProgressIndicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3201DCE526CD238300E9243C /* PBXContainerItemProxy */ = {
+		3236C79A26DC0EBF002122B3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 3201DCCA26CD238100E9243C /* Project object */;
+			containerPortal = 3236C77926DC0EBC002122B3 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 3201DCD126CD238100E9243C;
+			remoteGlobalIDString = 3236C78026DC0EBC002122B3;
 			remoteInfo = TinmeyMacOS;
 		};
-		3201DCF026CD238300E9243C /* PBXContainerItemProxy */ = {
+		3236C7A526DC0EBF002122B3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 3201DCCA26CD238100E9243C /* Project object */;
+			containerPortal = 3236C77926DC0EBC002122B3 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 3201DCD126CD238100E9243C;
+			remoteGlobalIDString = 3236C78026DC0EBC002122B3;
 			remoteInfo = TinmeyMacOS;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3201DCD226CD238100E9243C /* TinmeyMacOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinmeyMacOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3201DCD526CD238100E9243C /* TinmeyMacOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinmeyMacOSApp.swift; sourceTree = "<group>"; };
-		3201DCD726CD238100E9243C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		3201DCD926CD238300E9243C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		3201DCDC26CD238300E9243C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		3201DCDE26CD238300E9243C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3201DCDF26CD238300E9243C /* TinmeyMacOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TinmeyMacOS.entitlements; sourceTree = "<group>"; };
-		3201DCE426CD238300E9243C /* TinmeyMacOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinmeyMacOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3201DCE826CD238300E9243C /* TinmeyMacOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinmeyMacOSTests.swift; sourceTree = "<group>"; };
-		3201DCEA26CD238300E9243C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3201DCEF26CD238300E9243C /* TinmeyMacOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinmeyMacOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3201DCF326CD238300E9243C /* TinmeyMacOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinmeyMacOSUITests.swift; sourceTree = "<group>"; };
-		3201DCF526CD238300E9243C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32196021270B69F9002A0E11 /* WorksListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorksListView.swift; sourceTree = "<group>"; };
+		32196023270B6C8A002A0E11 /* WorkViewImageBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkViewImageBox.swift; sourceTree = "<group>"; };
+		32196025270B7357002A0E11 /* WorkViewBodyBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkViewBodyBox.swift; sourceTree = "<group>"; };
+		32196027270B7363002A0E11 /* WorkViewLargeBodyBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkViewLargeBodyBox.swift; sourceTree = "<group>"; };
+		3219602B270C936E002A0E11 /* EditWorkViewBodyBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWorkViewBodyBox.swift; sourceTree = "<group>"; };
+		3219602D270C9944002A0E11 /* MultilineTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineTextView.swift; sourceTree = "<group>"; };
+		3236C78126DC0EBC002122B3 /* TinmeyMacOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinmeyMacOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3236C78426DC0EBC002122B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3236C78926DC0EBC002122B3 /* TinmeyMacOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TinmeyMacOS.xcdatamodel; sourceTree = "<group>"; };
+		3236C78B26DC0EBF002122B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3236C78E26DC0EBF002122B3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3236C79126DC0EBF002122B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3236C79326DC0EBF002122B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3236C79426DC0EBF002122B3 /* TinmeyMacOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TinmeyMacOS.entitlements; sourceTree = "<group>"; };
+		3236C79926DC0EBF002122B3 /* TinmeyMacOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinmeyMacOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3236C79D26DC0EBF002122B3 /* TinmeyMacOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinmeyMacOSTests.swift; sourceTree = "<group>"; };
+		3236C79F26DC0EBF002122B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3236C7A426DC0EBF002122B3 /* TinmeyMacOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinmeyMacOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3236C7A826DC0EBF002122B3 /* TinmeyMacOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinmeyMacOSUITests.swift; sourceTree = "<group>"; };
+		3236C7AA26DC0EBF002122B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3236C7B726DC0EFB002122B3 /* APIModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIModels.swift; sourceTree = "<group>"; };
+		3236C7B826DC0EFB002122B3 /* BookCover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCover.swift; sourceTree = "<group>"; };
+		3236C7B926DC0EFB002122B3 /* AppSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSection.swift; sourceTree = "<group>"; };
+		3236C7BE26DC0F42002122B3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3236C7C126DC0F63002122B3 /* WorksListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorksListViewModel.swift; sourceTree = "<group>"; };
+		3236C7C226DC0F63002122B3 /* EditWorksViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditWorksViewModel.swift; sourceTree = "<group>"; };
+		3236C7C326DC0F63002122B3 /* RootViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
+		3236C7C426DC0F63002122B3 /* WorkPreviewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkPreviewViewModel.swift; sourceTree = "<group>"; };
+		3236C7CA26DC0F6C002122B3 /* WorkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkView.swift; sourceTree = "<group>"; };
+		3236C7CB26DC0F6C002122B3 /* BlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
+		3236C7CC26DC0F6C002122B3 /* WorkPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkPreview.swift; sourceTree = "<group>"; };
+		3236C7CD26DC0F6C002122B3 /* TabButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabButton.swift; sourceTree = "<group>"; };
+		3236C7CE26DC0F6C002122B3 /* RootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		3236C7CF26DC0F6C002122B3 /* TestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		3236C7D026DC0F6C002122B3 /* EditWorkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditWorkView.swift; sourceTree = "<group>"; };
+		3236C7D126DC0F6C002122B3 /* WorksListViewOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorksListViewOld.swift; sourceTree = "<group>"; };
+		3236C7E126DC105E002122B3 /* WorksAPIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorksAPIService.swift; sourceTree = "<group>"; };
+		3236C7E226DC105E002122B3 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		326EA02F26DE67B500C94B5E /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		326EA03126DE67C000C94B5E /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
+		326EA03326DE751600C94B5E /* ProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		3201DCCF26CD238100E9243C /* Frameworks */ = {
+		3236C77E26DC0EBC002122B3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3236C7DC26DC0F9A002122B3 /* TinmeyCore in Frameworks */,
+				3236C7DF26DC0FCF002122B3 /* Alamofire in Frameworks */,
+				32196034270DE3AB002A0E11 /* SwiftUIX in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3236C79626DC0EBF002122B3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3201DCE126CD238300E9243C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3201DCEC26CD238300E9243C /* Frameworks */ = {
+		3236C7A126DC0EBF002122B3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -73,144 +135,250 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3201DCC926CD238100E9243C = {
+		32196029270C92D1002A0E11 /* WorkView */ = {
 			isa = PBXGroup;
 			children = (
-				3201DCD426CD238100E9243C /* TinmeyMacOS */,
-				3201DCE726CD238300E9243C /* TinmeyMacOSTests */,
-				3201DCF226CD238300E9243C /* TinmeyMacOSUITests */,
-				3201DCD326CD238100E9243C /* Products */,
+				3236C7CA26DC0F6C002122B3 /* WorkView.swift */,
+				32196023270B6C8A002A0E11 /* WorkViewImageBox.swift */,
+				32196025270B7357002A0E11 /* WorkViewBodyBox.swift */,
+				32196027270B7363002A0E11 /* WorkViewLargeBodyBox.swift */,
+			);
+			path = WorkView;
+			sourceTree = "<group>";
+		};
+		3219602A270C92DF002A0E11 /* EditWorkView */ = {
+			isa = PBXGroup;
+			children = (
+				3236C7D026DC0F6C002122B3 /* EditWorkView.swift */,
+				3219602B270C936E002A0E11 /* EditWorkViewBodyBox.swift */,
+			);
+			path = EditWorkView;
+			sourceTree = "<group>";
+		};
+		3236C77826DC0EBC002122B3 = {
+			isa = PBXGroup;
+			children = (
+				3236C78326DC0EBC002122B3 /* TinmeyMacOS */,
+				3236C79C26DC0EBF002122B3 /* TinmeyMacOSTests */,
+				3236C7A726DC0EBF002122B3 /* TinmeyMacOSUITests */,
+				3236C78226DC0EBC002122B3 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		3201DCD326CD238100E9243C /* Products */ = {
+		3236C78226DC0EBC002122B3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3201DCD226CD238100E9243C /* TinmeyMacOS.app */,
-				3201DCE426CD238300E9243C /* TinmeyMacOSTests.xctest */,
-				3201DCEF26CD238300E9243C /* TinmeyMacOSUITests.xctest */,
+				3236C78126DC0EBC002122B3 /* TinmeyMacOS.app */,
+				3236C79926DC0EBF002122B3 /* TinmeyMacOSTests.xctest */,
+				3236C7A426DC0EBF002122B3 /* TinmeyMacOSUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3201DCD426CD238100E9243C /* TinmeyMacOS */ = {
+		3236C78326DC0EBC002122B3 /* TinmeyMacOS */ = {
 			isa = PBXGroup;
 			children = (
-				3201DCD526CD238100E9243C /* TinmeyMacOSApp.swift */,
-				3201DCD726CD238100E9243C /* ContentView.swift */,
-				3201DCD926CD238300E9243C /* Assets.xcassets */,
-				3201DCDE26CD238300E9243C /* Info.plist */,
-				3201DCDF26CD238300E9243C /* TinmeyMacOS.entitlements */,
-				3201DCDB26CD238300E9243C /* Preview Content */,
+				3236C78426DC0EBC002122B3 /* AppDelegate.swift */,
+				3236C7C926DC0F6C002122B3 /* Views */,
+				3236C7C026DC0F63002122B3 /* ViewModels */,
+				3236C7B626DC0EFB002122B3 /* Models */,
+				3236C7E026DC105E002122B3 /* Services */,
+				3236C7BD26DC0F42002122B3 /* Preview Content */,
+				3236C78B26DC0EBF002122B3 /* Assets.xcassets */,
+				3236C79026DC0EBF002122B3 /* Main.storyboard */,
+				3236C79326DC0EBF002122B3 /* Info.plist */,
+				3236C79426DC0EBF002122B3 /* TinmeyMacOS.entitlements */,
+				3236C78826DC0EBC002122B3 /* TinmeyMacOS.xcdatamodeld */,
+				3236C78D26DC0EBF002122B3 /* Preview Content */,
 			);
 			path = TinmeyMacOS;
 			sourceTree = "<group>";
 		};
-		3201DCDB26CD238300E9243C /* Preview Content */ = {
+		3236C78D26DC0EBF002122B3 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				3201DCDC26CD238300E9243C /* Preview Assets.xcassets */,
+				3236C78E26DC0EBF002122B3 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		3201DCE726CD238300E9243C /* TinmeyMacOSTests */ = {
+		3236C79C26DC0EBF002122B3 /* TinmeyMacOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				3201DCE826CD238300E9243C /* TinmeyMacOSTests.swift */,
-				3201DCEA26CD238300E9243C /* Info.plist */,
+				3236C79D26DC0EBF002122B3 /* TinmeyMacOSTests.swift */,
+				3236C79F26DC0EBF002122B3 /* Info.plist */,
 			);
 			path = TinmeyMacOSTests;
 			sourceTree = "<group>";
 		};
-		3201DCF226CD238300E9243C /* TinmeyMacOSUITests */ = {
+		3236C7A726DC0EBF002122B3 /* TinmeyMacOSUITests */ = {
 			isa = PBXGroup;
 			children = (
-				3201DCF326CD238300E9243C /* TinmeyMacOSUITests.swift */,
-				3201DCF526CD238300E9243C /* Info.plist */,
+				3236C7A826DC0EBF002122B3 /* TinmeyMacOSUITests.swift */,
+				3236C7AA26DC0EBF002122B3 /* Info.plist */,
 			);
 			path = TinmeyMacOSUITests;
+			sourceTree = "<group>";
+		};
+		3236C7B626DC0EFB002122B3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3236C7B726DC0EFB002122B3 /* APIModels.swift */,
+				3236C7B826DC0EFB002122B3 /* BookCover.swift */,
+				3236C7B926DC0EFB002122B3 /* AppSection.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3236C7BD26DC0F42002122B3 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				3236C7BE26DC0F42002122B3 /* Preview Assets.xcassets */,
+			);
+			name = "Preview Content";
+			path = "../../TinmeyMacOS copy/TinmeyMacOS/Preview Content";
+			sourceTree = "<group>";
+		};
+		3236C7C026DC0F63002122B3 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				3236C7C126DC0F63002122B3 /* WorksListViewModel.swift */,
+				3236C7C226DC0F63002122B3 /* EditWorksViewModel.swift */,
+				3236C7C326DC0F63002122B3 /* RootViewModel.swift */,
+				3236C7C426DC0F63002122B3 /* WorkPreviewViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		3236C7C926DC0F6C002122B3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				326EA02D26DE671600C94B5E /* Components */,
+				3236C7CE26DC0F6C002122B3 /* RootView.swift */,
+				3236C7D126DC0F6C002122B3 /* WorksListViewOld.swift */,
+				32196021270B69F9002A0E11 /* WorksListView.swift */,
+				3236C7CC26DC0F6C002122B3 /* WorkPreview.swift */,
+				32196029270C92D1002A0E11 /* WorkView */,
+				3219602A270C92DF002A0E11 /* EditWorkView */,
+				3236C7CF26DC0F6C002122B3 /* TestView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3236C7E026DC105E002122B3 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				3236C7E126DC105E002122B3 /* WorksAPIService.swift */,
+				3236C7E226DC105E002122B3 /* APIService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		326EA02D26DE671600C94B5E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				326EA02E26DE67A600C94B5E /* AsyncImage */,
+				3236C7CB26DC0F6C002122B3 /* BlurView.swift */,
+				3236C7CD26DC0F6C002122B3 /* TabButton.swift */,
+				326EA03326DE751600C94B5E /* ProgressIndicator.swift */,
+				3219602D270C9944002A0E11 /* MultilineTextView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		326EA02E26DE67A600C94B5E /* AsyncImage */ = {
+			isa = PBXGroup;
+			children = (
+				326EA03126DE67C000C94B5E /* AsyncImage.swift */,
+				326EA02F26DE67B500C94B5E /* ImageLoader.swift */,
+			);
+			path = AsyncImage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3201DCD126CD238100E9243C /* TinmeyMacOS */ = {
+		3236C78026DC0EBC002122B3 /* TinmeyMacOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3201DCF826CD238300E9243C /* Build configuration list for PBXNativeTarget "TinmeyMacOS" */;
+			buildConfigurationList = 3236C7AD26DC0EBF002122B3 /* Build configuration list for PBXNativeTarget "TinmeyMacOS" */;
 			buildPhases = (
-				3201DCCE26CD238100E9243C /* Sources */,
-				3201DCCF26CD238100E9243C /* Frameworks */,
-				3201DCD026CD238100E9243C /* Resources */,
+				3236C77D26DC0EBC002122B3 /* Sources */,
+				3236C77E26DC0EBC002122B3 /* Frameworks */,
+				3236C77F26DC0EBC002122B3 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = TinmeyMacOS;
+			packageProductDependencies = (
+				3236C7DB26DC0F9A002122B3 /* TinmeyCore */,
+				3236C7DE26DC0FCF002122B3 /* Alamofire */,
+				32196033270DE3AB002A0E11 /* SwiftUIX */,
+			);
 			productName = TinmeyMacOS;
-			productReference = 3201DCD226CD238100E9243C /* TinmeyMacOS.app */;
+			productReference = 3236C78126DC0EBC002122B3 /* TinmeyMacOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3201DCE326CD238300E9243C /* TinmeyMacOSTests */ = {
+		3236C79826DC0EBF002122B3 /* TinmeyMacOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3201DCFB26CD238300E9243C /* Build configuration list for PBXNativeTarget "TinmeyMacOSTests" */;
+			buildConfigurationList = 3236C7B026DC0EBF002122B3 /* Build configuration list for PBXNativeTarget "TinmeyMacOSTests" */;
 			buildPhases = (
-				3201DCE026CD238300E9243C /* Sources */,
-				3201DCE126CD238300E9243C /* Frameworks */,
-				3201DCE226CD238300E9243C /* Resources */,
+				3236C79526DC0EBF002122B3 /* Sources */,
+				3236C79626DC0EBF002122B3 /* Frameworks */,
+				3236C79726DC0EBF002122B3 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				3201DCE626CD238300E9243C /* PBXTargetDependency */,
+				3236C79B26DC0EBF002122B3 /* PBXTargetDependency */,
 			);
 			name = TinmeyMacOSTests;
 			productName = TinmeyMacOSTests;
-			productReference = 3201DCE426CD238300E9243C /* TinmeyMacOSTests.xctest */;
+			productReference = 3236C79926DC0EBF002122B3 /* TinmeyMacOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		3201DCEE26CD238300E9243C /* TinmeyMacOSUITests */ = {
+		3236C7A326DC0EBF002122B3 /* TinmeyMacOSUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3201DCFE26CD238300E9243C /* Build configuration list for PBXNativeTarget "TinmeyMacOSUITests" */;
+			buildConfigurationList = 3236C7B326DC0EBF002122B3 /* Build configuration list for PBXNativeTarget "TinmeyMacOSUITests" */;
 			buildPhases = (
-				3201DCEB26CD238300E9243C /* Sources */,
-				3201DCEC26CD238300E9243C /* Frameworks */,
-				3201DCED26CD238300E9243C /* Resources */,
+				3236C7A026DC0EBF002122B3 /* Sources */,
+				3236C7A126DC0EBF002122B3 /* Frameworks */,
+				3236C7A226DC0EBF002122B3 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				3201DCF126CD238300E9243C /* PBXTargetDependency */,
+				3236C7A626DC0EBF002122B3 /* PBXTargetDependency */,
 			);
 			name = TinmeyMacOSUITests;
 			productName = TinmeyMacOSUITests;
-			productReference = 3201DCEF26CD238300E9243C /* TinmeyMacOSUITests.xctest */;
+			productReference = 3236C7A426DC0EBF002122B3 /* TinmeyMacOSUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		3201DCCA26CD238100E9243C /* Project object */ = {
+		3236C77926DC0EBC002122B3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1250;
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 1300;
 				TargetAttributes = {
-					3201DCD126CD238100E9243C = {
+					3236C78026DC0EBC002122B3 = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
-					3201DCE326CD238300E9243C = {
+					3236C79826DC0EBF002122B3 = {
 						CreatedOnToolsVersion = 12.5.1;
-						TestTargetID = 3201DCD126CD238100E9243C;
+						TestTargetID = 3236C78026DC0EBC002122B3;
 					};
-					3201DCEE26CD238300E9243C = {
+					3236C7A326DC0EBF002122B3 = {
 						CreatedOnToolsVersion = 12.5.1;
-						TestTargetID = 3201DCD126CD238100E9243C;
+						TestTargetID = 3236C78026DC0EBC002122B3;
 					};
 				};
 			};
-			buildConfigurationList = 3201DCCD26CD238100E9243C /* Build configuration list for PBXProject "TinmeyMacOS" */;
+			buildConfigurationList = 3236C77C26DC0EBC002122B3 /* Build configuration list for PBXProject "TinmeyMacOS" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -218,36 +386,43 @@
 				en,
 				Base,
 			);
-			mainGroup = 3201DCC926CD238100E9243C;
-			productRefGroup = 3201DCD326CD238100E9243C /* Products */;
+			mainGroup = 3236C77826DC0EBC002122B3;
+			packageReferences = (
+				3236C7DA26DC0F9A002122B3 /* XCRemoteSwiftPackageReference "TinmeyCore" */,
+				3236C7DD26DC0FCF002122B3 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				32196032270DE3AB002A0E11 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
+			);
+			productRefGroup = 3236C78226DC0EBC002122B3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3201DCD126CD238100E9243C /* TinmeyMacOS */,
-				3201DCE326CD238300E9243C /* TinmeyMacOSTests */,
-				3201DCEE26CD238300E9243C /* TinmeyMacOSUITests */,
+				3236C78026DC0EBC002122B3 /* TinmeyMacOS */,
+				3236C79826DC0EBF002122B3 /* TinmeyMacOSTests */,
+				3236C7A326DC0EBF002122B3 /* TinmeyMacOSUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		3201DCD026CD238100E9243C /* Resources */ = {
+		3236C77F26DC0EBC002122B3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3201DCDD26CD238300E9243C /* Preview Assets.xcassets in Resources */,
-				3201DCDA26CD238300E9243C /* Assets.xcassets in Resources */,
+				3236C7BF26DC0F42002122B3 /* Preview Assets.xcassets in Resources */,
+				3236C79226DC0EBF002122B3 /* Main.storyboard in Resources */,
+				3236C78F26DC0EBF002122B3 /* Preview Assets.xcassets in Resources */,
+				3236C78C26DC0EBF002122B3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3201DCE226CD238300E9243C /* Resources */ = {
+		3236C79726DC0EBF002122B3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3201DCED26CD238300E9243C /* Resources */ = {
+		3236C7A226DC0EBF002122B3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -257,48 +432,85 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		3201DCCE26CD238100E9243C /* Sources */ = {
+		3236C77D26DC0EBC002122B3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3201DCD826CD238100E9243C /* ContentView.swift in Sources */,
-				3201DCD626CD238100E9243C /* TinmeyMacOSApp.swift in Sources */,
+				3236C7D226DC0F6C002122B3 /* WorkView.swift in Sources */,
+				3236C7C826DC0F63002122B3 /* WorkPreviewViewModel.swift in Sources */,
+				326EA03426DE751600C94B5E /* ProgressIndicator.swift in Sources */,
+				3236C7BB26DC0EFB002122B3 /* BookCover.swift in Sources */,
+				3236C7BA26DC0EFB002122B3 /* APIModels.swift in Sources */,
+				3219602E270C9944002A0E11 /* MultilineTextView.swift in Sources */,
+				3236C7D726DC0F6C002122B3 /* TestView.swift in Sources */,
+				3219602C270C936E002A0E11 /* EditWorkViewBodyBox.swift in Sources */,
+				3236C7D826DC0F6C002122B3 /* EditWorkView.swift in Sources */,
+				3236C7C526DC0F63002122B3 /* WorksListViewModel.swift in Sources */,
+				3236C7D326DC0F6C002122B3 /* BlurView.swift in Sources */,
+				3236C7C626DC0F63002122B3 /* EditWorksViewModel.swift in Sources */,
+				3236C7E326DC105E002122B3 /* WorksAPIService.swift in Sources */,
+				32196022270B69F9002A0E11 /* WorksListView.swift in Sources */,
+				3236C7BC26DC0EFB002122B3 /* AppSection.swift in Sources */,
+				32196026270B7357002A0E11 /* WorkViewBodyBox.swift in Sources */,
+				3236C78A26DC0EBC002122B3 /* TinmeyMacOS.xcdatamodeld in Sources */,
+				3236C7D426DC0F6C002122B3 /* WorkPreview.swift in Sources */,
+				326EA03026DE67B500C94B5E /* ImageLoader.swift in Sources */,
+				3236C7C726DC0F63002122B3 /* RootViewModel.swift in Sources */,
+				32196024270B6C8A002A0E11 /* WorkViewImageBox.swift in Sources */,
+				32196028270B7363002A0E11 /* WorkViewLargeBodyBox.swift in Sources */,
+				326EA03226DE67C000C94B5E /* AsyncImage.swift in Sources */,
+				3236C78526DC0EBC002122B3 /* AppDelegate.swift in Sources */,
+				3236C7D526DC0F6C002122B3 /* TabButton.swift in Sources */,
+				3236C7E426DC105E002122B3 /* APIService.swift in Sources */,
+				3236C7D626DC0F6C002122B3 /* RootView.swift in Sources */,
+				3236C7D926DC0F6C002122B3 /* WorksListViewOld.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3201DCE026CD238300E9243C /* Sources */ = {
+		3236C79526DC0EBF002122B3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3201DCE926CD238300E9243C /* TinmeyMacOSTests.swift in Sources */,
+				3236C79E26DC0EBF002122B3 /* TinmeyMacOSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3201DCEB26CD238300E9243C /* Sources */ = {
+		3236C7A026DC0EBF002122B3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3201DCF426CD238300E9243C /* TinmeyMacOSUITests.swift in Sources */,
+				3236C7A926DC0EBF002122B3 /* TinmeyMacOSUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		3201DCE626CD238300E9243C /* PBXTargetDependency */ = {
+		3236C79B26DC0EBF002122B3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3201DCD126CD238100E9243C /* TinmeyMacOS */;
-			targetProxy = 3201DCE526CD238300E9243C /* PBXContainerItemProxy */;
+			target = 3236C78026DC0EBC002122B3 /* TinmeyMacOS */;
+			targetProxy = 3236C79A26DC0EBF002122B3 /* PBXContainerItemProxy */;
 		};
-		3201DCF126CD238300E9243C /* PBXTargetDependency */ = {
+		3236C7A626DC0EBF002122B3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3201DCD126CD238100E9243C /* TinmeyMacOS */;
-			targetProxy = 3201DCF026CD238300E9243C /* PBXContainerItemProxy */;
+			target = 3236C78026DC0EBC002122B3 /* TinmeyMacOS */;
+			targetProxy = 3236C7A526DC0EBF002122B3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		3236C79026DC0EBF002122B3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3236C79126DC0EBF002122B3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
-		3201DCF626CD238300E9243C /* Debug */ = {
+		3236C7AB26DC0EBF002122B3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -349,7 +561,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -359,7 +571,7 @@
 			};
 			name = Debug;
 		};
-		3201DCF726CD238300E9243C /* Release */ = {
+		3236C7AC26DC0EBF002122B3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -404,7 +616,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -413,12 +625,13 @@
 			};
 			name = Release;
 		};
-		3201DCF926CD238300E9243C /* Debug */ = {
+		3236C7AE26DC0EBF002122B3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TinmeyMacOS/TinmeyMacOS.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"TinmeyMacOS/Preview Content\"";
@@ -430,19 +643,20 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.borodindr.TinmeyMacOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		3201DCFA26CD238300E9243C /* Release */ = {
+		3236C7AF26DC0EBF002122B3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TinmeyMacOS/TinmeyMacOS.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"TinmeyMacOS/Preview Content\"";
@@ -454,14 +668,14 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.borodindr.TinmeyMacOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
-		3201DCFC26CD238300E9243C /* Debug */ = {
+		3236C7B126DC0EBF002122B3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -483,7 +697,7 @@
 			};
 			name = Debug;
 		};
-		3201DCFD26CD238300E9243C /* Release */ = {
+		3236C7B226DC0EBF002122B3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -505,7 +719,7 @@
 			};
 			name = Release;
 		};
-		3201DCFF26CD238300E9243C /* Debug */ = {
+		3236C7B426DC0EBF002122B3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -525,7 +739,7 @@
 			};
 			name = Debug;
 		};
-		3201DD0026CD238300E9243C /* Release */ = {
+		3236C7B526DC0EBF002122B3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -548,43 +762,101 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3201DCCD26CD238100E9243C /* Build configuration list for PBXProject "TinmeyMacOS" */ = {
+		3236C77C26DC0EBC002122B3 /* Build configuration list for PBXProject "TinmeyMacOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3201DCF626CD238300E9243C /* Debug */,
-				3201DCF726CD238300E9243C /* Release */,
+				3236C7AB26DC0EBF002122B3 /* Debug */,
+				3236C7AC26DC0EBF002122B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3201DCF826CD238300E9243C /* Build configuration list for PBXNativeTarget "TinmeyMacOS" */ = {
+		3236C7AD26DC0EBF002122B3 /* Build configuration list for PBXNativeTarget "TinmeyMacOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3201DCF926CD238300E9243C /* Debug */,
-				3201DCFA26CD238300E9243C /* Release */,
+				3236C7AE26DC0EBF002122B3 /* Debug */,
+				3236C7AF26DC0EBF002122B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3201DCFB26CD238300E9243C /* Build configuration list for PBXNativeTarget "TinmeyMacOSTests" */ = {
+		3236C7B026DC0EBF002122B3 /* Build configuration list for PBXNativeTarget "TinmeyMacOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3201DCFC26CD238300E9243C /* Debug */,
-				3201DCFD26CD238300E9243C /* Release */,
+				3236C7B126DC0EBF002122B3 /* Debug */,
+				3236C7B226DC0EBF002122B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3201DCFE26CD238300E9243C /* Build configuration list for PBXNativeTarget "TinmeyMacOSUITests" */ = {
+		3236C7B326DC0EBF002122B3 /* Build configuration list for PBXNativeTarget "TinmeyMacOSUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3201DCFF26CD238300E9243C /* Debug */,
-				3201DD0026CD238300E9243C /* Release */,
+				3236C7B426DC0EBF002122B3 /* Debug */,
+				3236C7B526DC0EBF002122B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		32196032270DE3AB002A0E11 /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
+		3236C7DA26DC0F9A002122B3 /* XCRemoteSwiftPackageReference "TinmeyCore" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/borodindr/TinmeyCore.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		3236C7DD26DC0FCF002122B3 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		32196033270DE3AB002A0E11 /* SwiftUIX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 32196032270DE3AB002A0E11 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
+			productName = SwiftUIX;
+		};
+		3236C7DB26DC0F9A002122B3 /* TinmeyCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3236C7DA26DC0F9A002122B3 /* XCRemoteSwiftPackageReference "TinmeyCore" */;
+			productName = TinmeyCore;
+		};
+		3236C7DE26DC0FCF002122B3 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3236C7DD26DC0FCF002122B3 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		3236C78826DC0EBC002122B3 /* TinmeyMacOS.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3236C78926DC0EBC002122B3 /* TinmeyMacOS.xcdatamodel */,
+			);
+			currentVersion = 3236C78926DC0EBC002122B3 /* TinmeyMacOS.xcdatamodel */;
+			path = TinmeyMacOS.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
-	rootObject = 3201DCCA26CD238100E9243C /* Project object */;
+	rootObject = 3236C77926DC0EBC002122B3 /* Project object */;
 }
