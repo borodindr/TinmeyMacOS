@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SwiftUIX
 
 struct EditWorkViewBodyBox: View {
     @Binding var title: String

@@ -14,7 +14,7 @@ class WorksListViewModel: ObservableObject {
     @Published private(set) var isLoading = false
     @Published var error: ErrorDescription? = nil
     
-    var workType: WorkType {
+    var workType: Work.WorkType {
         service.workType
     }
     private let service: WorksProviderService
@@ -24,7 +24,7 @@ class WorksListViewModel: ObservableObject {
         self.service = service
     }
     
-    init(workType: WorkType) {
+    init(workType: Work.WorkType) {
         self.service = WorksAPIService(workType: workType)
     }
     

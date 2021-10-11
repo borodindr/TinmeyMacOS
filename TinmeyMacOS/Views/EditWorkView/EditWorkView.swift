@@ -10,14 +10,14 @@ import SwiftUI
 struct EditWorkView: View {
     @ObservedObject private var viewModel: EditWorksViewModel
     
-    init(workType: WorkType, isPresented: Binding<Bool>) {
+    init(workType: Work.WorkType, isPresented: Binding<Bool>) {
         self.viewModel = EditWorksViewModel(
             workType: workType,
             isPresented: isPresented
         )
     }
     
-    init(work: Work, workType: WorkType, workToEdit: Binding<Work?>) {
+    init(work: Work, workType: Work.WorkType, workToEdit: Binding<Work?>) {
         self.viewModel = EditWorksViewModel(
             work: work,
             workType: workType,

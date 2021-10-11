@@ -11,9 +11,9 @@ import Alamofire
 import TinmeyCore
 
 protocol WorksProviderService {
-    var workType: WorkType { get }
+    var workType: Work.WorkType { get }
     
-    init(workType: WorkType)
+    init(workType: Work.WorkType)
     
     func allWorks() -> AnyPublisher<[Work], Error>
     func create(newWork: Work.Create) -> AnyPublisher<Work, Error>
@@ -30,9 +30,9 @@ class WorksPreviewService: WorksProviderService {
         case notImplemented
     }
     
-    let workType: WorkType
+    let workType: Work.WorkType
     
-    required init(workType: WorkType) {
+    required init(workType: Work.WorkType) {
         self.workType = workType
     }
     
@@ -81,25 +81,21 @@ class WorksPreviewService: WorksProviderService {
 
 class WorksAPIService: WorksProviderService {
     private struct AllWorksParameters: Codable {
-        let type: WorkType
+        let type: Work.WorkType
     }
     
     private struct ReorderParameters: Encodable {
         let direction: Work.ReorderDirection
     }
     
-    let workType: WorkType
-    
-    var baseURL: String {
-        "http://127.0.0.1:8080/api/works"
-    }
+    let workType: Work.WorkType
     
     private let api = APIService(basePathComponents: "works")
     private var getAllWorksParameters: AllWorksParameters {
         AllWorksParameters(type: workType)
     }
     
-    required init(workType: WorkType) {
+    required init(workType: Work.WorkType) {
         self.workType = workType
     }
     

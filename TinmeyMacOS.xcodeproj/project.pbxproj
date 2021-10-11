@@ -13,7 +13,10 @@
 		32196028270B7363002A0E11 /* WorkViewLargeBodyBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32196027270B7363002A0E11 /* WorkViewLargeBodyBox.swift */; };
 		3219602C270C936E002A0E11 /* EditWorkViewBodyBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3219602B270C936E002A0E11 /* EditWorkViewBodyBox.swift */; };
 		3219602E270C9944002A0E11 /* MultilineTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3219602D270C9944002A0E11 /* MultilineTextView.swift */; };
-		32196034270DE3AB002A0E11 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 32196033270DE3AB002A0E11 /* SwiftUIX */; };
+		3234CBAA27145A700069A3CC /* AuthAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234CBA927145A700069A3CC /* AuthAPIService.swift */; };
+		3234CBAC27145D570069A3CC /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234CBAB27145D570069A3CC /* Keychain.swift */; };
+		3234CBAE271468E70069A3CC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234CBAD271468E70069A3CC /* SettingsView.swift */; };
+		3234CBB02714691A0069A3CC /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234CBAF2714691A0069A3CC /* SettingsViewModel.swift */; };
 		3236C78526DC0EBC002122B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C78426DC0EBC002122B3 /* AppDelegate.swift */; };
 		3236C78A26DC0EBC002122B3 /* TinmeyMacOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3236C78826DC0EBC002122B3 /* TinmeyMacOS.xcdatamodeld */; };
 		3236C78C26DC0EBF002122B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3236C78B26DC0EBF002122B3 /* Assets.xcassets */; };
@@ -70,6 +73,10 @@
 		32196027270B7363002A0E11 /* WorkViewLargeBodyBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkViewLargeBodyBox.swift; sourceTree = "<group>"; };
 		3219602B270C936E002A0E11 /* EditWorkViewBodyBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWorkViewBodyBox.swift; sourceTree = "<group>"; };
 		3219602D270C9944002A0E11 /* MultilineTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineTextView.swift; sourceTree = "<group>"; };
+		3234CBA927145A700069A3CC /* AuthAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPIService.swift; sourceTree = "<group>"; };
+		3234CBAB27145D570069A3CC /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		3234CBAD271468E70069A3CC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		3234CBAF2714691A0069A3CC /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		3236C78126DC0EBC002122B3 /* TinmeyMacOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinmeyMacOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3236C78426DC0EBC002122B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3236C78926DC0EBC002122B3 /* TinmeyMacOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TinmeyMacOS.xcdatamodel; sourceTree = "<group>"; };
@@ -114,7 +121,6 @@
 			files = (
 				3236C7DC26DC0F9A002122B3 /* TinmeyCore in Frameworks */,
 				3236C7DF26DC0FCF002122B3 /* Alamofire in Frameworks */,
-				32196034270DE3AB002A0E11 /* SwiftUIX in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,6 +252,7 @@
 				3236C7C226DC0F63002122B3 /* EditWorksViewModel.swift */,
 				3236C7C326DC0F63002122B3 /* RootViewModel.swift */,
 				3236C7C426DC0F63002122B3 /* WorkPreviewViewModel.swift */,
+				3234CBAF2714691A0069A3CC /* SettingsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -261,6 +268,7 @@
 				32196029270C92D1002A0E11 /* WorkView */,
 				3219602A270C92DF002A0E11 /* EditWorkView */,
 				3236C7CF26DC0F6C002122B3 /* TestView.swift */,
+				3234CBAD271468E70069A3CC /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -269,7 +277,9 @@
 			isa = PBXGroup;
 			children = (
 				3236C7E126DC105E002122B3 /* WorksAPIService.swift */,
+				3234CBA927145A700069A3CC /* AuthAPIService.swift */,
 				3236C7E226DC105E002122B3 /* APIService.swift */,
+				3234CBAB27145D570069A3CC /* Keychain.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -314,7 +324,6 @@
 			packageProductDependencies = (
 				3236C7DB26DC0F9A002122B3 /* TinmeyCore */,
 				3236C7DE26DC0FCF002122B3 /* Alamofire */,
-				32196033270DE3AB002A0E11 /* SwiftUIX */,
 			);
 			productName = TinmeyMacOS;
 			productReference = 3236C78126DC0EBC002122B3 /* TinmeyMacOS.app */;
@@ -390,7 +399,6 @@
 			packageReferences = (
 				3236C7DA26DC0F9A002122B3 /* XCRemoteSwiftPackageReference "TinmeyCore" */,
 				3236C7DD26DC0FCF002122B3 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				32196032270DE3AB002A0E11 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 			);
 			productRefGroup = 3236C78226DC0EBC002122B3 /* Products */;
 			projectDirPath = "";
@@ -451,6 +459,7 @@
 				3236C7E326DC105E002122B3 /* WorksAPIService.swift in Sources */,
 				32196022270B69F9002A0E11 /* WorksListView.swift in Sources */,
 				3236C7BC26DC0EFB002122B3 /* AppSection.swift in Sources */,
+				3234CBB02714691A0069A3CC /* SettingsViewModel.swift in Sources */,
 				32196026270B7357002A0E11 /* WorkViewBodyBox.swift in Sources */,
 				3236C78A26DC0EBC002122B3 /* TinmeyMacOS.xcdatamodeld in Sources */,
 				3236C7D426DC0F6C002122B3 /* WorkPreview.swift in Sources */,
@@ -458,12 +467,15 @@
 				3236C7C726DC0F63002122B3 /* RootViewModel.swift in Sources */,
 				32196024270B6C8A002A0E11 /* WorkViewImageBox.swift in Sources */,
 				32196028270B7363002A0E11 /* WorkViewLargeBodyBox.swift in Sources */,
+				3234CBAA27145A700069A3CC /* AuthAPIService.swift in Sources */,
 				326EA03226DE67C000C94B5E /* AsyncImage.swift in Sources */,
 				3236C78526DC0EBC002122B3 /* AppDelegate.swift in Sources */,
 				3236C7D526DC0F6C002122B3 /* TabButton.swift in Sources */,
 				3236C7E426DC105E002122B3 /* APIService.swift in Sources */,
 				3236C7D626DC0F6C002122B3 /* RootView.swift in Sources */,
 				3236C7D926DC0F6C002122B3 /* WorksListViewOld.swift in Sources */,
+				3234CBAE271468E70069A3CC /* SettingsView.swift in Sources */,
+				3234CBAC27145D570069A3CC /* Keychain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -801,14 +813,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		32196032270DE3AB002A0E11 /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.0;
-			};
-		};
 		3236C7DA26DC0F9A002122B3 /* XCRemoteSwiftPackageReference "TinmeyCore" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/borodindr/TinmeyCore.git";
@@ -828,11 +832,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		32196033270DE3AB002A0E11 /* SwiftUIX */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 32196032270DE3AB002A0E11 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
-			productName = SwiftUIX;
-		};
 		3236C7DB26DC0F9A002122B3 /* TinmeyCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3236C7DA26DC0F9A002122B3 /* XCRemoteSwiftPackageReference "TinmeyCore" */;

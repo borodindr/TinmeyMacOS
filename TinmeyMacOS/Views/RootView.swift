@@ -32,7 +32,7 @@ struct RootView: View {
                 case .layouts:
                     WorksListView(workType: .layout)
                 case .settings:
-                    Text("Settings")
+                    SettingsView()
                 }
             }
             .frame(minWidth: 250, maxWidth: .infinity, maxHeight: .infinity)

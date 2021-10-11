@@ -16,7 +16,7 @@ struct ErrorDescription: Identifiable {
 
 class EditWorksViewModel: ObservableObject {
     let work: Work?
-    let workType: WorkType
+    let workType: Work.WorkType
     @Published var newFirstImagePath: URL? = nil
     var currentFirstImagePath: URL? {
         work?.firstImageURL
@@ -72,7 +72,7 @@ class EditWorksViewModel: ObservableObject {
     private let service: WorksAPIService
     private var subscriptions = Set<AnyCancellable>()
     
-    init(workType: WorkType, isPresented: Binding<Bool>) {
+    init(workType: Work.WorkType, isPresented: Binding<Bool>) {
         self.work = nil
         self.workType = workType
         self.titleText = ""
@@ -84,7 +84,7 @@ class EditWorksViewModel: ObservableObject {
         self.service = WorksAPIService(workType: workType)
     }
     
-    init(work: Work, workType: WorkType, workToEdit: Binding<Work?>) {
+    init(work: Work, workType: Work.WorkType, workToEdit: Binding<Work?>) {
         self.work = work
         self.workType = workType
         self.titleText = work.title

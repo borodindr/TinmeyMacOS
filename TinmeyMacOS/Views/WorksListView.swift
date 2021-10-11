@@ -13,7 +13,7 @@ struct WorksListView: View {
     @State private var createWorkPresented = false
     @State private var workToEdit: Work? = nil
     
-    init(workType: WorkType) {
+    init(workType: Work.WorkType) {
         self.viewModel = WorksListViewModel(workType: workType)
     }
     

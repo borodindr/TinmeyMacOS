@@ -8,21 +8,21 @@
 import TinmeyCore
 import Foundation
 
-typealias WorkType = WorkTypeAPIModel
+//typealias WorkType = WorkAPIModel.WorkType
 typealias Work = WorkAPIModel
 
 extension Work: Identifiable { }
 
-extension Work {
-    typealias LayoutType = LayoutTypeAPIModel
-}
+//extension Work {
+//    typealias LayoutType = LayoutTypeAPIModel
+//}
 
 extension Work {
     static var preview: Work {
         preview(layout: .leftBody)
     }
     
-    static func preview(layout: LayoutTypeAPIModel) -> Work {
+    static func preview(layout: Work.LayoutType) -> Work {
         Work(
             id: UUID(uuidString: "00000000-0000-0000-0000-000000000000")!,
             createdAt: Date(),
