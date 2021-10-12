@@ -18,9 +18,9 @@ struct AsyncImage<Placeholder: View>: View {
     
     var body: some View {
         content
-            .onAppear {
-                loader.load()
-            }
+//            .onAppear {
+//                loader.load()
+//            }
     }
     
     var content: some View {

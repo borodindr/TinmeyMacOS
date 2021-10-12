@@ -17,6 +17,15 @@
 		3234CBAC27145D570069A3CC /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234CBAB27145D570069A3CC /* Keychain.swift */; };
 		3234CBAE271468E70069A3CC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234CBAD271468E70069A3CC /* SettingsView.swift */; };
 		3234CBB02714691A0069A3CC /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234CBAF2714691A0069A3CC /* SettingsViewModel.swift */; };
+		3234CBB227148CB40069A3CC /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234CBB127148CB40069A3CC /* HomeView.swift */; };
+		3234CBB4271491730069A3CC /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234CBB3271491730069A3CC /* HomeViewModel.swift */; };
+		3234CBB627149D3E0069A3CC /* EditSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234CBB527149D3E0069A3CC /* EditSectionView.swift */; };
+		3234CBB92714BC410069A3CC /* ProfileAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234CBB82714BC410069A3CC /* ProfileAPIService.swift */; };
+		3234CBBB2714BEA20069A3CC /* SectionsAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234CBBA2714BEA20069A3CC /* SectionsAPIService.swift */; };
+		3234CBBD2714C0A20069A3CC /* EditSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234CBBC2714C0A20069A3CC /* EditSectionViewModel.swift */; };
+		3234CBBF2714C0E10069A3CC /* AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234CBBE2714C0E10069A3CC /* AlertType.swift */; };
+		3234CBC1271591670069A3CC /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234CBC0271591670069A3CC /* EditProfileView.swift */; };
+		3234CBC3271591770069A3CC /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234CBC2271591770069A3CC /* EditProfileViewModel.swift */; };
 		3236C78526DC0EBC002122B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C78426DC0EBC002122B3 /* AppDelegate.swift */; };
 		3236C78A26DC0EBC002122B3 /* TinmeyMacOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3236C78826DC0EBC002122B3 /* TinmeyMacOS.xcdatamodeld */; };
 		3236C78C26DC0EBF002122B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3236C78B26DC0EBF002122B3 /* Assets.xcassets */; };
@@ -34,7 +43,6 @@
 		3236C7C826DC0F63002122B3 /* WorkPreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7C426DC0F63002122B3 /* WorkPreviewViewModel.swift */; };
 		3236C7D226DC0F6C002122B3 /* WorkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7CA26DC0F6C002122B3 /* WorkView.swift */; };
 		3236C7D326DC0F6C002122B3 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7CB26DC0F6C002122B3 /* BlurView.swift */; };
-		3236C7D426DC0F6C002122B3 /* WorkPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7CC26DC0F6C002122B3 /* WorkPreview.swift */; };
 		3236C7D526DC0F6C002122B3 /* TabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7CD26DC0F6C002122B3 /* TabButton.swift */; };
 		3236C7D626DC0F6C002122B3 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7CE26DC0F6C002122B3 /* RootView.swift */; };
 		3236C7D726DC0F6C002122B3 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7CF26DC0F6C002122B3 /* TestView.swift */; };
@@ -77,6 +85,15 @@
 		3234CBAB27145D570069A3CC /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		3234CBAD271468E70069A3CC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		3234CBAF2714691A0069A3CC /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		3234CBB127148CB40069A3CC /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		3234CBB3271491730069A3CC /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		3234CBB527149D3E0069A3CC /* EditSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSectionView.swift; sourceTree = "<group>"; };
+		3234CBB82714BC410069A3CC /* ProfileAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAPIService.swift; sourceTree = "<group>"; };
+		3234CBBA2714BEA20069A3CC /* SectionsAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionsAPIService.swift; sourceTree = "<group>"; };
+		3234CBBC2714C0A20069A3CC /* EditSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSectionViewModel.swift; sourceTree = "<group>"; };
+		3234CBBE2714C0E10069A3CC /* AlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertType.swift; sourceTree = "<group>"; };
+		3234CBC0271591670069A3CC /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		3234CBC2271591770069A3CC /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
 		3236C78126DC0EBC002122B3 /* TinmeyMacOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinmeyMacOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3236C78426DC0EBC002122B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3236C78926DC0EBC002122B3 /* TinmeyMacOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TinmeyMacOS.xcdatamodel; sourceTree = "<group>"; };
@@ -101,7 +118,6 @@
 		3236C7C426DC0F63002122B3 /* WorkPreviewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkPreviewViewModel.swift; sourceTree = "<group>"; };
 		3236C7CA26DC0F6C002122B3 /* WorkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkView.swift; sourceTree = "<group>"; };
 		3236C7CB26DC0F6C002122B3 /* BlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
-		3236C7CC26DC0F6C002122B3 /* WorkPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkPreview.swift; sourceTree = "<group>"; };
 		3236C7CD26DC0F6C002122B3 /* TabButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabButton.swift; sourceTree = "<group>"; };
 		3236C7CE26DC0F6C002122B3 /* RootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		3236C7CF26DC0F6C002122B3 /* TestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
@@ -159,6 +175,13 @@
 				3219602B270C936E002A0E11 /* EditWorkViewBodyBox.swift */,
 			);
 			path = EditWorkView;
+			sourceTree = "<group>";
+		};
+		3234CBB727149D450069A3CC /* EditSection */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = EditSection;
 			sourceTree = "<group>";
 		};
 		3236C77826DC0EBC002122B3 = {
@@ -232,6 +255,7 @@
 				3236C7B726DC0EFB002122B3 /* APIModels.swift */,
 				3236C7B826DC0EFB002122B3 /* BookCover.swift */,
 				3236C7B926DC0EFB002122B3 /* AppSection.swift */,
+				3234CBBE2714C0E10069A3CC /* AlertType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -253,6 +277,9 @@
 				3236C7C326DC0F63002122B3 /* RootViewModel.swift */,
 				3236C7C426DC0F63002122B3 /* WorkPreviewViewModel.swift */,
 				3234CBAF2714691A0069A3CC /* SettingsViewModel.swift */,
+				3234CBB3271491730069A3CC /* HomeViewModel.swift */,
+				3234CBC2271591770069A3CC /* EditProfileViewModel.swift */,
+				3234CBBC2714C0A20069A3CC /* EditSectionViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -264,11 +291,14 @@
 				3236C7CE26DC0F6C002122B3 /* RootView.swift */,
 				3236C7D126DC0F6C002122B3 /* WorksListViewOld.swift */,
 				32196021270B69F9002A0E11 /* WorksListView.swift */,
-				3236C7CC26DC0F6C002122B3 /* WorkPreview.swift */,
 				32196029270C92D1002A0E11 /* WorkView */,
 				3219602A270C92DF002A0E11 /* EditWorkView */,
 				3236C7CF26DC0F6C002122B3 /* TestView.swift */,
 				3234CBAD271468E70069A3CC /* SettingsView.swift */,
+				3234CBB127148CB40069A3CC /* HomeView.swift */,
+				3234CBC0271591670069A3CC /* EditProfileView.swift */,
+				3234CBB527149D3E0069A3CC /* EditSectionView.swift */,
+				3234CBB727149D450069A3CC /* EditSection */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -276,9 +306,11 @@
 		3236C7E026DC105E002122B3 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				3236C7E226DC105E002122B3 /* APIService.swift */,
 				3236C7E126DC105E002122B3 /* WorksAPIService.swift */,
 				3234CBA927145A700069A3CC /* AuthAPIService.swift */,
-				3236C7E226DC105E002122B3 /* APIService.swift */,
+				3234CBB82714BC410069A3CC /* ProfileAPIService.swift */,
+				3234CBBA2714BEA20069A3CC /* SectionsAPIService.swift */,
 				3234CBAB27145D570069A3CC /* Keychain.swift */,
 			);
 			path = Services;
@@ -445,30 +477,38 @@
 			buildActionMask = 2147483647;
 			files = (
 				3236C7D226DC0F6C002122B3 /* WorkView.swift in Sources */,
+				3234CBB4271491730069A3CC /* HomeViewModel.swift in Sources */,
+				3234CBBB2714BEA20069A3CC /* SectionsAPIService.swift in Sources */,
 				3236C7C826DC0F63002122B3 /* WorkPreviewViewModel.swift in Sources */,
 				326EA03426DE751600C94B5E /* ProgressIndicator.swift in Sources */,
 				3236C7BB26DC0EFB002122B3 /* BookCover.swift in Sources */,
 				3236C7BA26DC0EFB002122B3 /* APIModels.swift in Sources */,
+				3234CBB92714BC410069A3CC /* ProfileAPIService.swift in Sources */,
 				3219602E270C9944002A0E11 /* MultilineTextView.swift in Sources */,
 				3236C7D726DC0F6C002122B3 /* TestView.swift in Sources */,
 				3219602C270C936E002A0E11 /* EditWorkViewBodyBox.swift in Sources */,
 				3236C7D826DC0F6C002122B3 /* EditWorkView.swift in Sources */,
+				3234CBBF2714C0E10069A3CC /* AlertType.swift in Sources */,
+				3234CBBD2714C0A20069A3CC /* EditSectionViewModel.swift in Sources */,
 				3236C7C526DC0F63002122B3 /* WorksListViewModel.swift in Sources */,
 				3236C7D326DC0F6C002122B3 /* BlurView.swift in Sources */,
 				3236C7C626DC0F63002122B3 /* EditWorksViewModel.swift in Sources */,
 				3236C7E326DC105E002122B3 /* WorksAPIService.swift in Sources */,
+				3234CBB227148CB40069A3CC /* HomeView.swift in Sources */,
 				32196022270B69F9002A0E11 /* WorksListView.swift in Sources */,
 				3236C7BC26DC0EFB002122B3 /* AppSection.swift in Sources */,
 				3234CBB02714691A0069A3CC /* SettingsViewModel.swift in Sources */,
 				32196026270B7357002A0E11 /* WorkViewBodyBox.swift in Sources */,
 				3236C78A26DC0EBC002122B3 /* TinmeyMacOS.xcdatamodeld in Sources */,
-				3236C7D426DC0F6C002122B3 /* WorkPreview.swift in Sources */,
+				3234CBC1271591670069A3CC /* EditProfileView.swift in Sources */,
 				326EA03026DE67B500C94B5E /* ImageLoader.swift in Sources */,
 				3236C7C726DC0F63002122B3 /* RootViewModel.swift in Sources */,
 				32196024270B6C8A002A0E11 /* WorkViewImageBox.swift in Sources */,
 				32196028270B7363002A0E11 /* WorkViewLargeBodyBox.swift in Sources */,
+				3234CBB627149D3E0069A3CC /* EditSectionView.swift in Sources */,
 				3234CBAA27145A700069A3CC /* AuthAPIService.swift in Sources */,
 				326EA03226DE67C000C94B5E /* AsyncImage.swift in Sources */,
+				3234CBC3271591770069A3CC /* EditProfileViewModel.swift in Sources */,
 				3236C78526DC0EBC002122B3 /* AppDelegate.swift in Sources */,
 				3236C7D526DC0F6C002122B3 /* TabButton.swift in Sources */,
 				3236C7E426DC105E002122B3 /* APIService.swift in Sources */,

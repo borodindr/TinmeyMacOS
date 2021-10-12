@@ -20,9 +20,9 @@ extension AppSection {
         case .home:
             return "house"
         case .covers:
-            return "house"
+            return "book"
         case .layouts:
-            return "house"
+            return "book_closed"
         case .settings:
             return "gear"
         }

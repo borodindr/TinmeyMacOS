@@ -70,17 +70,9 @@ final class APIService {
     // MARK: GET dictionary
     func get<T>(
         _ pathComponents: String...,
-        query: [String: Any]?,
+        query: [String: Any]? = nil,
         additionalHeaders: HTTPHeaders? = nil
-    ) -> AnyPublisher<T, APIError> where T: Decodable {
-        get(pathComponents, query: query, additionalHeaders: additionalHeaders)
-    }
-    
-    private func get<T>(
-        _ pathComponents: [String] = [],
-        query: [String: Any]?,
-        additionalHeaders: HTTPHeaders? = nil
-    ) -> AnyPublisher<T, APIError> where T: Decodable {
+    ) -> AnyPublisher<T, Error> where T: Decodable {
         AF
             .request(
                 buildURL(adding: pathComponents),
@@ -99,7 +91,7 @@ final class APIService {
                 }
                 
             }
-            .setFailureType(to: APIError.self)
+            .setFailureType(to: Error.self)
             .flatMap { $0.result.publisher }
             .eraseToAnyPublisher()
     }
@@ -107,14 +99,6 @@ final class APIService {
     // MARK: - GET Encodable
     func get<T, Parameters>(
         _ pathComponents: String...,
-        query: Parameters,
-        additionalHeaders: HTTPHeaders? = nil
-    ) -> AnyPublisher<T, Error> where T: Decodable, Parameters: Encodable {
-        get(pathComponents, query: query, additionalHeaders: additionalHeaders)
-    }
-    
-    private func get<T, Parameters>(
-        _ pathComponents: [String] = [],
         query: Parameters,
         additionalHeaders: HTTPHeaders? = nil
     ) -> AnyPublisher<T, Error> where T: Decodable, Parameters: Encodable {
@@ -142,14 +126,6 @@ final class APIService {
     }
     
     // MARK: - POST
-//    func post<T, Body>(
-//        _ pathComponents: String...,
-//        body: Body? = nil,
-//        additionalHeaders: HTTPHeaders? = nil
-//    ) -> AnyPublisher<T, Error> where T: Decodable, Body: Encodable {
-//        post(pathComponents, body: body, additionalHeaders: additionalHeaders)
-//    }
-    
     func post<T>(
         _ pathComponents: String...,
         additionalHeaders: HTTPHeaders? = nil
@@ -211,14 +187,6 @@ final class APIService {
         body: Body? = nil,
         additionalHeaders: HTTPHeaders? = nil
     ) -> AnyPublisher<T, Error> where T: Decodable, Body: Encodable {
-        put(pathComponents, body: body, additionalHeaders: additionalHeaders)
-    }
-    
-    private func put<T, Body>(
-        _ pathComponents: [String] = [],
-        body: Body? = nil,
-        additionalHeaders: HTTPHeaders? = nil
-    ) -> AnyPublisher<T, Error> where T: Decodable, Body: Encodable {
         AF
             .request(
                 buildURL(adding: pathComponents),
@@ -247,13 +215,6 @@ final class APIService {
         _ pathComponents: String...,
         additionalHeaders: HTTPHeaders? = nil
     ) -> AnyPublisher<T, Error> where T: Decodable {
-        put(pathComponents, additionalHeaders: additionalHeaders)
-    }
-    
-    private func put<T>(
-        _ pathComponents: [String] = [],
-        additionalHeaders: HTTPHeaders? = nil
-    ) -> AnyPublisher<T, Error> where T: Decodable {
         AF
             .request(
                 buildURL(adding: pathComponents),
@@ -280,13 +241,6 @@ final class APIService {
     // MARK: - DELETE
     func delete(
         _ pathComponents: String...,
-        additionalHeaders: HTTPHeaders? = nil
-    ) -> AnyPublisher<Void, Error> {
-        delete(pathComponents, additionalHeaders: additionalHeaders)
-    }
-    
-    private func delete(
-        _ pathComponents: [String] = [],
         additionalHeaders: HTTPHeaders? = nil
     ) -> AnyPublisher<Void, Error> {
         AF
@@ -321,15 +275,6 @@ final class APIService {
         withName name: String,
         additionalHeaders: HTTPHeaders? = nil
     ) -> AnyPublisher<Void, Error> {
-        upload(pathComponents, from: fileURL, withName: name, additionalHeaders: additionalHeaders)
-    }
-    
-    private func upload(
-        _ pathComponents: [String] = [],
-        from fileURL: URL,
-        withName name: String,
-        additionalHeaders: HTTPHeaders? = nil
-    ) -> AnyPublisher<Void, Error> {
         AF
             .upload(
                 multipartFormData: { multipartFormData in
@@ -360,13 +305,6 @@ final class APIService {
     // MARK: - DOWNLOAD
     func download(
         _ pathComponents: String...,
-        additionalHeaders: HTTPHeaders? = nil
-    ) -> AnyPublisher<Data, Error> {
-        download(pathComponents, additionalHeaders: additionalHeaders)
-    }
-    
-    private func download(
-        _ pathComponents: [String] = [],
         additionalHeaders: HTTPHeaders? = nil
     ) -> AnyPublisher<Data, Error> {
         AF

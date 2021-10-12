@@ -10,36 +10,56 @@ import SwiftUI
 struct SettingsView: View {
     @ObservedObject var viewModel = SettingsViewModel()
     
-    
-    
     var body: some View {
         List {
             if viewModel.isAuthorized {
-                VStack(alignment: .leading) {
-                    Text("Authorized")
-                    Button {
-                        viewModel.logout()
-                    } label: {
-                        Text("Logout")
+                VStack(alignment: .leading, spacing: 32) {
+                    VStack(alignment: .leading) {
+                        Text("Authorized")
+                        Button(action: viewModel.logout) {
+                            Text("Logout")
+                        }
+                        .disabled(viewModel.isLoading)
                     }
-                    .disabled(viewModel.isLoading)
+                    
+                    VStack(alignment: .leading) {
+                        Text("Change password:")
+                        SecureField("Current password", text: $viewModel.currentPassword)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        SecureField("New password", text: $viewModel.newPassword)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        SecureField("Repeat new password", text: $viewModel.repeatNewPassword)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        
+                        Button(action: viewModel.changePassword) {
+                            Text("Change password")
+                        }
+                    }
                 }
+                .frame(width: 300)
             } else {
-                VStack {
+                VStack(alignment: .leading) {
                     Text("Authorize")
                     TextField("Username", text: $viewModel.username)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     SecureField("Password", text: $viewModel.password)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                    Button {
-                        viewModel.login()
-                    } label: {
+                    Button(action: viewModel.login) {
                         Text("Login")
                     }
                     .disabled(viewModel.isLoading)
                 }
+                .frame(width: 300)
             }
         }
+        .alert(item: $viewModel.alert) { alert in
+            Alert(
+                title: Text(alert.title),
+                message: Text(alert.message),
+                dismissButton: .default(Text("Close"))
+            )
+        }
+        
     }
 }
 

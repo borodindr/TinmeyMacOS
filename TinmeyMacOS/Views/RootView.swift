@@ -26,7 +26,7 @@ struct RootView: View {
             ZStack {
                 switch viewModel.selectedSection {
                 case .home:
-                    Text("Home")
+                    HomeView()
                 case .covers:
                     WorksListView(workType: .cover)
                 case .layouts:

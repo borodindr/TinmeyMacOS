@@ -28,6 +28,19 @@ final class AuthAPIService {
         AuthAPIService.token = nil
     }
     
+    func change(
+        currentPassword: String,
+        to newPassword: String,
+        repeatNewPassword: String
+    ) -> AnyPublisher<UserAPIModel, Error> {
+        let changePasswordParams = UserAPIModel.ChangePassword(
+            currentPassword: currentPassword,
+            newPassword: newPassword,
+            repeatNewPassword: repeatNewPassword
+        )
+        return api.put("changePassword", body: changePasswordParams)
+    }
+    
 }
 
 extension AuthAPIService {
@@ -48,15 +61,4 @@ extension AuthAPIService {
     }
     
     private static var tokenKey = "TINMEY-API-KEY"
-}
-
-private struct AuthStateKey: EnvironmentKey {
-    static var defaultValue = AuthAPIService.isAuthorized
-}
-
-extension EnvironmentValues {
-    var authState: Bool {
-        get { self[AuthStateKey.self] }
-        set { self[AuthStateKey.self] = newValue }
-    }
 }

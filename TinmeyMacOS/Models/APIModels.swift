@@ -73,14 +73,18 @@ extension Array where Element == Work {
     
 }
 
-//extension Work.Short {
-//    static var preview = Work.Short(id: UUID(), createdAt: Date(), updatedAt: Date(), title: "Title", shortDescription: "Short Description", imageID: nil)
-//
-//    var imageURL: URL? {
-//        guard let imageID = imageID else {
-//            return nil
-//        }
-//        let urlString = "http://127.0.0.1:8080/api/works/images/\(imageID.uuidString)"
-//        return URL(string: urlString)
-//    }
-//}
+extension SectionAPIModel {
+    var firstImageURL: URL? {
+        let urlString = baseImageURLString + "/firstImage"
+        return URL(string: urlString)
+    }
+    
+    var secondImageURL: URL? {
+        let urlString = baseImageURLString + "/secondImage"
+        return URL(string: urlString)
+    }
+    
+    private var baseImageURLString: String {
+        "http://127.0.0.1:8080/api/sections/" + type.rawValue
+    }
+}

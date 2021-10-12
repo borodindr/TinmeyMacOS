@@ -53,7 +53,8 @@ struct EditWorkViewBodyBox: View {
                 MultilineTextField(titlePlaceholder, text: attributedTitle, nsFont: .systemFont(ofSize: 25))
                     .overlay(
                         RoundedRectangle(cornerRadius: 4)
-                            .stroke(Color.secondary, lineWidth: 0.5))
+                            .stroke(Color.secondary, lineWidth: 0.5)
+                    )
                 MultilineTextField(descriptionPlaceholder, text: attributedDescription, nsFont: .systemFont(ofSize: 15))
                 //                    .foregroundColor(.secondary)
                     .overlay(

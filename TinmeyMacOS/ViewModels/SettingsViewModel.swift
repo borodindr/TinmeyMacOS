@@ -11,10 +11,14 @@ import TinmeyCore
 
 final class SettingsViewModel: ObservableObject {
     @Published private(set) var isLoading = false
-    @Published var error: ErrorDescription? = nil
+    @Published var alert: AlertType? = nil
     @Published var username = ""
     @Published var password = ""
     @Published var isAuthorized = AuthAPIService.isAuthorized
+    
+    @Published var currentPassword = ""
+    @Published var newPassword = ""
+    @Published var repeatNewPassword = ""
     
     private let service = AuthAPIService()
     private var subscriptions = Set<AnyCancellable>()
@@ -23,14 +27,15 @@ final class SettingsViewModel: ObservableObject {
         isLoading = true
         service.login(username: username, password: password)
             .sink { [weak self] completion in
+                self?.isLoading = false
+                self?.isAuthorized = AuthAPIService.isAuthorized
+                self?.username = ""
+                self?.password = ""
                 switch completion {
                 case .finished:
-                    self?.isAuthorized = AuthAPIService.isAuthorized
-                    self?.isLoading = false
+                    break
                 case .failure(let error):
-                    self?.isLoading = false
-                    self?.isAuthorized = AuthAPIService.isAuthorized
-                    self?.error = ErrorDescription(text: error.localizedDescription)
+                    self?.alert = .error(message: error.localizedDescription)
                 }
             } receiveValue: { user in
                 
@@ -41,5 +46,30 @@ final class SettingsViewModel: ObservableObject {
     func logout() {
         service.logout()
         isAuthorized = AuthAPIService.isAuthorized
+    }
+    
+    func changePassword() {
+        isLoading = true
+        service
+            .change(
+                currentPassword: currentPassword,
+                to: newPassword,
+                repeatNewPassword: repeatNewPassword
+            )
+            .sink { [weak self] completion in
+                self?.isLoading = false
+                self?.currentPassword = ""
+                self?.newPassword = ""
+                self?.repeatNewPassword = ""
+                switch completion {
+                case .finished:
+                    self?.alert = .success(message: "Successfully changed password")
+                case .failure(let error):
+                    self?.alert = .error(message: error.localizedDescription)
+                }
+            } receiveValue: { user in
+                
+            }
+            .store(in: &subscriptions)
     }
 }
