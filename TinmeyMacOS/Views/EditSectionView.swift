@@ -70,6 +70,7 @@ struct EditSectionView: View {
                 }
                 textField("Title", text: $viewModel.title)
                 textField("Subtitle", text: $viewModel.subtitle)
+                textField("Preview subtitle", text: $viewModel.previewSubtitle)
             }
             HStack {
                 firstImageBox

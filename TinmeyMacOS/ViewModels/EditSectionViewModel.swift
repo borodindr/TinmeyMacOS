@@ -14,10 +14,9 @@ final class EditSectionViewModel: ObservableObject {
     @Published var alert: AlertType? = nil
     @Published var title = ""
     @Published var subtitle = ""
+    @Published var previewSubtitle = ""
     @Published var newFirstImagePath: URL?
-//    @Published private(set) var currentFirstImagePath: URL? = nil
     @Published var newSecondImagePath: URL?
-//    @Published private(set) var currentSecondImagePath: URL? = nil
     
     let sectionType: SectionAPIModel.SectionType
     var firstImageURL: URL? {
@@ -46,25 +45,7 @@ final class EditSectionViewModel: ObservableObject {
     func loadSection() {
         isLoading = true
         alert = nil
-//        let getSection = service.getSection(ofType: sectionType)
-//            .share()
-//
-//        getSection
-//            .map { $0.preview.title }
-//            .replaceError(with: "")
-////            .print()
-//            .assign(to: \.title, on: self)
-//            .store(in: &subscriptions)
-//
-//        getSection
-//            .map { $0.preview.subtitle }
-//            .replaceError(with: "")
-//            .assign(to: \.subtitle, on: self)
-//            .store(in: &subscriptions)
-//
-//        getSection
         service.getSection(ofType: sectionType)
-//            .delay(for: .seconds(3), scheduler: RunLoop.main, options: .none)
             
             .sink { [weak self] completion in
                 self?.isLoading = false
@@ -76,11 +57,10 @@ final class EditSectionViewModel: ObservableObject {
                 }
             } receiveValue: { [weak self] section in
                 self?.title = section.preview.title
-                self?.subtitle = section.preview.subtitle
+                self?.subtitle = section.subtitle
+                self?.previewSubtitle = section.preview.subtitle
                 self?.newFirstImagePath = self?.firstImageURL
-//                self?.currentFirstImagePath = section.firstImageURL
                 self?.newSecondImagePath = self?.secondImageURL
-//                self?.currentSecondImagePath = section.secondImageURL
             }
             .store(in: &subscriptions)
     }
@@ -89,9 +69,10 @@ final class EditSectionViewModel: ObservableObject {
         isLoading = true
         let newSection = SectionAPIModel(
             type: sectionType,
+            subtitle: subtitle,
             preview: SectionAPIModel.Preview(
                 title: title,
-                subtitle: subtitle
+                subtitle: previewSubtitle
             )
         )
         service.updateSection(newSection)
@@ -115,11 +96,10 @@ final class EditSectionViewModel: ObservableObject {
                 }
             } receiveValue: { [weak self] section in
                 self?.title = section.preview.title
-                self?.subtitle = section.preview.subtitle
+                self?.subtitle = section.subtitle
+                self?.previewSubtitle = section.preview.subtitle
                 self?.newFirstImagePath = self?.firstImageURL
-//                self?.currentFirstImagePath = section.firstImageURL
                 self?.newSecondImagePath = self?.secondImageURL
-//                self?.currentSecondImagePath = section.secondImageURL
             }
             .store(in: &subscriptions)
     }
