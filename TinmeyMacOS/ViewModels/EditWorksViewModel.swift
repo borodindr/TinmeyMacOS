@@ -27,6 +27,8 @@ class EditWorksViewModel: ObservableObject {
     }
     @Published var titleText: String
     @Published var descriptionText: String
+    @Published var tags: [String]
+    let availableTags: [String]
     @Published var seeMoreLink: String
     @Binding var isPresented: Bool
     @Binding var workToEdit: Work?
@@ -69,31 +71,35 @@ class EditWorksViewModel: ObservableObject {
         }
     }
     
-    private let service: WorksAPIService
+    private let worksService: WorksAPIService
     private var subscriptions = Set<AnyCancellable>()
     
-    init(workType: Work.WorkType, isPresented: Binding<Bool>) {
+    init(workType: Work.WorkType, availableTags: [String], isPresented: Binding<Bool>) {
         self.work = nil
         self.workType = workType
         self.titleText = ""
         self.descriptionText = ""
+        self.tags = []
+        self.availableTags = availableTags
         self.seeMoreLink = ""
         self._isPresented = isPresented
         self._workToEdit = .constant(nil)
         self.workLayout = .leftBody
-        self.service = WorksAPIService(workType: workType)
+        self.worksService = WorksAPIService(workType: workType)
     }
     
-    init(work: Work, workType: Work.WorkType, workToEdit: Binding<Work?>) {
+    init(work: Work, workType: Work.WorkType, availableTags: [String], workToEdit: Binding<Work?>) {
         self.work = work
         self.workType = workType
         self.titleText = work.title
         self.descriptionText = work.description
+        self.tags = work.tags
+        self.availableTags = availableTags
         self.seeMoreLink = work.seeMoreLink?.absoluteString ?? ""
         self._isPresented = .constant(false)
         self._workToEdit = workToEdit
         self.workLayout = work.layout
-        self.service = WorksAPIService(workType: workType)
+        self.worksService = WorksAPIService(workType: workType)
     }
     
     func createOrUpdate() {
@@ -102,7 +108,8 @@ class EditWorksViewModel: ObservableObject {
             title: titleText,
             description: descriptionText,
             layout: workLayout,
-            seeMoreLink: URL(string: seeMoreLink)
+            seeMoreLink: URL(string: seeMoreLink),
+            tags: tags
         )
         if let work = work {
             update(workID: work.id, to: newWork)
@@ -113,7 +120,7 @@ class EditWorksViewModel: ObservableObject {
     
     func create(newWork: Work.Create) {
         isLoading = true
-        service.create(newWork: newWork)
+        worksService.create(newWork: newWork)
             .flatMap { [weak self] work -> AnyPublisher<Void, Error> in
                 guard let self = self else {
                     return Just(())
@@ -142,7 +149,7 @@ class EditWorksViewModel: ObservableObject {
     
     func update(workID: UUID, to newWork: Work.Create) {
         isLoading = true
-        service.update(workID: workID, to: newWork)
+        worksService.update(workID: workID, to: newWork)
             .flatMap { [weak self] work -> AnyPublisher<Void, Error> in
                 guard let self = self else {
                     return Just(())
@@ -168,6 +175,18 @@ class EditWorksViewModel: ObservableObject {
             .store(in: &subscriptions)
     }
     
+    func deleteTag(_ tagToDelete: String) {
+        guard let indexToDelete = tags.firstIndex(of: tagToDelete) else {
+            return
+        }
+        tags.remove(at: indexToDelete)
+    }
+    
+    func addTag(_ tagToAdd: String) {
+        guard !tags.contains(tagToAdd) else { return }
+        tags.append(tagToAdd)
+    }
+    
     private func addNewImages(to work: Work) -> AnyPublisher<Void, Error> {
         Publishers
             .Merge(
@@ -179,7 +198,7 @@ class EditWorksViewModel: ObservableObject {
     
     private func addNewFirstImageIfNeeded(to work: Work) -> AnyPublisher<Void, Error> {
         if let imagePath = newFirstImagePath {
-            return service.addFirstImage(from: imagePath, to: work.id)
+            return worksService.addFirstImage(from: imagePath, to: work.id)
         } else {
             return Just(())
                 .ignoreOutput()
@@ -190,7 +209,7 @@ class EditWorksViewModel: ObservableObject {
     
     private func addNewSecondImageIfNeeded(to work: Work) -> AnyPublisher<Void, Error> {
         if let imagePath = newSecondImagePath {
-            return service.addSecondImage(from: imagePath, to: work.id)
+            return worksService.addSecondImage(from: imagePath, to: work.id)
         } else {
             return Just(())
                 .ignoreOutput()

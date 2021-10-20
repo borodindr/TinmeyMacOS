@@ -39,6 +39,7 @@ struct WorkView: View {
             case .leftBody:
                 WorkViewBodyBox(title: work.title,
                                 description: work.description,
+                                tags: work.tags,
                                 onSeeWork: onSeeWork)
                 WorkViewImageBox(imageURL: work.firstImageURL)
                 WorkViewImageBox(imageURL: work.secondImageURL)
@@ -46,6 +47,7 @@ struct WorkView: View {
                 WorkViewImageBox(imageURL: work.firstImageURL)
                 WorkViewBodyBox(title: work.title,
                                 description: work.description,
+                                tags: work.tags,
                                 onSeeWork: onSeeWork)
                 WorkViewImageBox(imageURL: work.secondImageURL)
             case .rightBody:
@@ -53,16 +55,19 @@ struct WorkView: View {
                 WorkViewImageBox(imageURL: work.secondImageURL)
                 WorkViewBodyBox(title: work.title,
                                 description: work.description,
+                                tags: work.tags,
                                 onSeeWork: onSeeWork)
             case .leftLargeBody:
                 WorkViewLargeBodyBox(title: work.title,
-                                description: work.description,
-                                onSeeWork: onSeeWork)
+                                     description: work.description,
+                                     tags: work.tags,
+                                     onSeeWork: onSeeWork)
                 WorkViewImageBox(imageURL: work.firstImageURL)
             case .rightLargeBody:
                 WorkViewImageBox(imageURL: work.firstImageURL)
                 WorkViewLargeBodyBox(title: work.title,
                                 description: work.description,
+                                     tags: work.tags,
                                 onSeeWork: onSeeWork)
             }
         }

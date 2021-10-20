@@ -6,15 +6,18 @@
 //
 
 import SwiftUI
+import WrappingHStack
 
 struct EditWorkViewBodyBox: View {
     @Binding var title: String
     @Binding var description: String
+    var tags: [String] = []
+    var onTagDelete: (String) -> ()
     
-    init(title: Binding<String>, description: Binding<String>) {
-        self._title = title
-        self._description = description
-    }
+//    init(title: Binding<String>, description: Binding<String>) {
+//        self._title = title
+//        self._description = description
+//    }
     
     private var attributedTitle: Binding<NSAttributedString> {
         Binding<NSAttributedString> {
@@ -45,7 +48,6 @@ struct EditWorkViewBodyBox: View {
     private var descriptionPlaceholder: NSAttributedString {
         placeholder("Description", font: .systemFont(ofSize: 15))
     }
-
     
     var body: some View {
         HStack {
@@ -56,18 +58,13 @@ struct EditWorkViewBodyBox: View {
                             .stroke(Color.secondary, lineWidth: 0.5)
                     )
                 MultilineTextField(descriptionPlaceholder, text: attributedDescription, nsFont: .systemFont(ofSize: 15))
-                //                    .foregroundColor(.secondary)
                     .overlay(
                         RoundedRectangle(cornerRadius: 4)
                             .stroke(Color.secondary, lineWidth: 0.5))
                 Spacer()
-                Button("See work") { }
-                .font(.system(size: 13))
-                .buttonStyle(PlainButtonStyle())
-                .padding(.horizontal, 7)
-                .padding(.vertical, 5)
-                .background(Color.secondary)
-                .cornerRadius(2.5)
+                TagsListView(tags: tags, onDelete: onTagDelete)
+
+                BoxLinkButton(text: "See work")
             }
             Spacer()
         }
@@ -95,6 +92,10 @@ struct EditWorkViewBodyBox: View {
 struct EditWorkViewBodyBox_Previews: PreviewProvider {
     static var previews: some View {
         let work = Work.preview
-        EditWorkViewBodyBox(title: .constant(work.title), description: .constant(work.description))
+        EditWorkViewBodyBox(
+            title: .constant(work.title),
+            description: .constant(work.description)) { _ in
+                
+            }
     }
 }

@@ -10,6 +10,7 @@ import Combine
 
 class WorksListViewModel: ObservableObject {
     @Published private(set) var works = [Work]()
+    var availableTags = [String]()
     @Published var selectedWork: Work? = nil
     @Published private(set) var isLoading = false
     @Published var error: ErrorDescription? = nil
@@ -18,6 +19,7 @@ class WorksListViewModel: ObservableObject {
         service.workType
     }
     private let service: WorksProviderService
+    private let tagsService = TagsAPIService()
     private var subscriptions = Set<AnyCancellable>()
     
     init(service: WorksProviderService) {
@@ -31,6 +33,10 @@ class WorksListViewModel: ObservableObject {
     func loadAllWorks() {
         isLoading = true
         service.allWorks()
+            .flatMap { [tagsService] works in
+                tagsService.getAll()
+                    .map { (works: works, tags: $0)}
+            }
             .sink(receiveCompletion: { [weak self] completion in
                 switch completion {
                 case .finished:
@@ -39,8 +45,9 @@ class WorksListViewModel: ObservableObject {
                     self?.isLoading = false
                     self?.error = ErrorDescription(text: error.localizedDescription)
                 }
-            }, receiveValue: { [weak self] works in
+            }, receiveValue: { [weak self] works, tags in
                 self?.works = works
+                self?.availableTags = tags
             })
             .store(in: &subscriptions)
     }

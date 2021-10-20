@@ -10,6 +10,7 @@ import SwiftUI
 struct WorkViewBodyBox: View {
     let title: String
     let description: String
+    let tags: [String]
     let onSeeWork: () -> ()
     
     var body: some View {
@@ -21,6 +22,7 @@ struct WorkViewBodyBox: View {
                     .font(.system(size: 15))
                     .foregroundColor(.secondary)
                 Spacer()
+                TagsListView(tags: tags)
                 Button("See work") {
                     onSeeWork()
                 }
@@ -43,8 +45,11 @@ struct WorkViewBodyBox: View {
 struct WorkViewBodyBox_Previews: PreviewProvider {
     static var previews: some View {
         let work = Work.preview
-        WorkViewBodyBox(title: work.title, description: work.description) {
-            print("See work")
-        }
+        WorkViewBodyBox(
+            title: work.title,
+            description: work.description,
+            tags: work.tags) {
+                print("See work")
+            }
     }
 }

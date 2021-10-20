@@ -52,6 +52,13 @@
 		3236C7DF26DC0FCF002122B3 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3236C7DE26DC0FCF002122B3 /* Alamofire */; };
 		3236C7E326DC105E002122B3 /* WorksAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7E126DC105E002122B3 /* WorksAPIService.swift */; };
 		3236C7E426DC105E002122B3 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7E226DC105E002122B3 /* APIService.swift */; };
+		323FB1DE2717113100B31A22 /* TagsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323FB1DD2717113100B31A22 /* TagsListView.swift */; };
+		323FB1E02717144300B31A22 /* TagInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323FB1DF2717144300B31A22 /* TagInputView.swift */; };
+		323FB1E2271724CC00B31A22 /* TagSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323FB1E1271724CC00B31A22 /* TagSelectView.swift */; };
+		323FB1E42717282400B31A22 /* TagsAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323FB1E32717282400B31A22 /* TagsAPIService.swift */; };
+		324BEB65271702B6001AEE0D /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324BEB64271702B6001AEE0D /* TagView.swift */; };
+		324BEB6827170909001AEE0D /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = 324BEB6727170909001AEE0D /* WrappingHStack */; };
+		324BEB6A27170AD5001AEE0D /* BoxLinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324BEB6927170AD5001AEE0D /* BoxLinkButton.swift */; };
 		326EA03026DE67B500C94B5E /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326EA02F26DE67B500C94B5E /* ImageLoader.swift */; };
 		326EA03226DE67C000C94B5E /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326EA03126DE67C000C94B5E /* AsyncImage.swift */; };
 		326EA03426DE751600C94B5E /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326EA03326DE751600C94B5E /* ProgressIndicator.swift */; };
@@ -125,6 +132,12 @@
 		3236C7D126DC0F6C002122B3 /* WorksListViewOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorksListViewOld.swift; sourceTree = "<group>"; };
 		3236C7E126DC105E002122B3 /* WorksAPIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorksAPIService.swift; sourceTree = "<group>"; };
 		3236C7E226DC105E002122B3 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		323FB1DD2717113100B31A22 /* TagsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsListView.swift; sourceTree = "<group>"; };
+		323FB1DF2717144300B31A22 /* TagInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagInputView.swift; sourceTree = "<group>"; };
+		323FB1E1271724CC00B31A22 /* TagSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSelectView.swift; sourceTree = "<group>"; };
+		323FB1E32717282400B31A22 /* TagsAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsAPIService.swift; sourceTree = "<group>"; };
+		324BEB64271702B6001AEE0D /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
+		324BEB6927170AD5001AEE0D /* BoxLinkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxLinkButton.swift; sourceTree = "<group>"; };
 		326EA02F26DE67B500C94B5E /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		326EA03126DE67C000C94B5E /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 		326EA03326DE751600C94B5E /* ProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
@@ -136,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3236C7DC26DC0F9A002122B3 /* TinmeyCore in Frameworks */,
+				324BEB6827170909001AEE0D /* WrappingHStack in Frameworks */,
 				3236C7DF26DC0FCF002122B3 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,6 +322,7 @@
 			children = (
 				3236C7E226DC105E002122B3 /* APIService.swift */,
 				3236C7E126DC105E002122B3 /* WorksAPIService.swift */,
+				323FB1E32717282400B31A22 /* TagsAPIService.swift */,
 				3234CBA927145A700069A3CC /* AuthAPIService.swift */,
 				3234CBB82714BC410069A3CC /* ProfileAPIService.swift */,
 				3234CBBA2714BEA20069A3CC /* SectionsAPIService.swift */,
@@ -324,6 +339,11 @@
 				3236C7CD26DC0F6C002122B3 /* TabButton.swift */,
 				326EA03326DE751600C94B5E /* ProgressIndicator.swift */,
 				3219602D270C9944002A0E11 /* MultilineTextView.swift */,
+				324BEB64271702B6001AEE0D /* TagView.swift */,
+				323FB1DF2717144300B31A22 /* TagInputView.swift */,
+				323FB1DD2717113100B31A22 /* TagsListView.swift */,
+				323FB1E1271724CC00B31A22 /* TagSelectView.swift */,
+				324BEB6927170AD5001AEE0D /* BoxLinkButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -356,6 +376,7 @@
 			packageProductDependencies = (
 				3236C7DB26DC0F9A002122B3 /* TinmeyCore */,
 				3236C7DE26DC0FCF002122B3 /* Alamofire */,
+				324BEB6727170909001AEE0D /* WrappingHStack */,
 			);
 			productName = TinmeyMacOS;
 			productReference = 3236C78126DC0EBC002122B3 /* TinmeyMacOS.app */;
@@ -431,6 +452,7 @@
 			packageReferences = (
 				3236C7DA26DC0F9A002122B3 /* XCRemoteSwiftPackageReference "TinmeyCore" */,
 				3236C7DD26DC0FCF002122B3 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				324BEB6627170909001AEE0D /* XCRemoteSwiftPackageReference "WrappingHStack" */,
 			);
 			productRefGroup = 3236C78226DC0EBC002122B3 /* Products */;
 			projectDirPath = "";
@@ -485,6 +507,7 @@
 				3236C7BA26DC0EFB002122B3 /* APIModels.swift in Sources */,
 				3234CBB92714BC410069A3CC /* ProfileAPIService.swift in Sources */,
 				3219602E270C9944002A0E11 /* MultilineTextView.swift in Sources */,
+				323FB1E42717282400B31A22 /* TagsAPIService.swift in Sources */,
 				3236C7D726DC0F6C002122B3 /* TestView.swift in Sources */,
 				3219602C270C936E002A0E11 /* EditWorkViewBodyBox.swift in Sources */,
 				3236C7D826DC0F6C002122B3 /* EditWorkView.swift in Sources */,
@@ -496,6 +519,9 @@
 				3236C7E326DC105E002122B3 /* WorksAPIService.swift in Sources */,
 				3234CBB227148CB40069A3CC /* HomeView.swift in Sources */,
 				32196022270B69F9002A0E11 /* WorksListView.swift in Sources */,
+				323FB1E02717144300B31A22 /* TagInputView.swift in Sources */,
+				323FB1DE2717113100B31A22 /* TagsListView.swift in Sources */,
+				323FB1E2271724CC00B31A22 /* TagSelectView.swift in Sources */,
 				3236C7BC26DC0EFB002122B3 /* AppSection.swift in Sources */,
 				3234CBB02714691A0069A3CC /* SettingsViewModel.swift in Sources */,
 				32196026270B7357002A0E11 /* WorkViewBodyBox.swift in Sources */,
@@ -510,6 +536,8 @@
 				326EA03226DE67C000C94B5E /* AsyncImage.swift in Sources */,
 				3234CBC3271591770069A3CC /* EditProfileViewModel.swift in Sources */,
 				3236C78526DC0EBC002122B3 /* AppDelegate.swift in Sources */,
+				324BEB65271702B6001AEE0D /* TagView.swift in Sources */,
+				324BEB6A27170AD5001AEE0D /* BoxLinkButton.swift in Sources */,
 				3236C7D526DC0F6C002122B3 /* TabButton.swift in Sources */,
 				3236C7E426DC105E002122B3 /* APIService.swift in Sources */,
 				3236C7D626DC0F6C002122B3 /* RootView.swift in Sources */,
@@ -869,6 +897,14 @@
 				minimumVersion = 5.4.3;
 			};
 		};
+		324BEB6627170909001AEE0D /* XCRemoteSwiftPackageReference "WrappingHStack" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dkk/WrappingHStack";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -881,6 +917,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3236C7DD26DC0FCF002122B3 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		324BEB6727170909001AEE0D /* WrappingHStack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 324BEB6627170909001AEE0D /* XCRemoteSwiftPackageReference "WrappingHStack" */;
+			productName = WrappingHStack;
 		};
 /* End XCSwiftPackageProductDependency section */
 

@@ -30,7 +30,8 @@ extension Work {
             title: "Title of the cover",
             description: "Some interesting description of the cover",
             layout: layout,
-            seeMoreLink: URL(string: "https://github.com")
+            seeMoreLink: URL(string: "https://github.com"),
+            tags: ["Some", "tag", "example"]
         )
     }
 }

@@ -39,6 +39,7 @@ struct WorksListView: View {
             viewModel.loadAllWorks()
         }, content: {
             EditWorkView(workType: viewModel.workType,
+                         availableTags: viewModel.availableTags,
                          isPresented: $createWorkPresented)
         })
         .sheet(item: $workToEdit, onDismiss: {
@@ -46,6 +47,7 @@ struct WorksListView: View {
         }, content: { work in
             EditWorkView(work: work,
                          workType: viewModel.workType,
+                         availableTags: viewModel.availableTags,
                          workToEdit: $workToEdit)
         })
         .alert(item: $viewModel.error) { error in

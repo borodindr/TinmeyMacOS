@@ -10,17 +10,19 @@ import SwiftUI
 struct EditWorkView: View {
     @ObservedObject private var viewModel: EditWorksViewModel
     
-    init(workType: Work.WorkType, isPresented: Binding<Bool>) {
+    init(workType: Work.WorkType, availableTags: [String], isPresented: Binding<Bool>) {
         self.viewModel = EditWorksViewModel(
             workType: workType,
+            availableTags: availableTags,
             isPresented: isPresented
         )
     }
     
-    init(work: Work, workType: Work.WorkType, workToEdit: Binding<Work?>) {
+    init(work: Work, workType: Work.WorkType, availableTags: [String], workToEdit: Binding<Work?>) {
         self.viewModel = EditWorksViewModel(
             work: work,
             workType: workType,
+            availableTags: availableTags,
             workToEdit: workToEdit
         )
     }
@@ -35,6 +37,13 @@ struct EditWorkView: View {
                 boxes
                 
                 TextField("See work link", text: $viewModel.seeMoreLink)
+                
+                HStack {
+                    TagInputView(onSave: viewModel.addTag)
+                    TagSelectView(availableTags: viewModel.availableTags,
+                                  onSelect: viewModel.addTag)
+                    Spacer()
+                }
                 
                 HStack {
                     Button(action: {
@@ -106,7 +115,9 @@ struct EditWorkView: View {
     var bodyBox: some View {
         VStack(spacing: 8) {
             EditWorkViewBodyBox(title: $viewModel.titleText,
-                                description: $viewModel.descriptionText)
+                                description: $viewModel.descriptionText,
+                                tags: viewModel.tags,
+                                onTagDelete: viewModel.deleteTag)
                 .background(Color.black)
                 .border(Color.gray, width: 1)
             bodyBoxControls
@@ -117,7 +128,9 @@ struct EditWorkView: View {
         VStack(spacing: 8) {
             HStack {
                 EditWorkViewBodyBox(title: $viewModel.titleText,
-                                    description: $viewModel.descriptionText)
+                                    description: $viewModel.descriptionText,
+                                    tags: viewModel.tags,
+                                    onTagDelete: viewModel.deleteTag)
                 Spacer()
             }
             .frame(width: 600, height: 300)
@@ -238,6 +251,16 @@ struct EditWorkView: View {
 
 struct EditBookCoverView_Previews: PreviewProvider {
     static var previews: some View {
-        EditWorkView(workType: .cover, isPresented: .constant(true))
+        Group {
+            EditWorkView(
+                work: .preview,
+                workType: .cover,
+                availableTags: ["Some", "tags", "data", "source"],
+                workToEdit: .constant(.preview))
+            EditWorkView(
+                workType: .cover,
+                availableTags: ["Some", "tags", "data", "source"],
+                isPresented: .constant(true))
+        }
     }
 }
