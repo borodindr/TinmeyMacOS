@@ -45,9 +45,7 @@
 		3236C7D326DC0F6C002122B3 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7CB26DC0F6C002122B3 /* BlurView.swift */; };
 		3236C7D526DC0F6C002122B3 /* TabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7CD26DC0F6C002122B3 /* TabButton.swift */; };
 		3236C7D626DC0F6C002122B3 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7CE26DC0F6C002122B3 /* RootView.swift */; };
-		3236C7D726DC0F6C002122B3 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7CF26DC0F6C002122B3 /* TestView.swift */; };
 		3236C7D826DC0F6C002122B3 /* EditWorkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7D026DC0F6C002122B3 /* EditWorkView.swift */; };
-		3236C7D926DC0F6C002122B3 /* WorksListViewOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7D126DC0F6C002122B3 /* WorksListViewOld.swift */; };
 		3236C7DC26DC0F9A002122B3 /* TinmeyCore in Frameworks */ = {isa = PBXBuildFile; productRef = 3236C7DB26DC0F9A002122B3 /* TinmeyCore */; };
 		3236C7DF26DC0FCF002122B3 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3236C7DE26DC0FCF002122B3 /* Alamofire */; };
 		3236C7E326DC105E002122B3 /* WorksAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7E126DC105E002122B3 /* WorksAPIService.swift */; };
@@ -127,9 +125,7 @@
 		3236C7CB26DC0F6C002122B3 /* BlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		3236C7CD26DC0F6C002122B3 /* TabButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabButton.swift; sourceTree = "<group>"; };
 		3236C7CE26DC0F6C002122B3 /* RootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
-		3236C7CF26DC0F6C002122B3 /* TestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		3236C7D026DC0F6C002122B3 /* EditWorkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditWorkView.swift; sourceTree = "<group>"; };
-		3236C7D126DC0F6C002122B3 /* WorksListViewOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorksListViewOld.swift; sourceTree = "<group>"; };
 		3236C7E126DC105E002122B3 /* WorksAPIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorksAPIService.swift; sourceTree = "<group>"; };
 		3236C7E226DC105E002122B3 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		323FB1DD2717113100B31A22 /* TagsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsListView.swift; sourceTree = "<group>"; };
@@ -189,13 +185,6 @@
 				3219602B270C936E002A0E11 /* EditWorkViewBodyBox.swift */,
 			);
 			path = EditWorkView;
-			sourceTree = "<group>";
-		};
-		3234CBB727149D450069A3CC /* EditSection */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = EditSection;
 			sourceTree = "<group>";
 		};
 		3236C77826DC0EBC002122B3 = {
@@ -303,16 +292,13 @@
 			children = (
 				326EA02D26DE671600C94B5E /* Components */,
 				3236C7CE26DC0F6C002122B3 /* RootView.swift */,
-				3236C7D126DC0F6C002122B3 /* WorksListViewOld.swift */,
 				32196021270B69F9002A0E11 /* WorksListView.swift */,
 				32196029270C92D1002A0E11 /* WorkView */,
 				3219602A270C92DF002A0E11 /* EditWorkView */,
-				3236C7CF26DC0F6C002122B3 /* TestView.swift */,
 				3234CBAD271468E70069A3CC /* SettingsView.swift */,
 				3234CBB127148CB40069A3CC /* HomeView.swift */,
 				3234CBC0271591670069A3CC /* EditProfileView.swift */,
 				3234CBB527149D3E0069A3CC /* EditSectionView.swift */,
-				3234CBB727149D450069A3CC /* EditSection */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -508,7 +494,6 @@
 				3234CBB92714BC410069A3CC /* ProfileAPIService.swift in Sources */,
 				3219602E270C9944002A0E11 /* MultilineTextView.swift in Sources */,
 				323FB1E42717282400B31A22 /* TagsAPIService.swift in Sources */,
-				3236C7D726DC0F6C002122B3 /* TestView.swift in Sources */,
 				3219602C270C936E002A0E11 /* EditWorkViewBodyBox.swift in Sources */,
 				3236C7D826DC0F6C002122B3 /* EditWorkView.swift in Sources */,
 				3234CBBF2714C0E10069A3CC /* AlertType.swift in Sources */,
@@ -541,7 +526,6 @@
 				3236C7D526DC0F6C002122B3 /* TabButton.swift in Sources */,
 				3236C7E426DC105E002122B3 /* APIService.swift in Sources */,
 				3236C7D626DC0F6C002122B3 /* RootView.swift in Sources */,
-				3236C7D926DC0F6C002122B3 /* WorksListViewOld.swift in Sources */,
 				3234CBAE271468E70069A3CC /* SettingsView.swift in Sources */,
 				3234CBAC27145D570069A3CC /* Keychain.swift in Sources */,
 			);
@@ -839,6 +823,134 @@
 			};
 			name = Release;
 		};
+		32932A67272B19BF004DD0B9 /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Staging;
+		};
+		32932A68272B19BF004DD0B9 /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TinmeyMacOS/TinmeyMacOS.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"TinmeyMacOS/Preview Content\"";
+				DEVELOPMENT_TEAM = UU896HB87U;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = TinmeyMacOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.borodindr.TinmeyMacOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Staging;
+		};
+		32932A69272B19BF004DD0B9 /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = UU896HB87U;
+				INFOPLIST_FILE = TinmeyMacOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.borodindr.TinmeyMacOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TinmeyMacOS.app/Contents/MacOS/TinmeyMacOS";
+			};
+			name = Staging;
+		};
+		32932A6A272B19BF004DD0B9 /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = UU896HB87U;
+				INFOPLIST_FILE = TinmeyMacOSUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.borodindr.TinmeyMacOSUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = TinmeyMacOS;
+			};
+			name = Staging;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -846,6 +958,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3236C7AB26DC0EBF002122B3 /* Debug */,
+				32932A67272B19BF004DD0B9 /* Staging */,
 				3236C7AC26DC0EBF002122B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -855,6 +968,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3236C7AE26DC0EBF002122B3 /* Debug */,
+				32932A68272B19BF004DD0B9 /* Staging */,
 				3236C7AF26DC0EBF002122B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -864,6 +978,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3236C7B126DC0EBF002122B3 /* Debug */,
+				32932A69272B19BF004DD0B9 /* Staging */,
 				3236C7B226DC0EBF002122B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -873,6 +988,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3236C7B426DC0EBF002122B3 /* Debug */,
+				32932A6A272B19BF004DD0B9 /* Staging */,
 				3236C7B526DC0EBF002122B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
