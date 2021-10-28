@@ -20,17 +20,17 @@ final class EditSectionViewModel: ObservableObject {
     
     let sectionType: SectionAPIModel.SectionType
     var firstImageURL: URL? {
-        let urlString = baseImageURLString + "/firstImage"
-        return URL(string: urlString)
+        baseImageURLBuilder.path("firstImage").buildURL()
     }
     
     var secondImageURL: URL? {
-        let urlString = baseImageURLString + "/secondImage"
-        return URL(string: urlString)
+        baseImageURLBuilder.path("secondImage").buildURL()
     }
     
-    private var baseImageURLString: String {
-        "http://127.0.0.1:8080/api/sections/" + sectionType.rawValue
+    private var baseImageURLBuilder: APIURLBuilder {
+        APIURLBuilder.api()
+            .path("sections")
+            .path(sectionType.rawValue)
     }
     private let service = SectionsAPIService()
     private var subscriptions = Set<AnyCancellable>()

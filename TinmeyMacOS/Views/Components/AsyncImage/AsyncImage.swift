@@ -37,7 +37,12 @@ struct AsyncImage<Placeholder: View>: View {
 
 struct AsyncImage_Previews: PreviewProvider {
     static var previews: some View {
-        AsyncImage(url: URL(string: "http://127.0.0.1:8080/api/works/images/EEDC3EB8-CE9E-4AE5-8D3B-03ADB2EDEEA0")!) {
+        let url = APIURLBuilder.api()
+            .path("works")
+            .path("images")
+            .path("EEDC3EB8-CE9E-4AE5-8D3B-03ADB2EDEEA0")
+            .buildURL()
+        return AsyncImage(url: url) {
             Image("house")
         }
     }

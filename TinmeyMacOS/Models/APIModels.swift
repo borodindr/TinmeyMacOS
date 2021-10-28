@@ -42,16 +42,14 @@ extension Work {
 
 extension Work {
     var firstImageURL: URL? {
-        let urlString = baseImageURLString + "/firstImage"
-        return URL(string: urlString)
+        baseImageURLBuilder.path("firstImage").buildURL()
     }
     
     var secondImageURL: URL? {
-        let urlString = baseImageURLString + "/secondImage"
-        return URL(string: urlString)
+        baseImageURLBuilder.path("secondImage").buildURL()
     }
     
-    private var baseImageURLString: String {
+    private var baseImageURLBuilder: APIURLBuilder {
         let idString: String
         if id.uuidString == "00000000-0000-0000-0000-000000000000" {
             // For preview
@@ -59,7 +57,9 @@ extension Work {
         } else {
             idString = id.uuidString
         }
-        return "http://127.0.0.1:8080/api/works/" + idString
+        return APIURLBuilder.api()
+            .path("works")
+            .path(idString)
     }
 }
 
@@ -76,16 +76,16 @@ extension Array where Element == Work {
 
 extension SectionAPIModel {
     var firstImageURL: URL? {
-        let urlString = baseImageURLString + "/firstImage"
-        return URL(string: urlString)
+        baseImageURLBuilder.path("firstImage").buildURL()
     }
     
     var secondImageURL: URL? {
-        let urlString = baseImageURLString + "/secondImage"
-        return URL(string: urlString)
+        baseImageURLBuilder.path("secondImage").buildURL()
     }
     
-    private var baseImageURLString: String {
-        "http://127.0.0.1:8080/api/sections/" + type.rawValue
+    private var baseImageURLBuilder: APIURLBuilder {
+        APIURLBuilder.api()
+            .path("sections")
+            .path(type.rawValue)
     }
 }

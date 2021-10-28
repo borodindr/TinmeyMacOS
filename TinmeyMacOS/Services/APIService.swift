@@ -29,17 +29,13 @@ struct VaporError: Error, Decodable {
 }
 
 final class APIService {
-    let basePathComponents: [String]
-    
-    var baseURL: String {
-        "http://127.0.0.1:8080/api" + basePathComponents.reduce("") { $0 + "/\($1)" }
-    }
-    
     var decoder: JSONDecoder {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
         return decoder
     }
+    
+    private var baseURLBuilder: APIURLBuilder
     
     private var authHeader: HTTPHeader? {
         guard let token = AuthAPIService.token else { return nil }
@@ -47,11 +43,11 @@ final class APIService {
     }
     
     init(basePathComponents: String...) {
-        self.basePathComponents = basePathComponents
+        self.baseURLBuilder = APIURLBuilder.api().paths(basePathComponents)
     }
     
-    private func buildURL(adding pathComponents: [String]) -> String {
-        baseURL + pathComponents.reduce("") { $0 + "/\($1)" }
+    private func buildURL(adding pathComponents: [String]) -> URL {
+        baseURLBuilder.paths(pathComponents).buildURL()
     }
     
     private func buildHeaders(adding additionalHeaders: HTTPHeaders?) -> HTTPHeaders {
