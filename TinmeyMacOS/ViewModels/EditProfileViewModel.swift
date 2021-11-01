@@ -16,7 +16,7 @@ final class EditProfileViewModel: ObservableObject {
     @Published var email = ""
     @Published var currentStatus = ""
     @Published var shortAbout = ""
-    @Published var about = NSAttributedString()
+    @Published var about = ""
     
     private let service = ProfileAPIService()
     private var subscriptions = Set<AnyCancellable>()
@@ -42,9 +42,7 @@ final class EditProfileViewModel: ObservableObject {
                 self?.email = profile.email
                 self?.currentStatus = profile.currentStatus
                 self?.shortAbout = profile.shortAbout
-                self?.about = NSAttributedString(string: profile.about, attributes: [
-                    :
-                ])
+                self?.about = profile.about
             }
             .store(in: &subscriptions)
     }
@@ -55,7 +53,7 @@ final class EditProfileViewModel: ObservableObject {
             email: email,
             currentStatus: currentStatus,
             shortAbout: shortAbout,
-            about: about.string
+            about: about
         )
         isLoading = true
         service.update(to: newProfile)
@@ -72,9 +70,7 @@ final class EditProfileViewModel: ObservableObject {
                 self?.email = profile.email
                 self?.currentStatus = profile.currentStatus
                 self?.shortAbout = profile.shortAbout
-                self?.about = NSAttributedString(string: profile.about, attributes: [
-                    :
-                ])
+                self?.about = profile.about
             }
             .store(in: &subscriptions)
     }

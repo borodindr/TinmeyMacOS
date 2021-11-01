@@ -79,23 +79,18 @@ struct EditProfileView: View {
         }
     }
     
-    func multilineTextField(_ placeholder: String, text: Binding<NSAttributedString>) -> some View {
+    func multilineTextField(_ placeholder: String, text: Binding<String>) -> some View {
         HStack {
             Text(placeholder)
                 .multilineTextAlignment(.trailing)
                 .frame(width: 100, alignment: .trailing)
-            MultilineTextField(
-                NSAttributedString(),
-                text: text,
-                nsFont: .systemFont(ofSize: 12)
-            )
+            TextArea(text: text)
+                .frame(height: 200)
                 .padding(4)
                 .overlay(
                     RoundedRectangle(cornerRadius: 4)
                         .stroke(Color.secondary, lineWidth: 0.5)
                 )
-//            TextField("", text: text)
-//                .textFieldStyle(RoundedBorderTextFieldStyle())
         }
     }
 }

@@ -8,46 +8,6 @@
 import Foundation
 import SwiftUI
 
-struct MultilineTextView: NSViewRepresentable {
-    @Binding var text: String
-    private var font: NSFont? = .systemFont(ofSize: 12)
-    
-    init(text: Binding<String>) {
-        self._text = text
-    }
-    
-    func makeNSView(context: Context) -> NSTextView {
-        let view = NSTextView()
-        view.isEditable = true
-//        view.autoresizingMask = .height
-        view.backgroundColor = .clear
-        view.font = font
-//        var bounds = view.bounds
-//        bounds.size.height = 200
-//        view.bounds = bounds
-        
-//        view.setContentHuggingPriority(.required, for: .horizontal) // << here !!
-//        view.setContentHuggingPriority(.required, for: .vertical)
-        
-        return view
-    }
-
-    func updateNSView(_ nsView: NSTextView, context: Context) {
-        nsView.string = text
-        nsView.font = font
-    }
-    
-    
-}
-
-extension MultilineTextView {
-    func font(_ font: NSFont?) -> MultilineTextView {
-        var view = self
-        view.font = font
-        return view
-    }
-}
-
 // Wraps the NSTextView in a frame that can interact with SwiftUI
 struct MultilineTextField: View {
 
