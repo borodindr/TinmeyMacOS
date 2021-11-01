@@ -734,7 +734,7 @@
 		3236C7AF26DC0EBF002122B3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				API_ENDPOINT = "http://www.tinmey.com";
+				API_ENDPOINT = "https://tinmey.com";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TinmeyMacOS/TinmeyMacOS.entitlements;
@@ -841,7 +841,7 @@
 			};
 			name = Release;
 		};
-		32932A67272B19BF004DD0B9 /* Staging */ = {
+		32932A67272B19BF004DD0B9 /* Stage */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -900,12 +900,12 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
-			name = Staging;
+			name = Stage;
 		};
-		32932A68272B19BF004DD0B9 /* Staging */ = {
+		32932A68272B19BF004DD0B9 /* Stage */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				API_ENDPOINT = "http://www.tinmey.com";
+				API_ENDPOINT = "https://tinmey.com";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TinmeyMacOS/TinmeyMacOS.entitlements;
@@ -926,9 +926,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
-			name = Staging;
+			name = Stage;
 		};
-		32932A69272B19BF004DD0B9 /* Staging */ = {
+		32932A69272B19BF004DD0B9 /* Stage */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -948,9 +948,9 @@
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TinmeyMacOS.app/Contents/MacOS/TinmeyMacOS";
 			};
-			name = Staging;
+			name = Stage;
 		};
-		32932A6A272B19BF004DD0B9 /* Staging */ = {
+		32932A6A272B19BF004DD0B9 /* Stage */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -968,7 +968,7 @@
 				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = TinmeyMacOS;
 			};
-			name = Staging;
+			name = Stage;
 		};
 /* End XCBuildConfiguration section */
 
@@ -977,7 +977,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3236C7AB26DC0EBF002122B3 /* Debug */,
-				32932A67272B19BF004DD0B9 /* Staging */,
+				32932A67272B19BF004DD0B9 /* Stage */,
 				3236C7AC26DC0EBF002122B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -987,7 +987,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3236C7AE26DC0EBF002122B3 /* Debug */,
-				32932A68272B19BF004DD0B9 /* Staging */,
+				32932A68272B19BF004DD0B9 /* Stage */,
 				3236C7AF26DC0EBF002122B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -997,7 +997,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3236C7B126DC0EBF002122B3 /* Debug */,
-				32932A69272B19BF004DD0B9 /* Staging */,
+				32932A69272B19BF004DD0B9 /* Stage */,
 				3236C7B226DC0EBF002122B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1007,7 +1007,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3236C7B426DC0EBF002122B3 /* Debug */,
-				32932A6A272B19BF004DD0B9 /* Staging */,
+				32932A6A272B19BF004DD0B9 /* Stage */,
 				3236C7B526DC0EBF002122B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
