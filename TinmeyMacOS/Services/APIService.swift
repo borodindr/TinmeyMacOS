@@ -268,13 +268,12 @@ final class APIService {
     func upload(
         _ pathComponents: String...,
         from fileURL: URL,
-        withName name: String,
         additionalHeaders: HTTPHeaders? = nil
     ) -> AnyPublisher<Void, Error> {
         AF
             .upload(
                 multipartFormData: { multipartFormData in
-                    multipartFormData.append(fileURL, withName: name)
+                    multipartFormData.append(fileURL, withName: "file")
                 },
                 to: buildURL(adding: pathComponents),
                 headers: buildHeaders(adding: additionalHeaders)

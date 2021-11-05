@@ -41,8 +41,7 @@ final class SectionsAPIService {
         for sectionType: SectionAPIModel.SectionType
     ) -> AnyPublisher<Void, Error> {
         api.upload(sectionType.rawValue, imageType.rawValue,
-                   from: fileURL,
-                   withName: "picture")
+                   from: fileURL)
     }
 }
 

@@ -140,8 +140,7 @@ class WorksAPIService: WorksProviderService {
     
     private func addImage(_ imageType: ImageType, from fileURL: URL, to workID: UUID) -> AnyPublisher<Void, Error> {
         api.upload(workID.uuidString, imageType.rawValue,
-                   from: fileURL,
-                   withName: "picture")
+                   from: fileURL)
     }
 }
 
