@@ -14,7 +14,6 @@ final class HomeViewModel: ObservableObject {
     @Published var alert: AlertType? = nil
     @Published var name = ""
     @Published var email = ""
-    @Published var currentStatus = ""
     @Published var shortAbout = ""
     @Published var about = NSAttributedString()
     
@@ -39,7 +38,6 @@ final class HomeViewModel: ObservableObject {
             } receiveValue: { [weak self] profile in
                 self?.name = profile.name
                 self?.email = profile.email
-                self?.currentStatus = profile.currentStatus
                 self?.shortAbout = profile.shortAbout
                 self?.about = NSAttributedString(string: profile.about, attributes: [
                     :
@@ -52,7 +50,6 @@ final class HomeViewModel: ObservableObject {
         let newProfile = ProfileAPIModel(
             name: name,
             email: email,
-            currentStatus: currentStatus,
             shortAbout: shortAbout,
             about: about.string
         )
@@ -69,7 +66,6 @@ final class HomeViewModel: ObservableObject {
             } receiveValue: { [weak self] profile in
                 self?.name = profile.name
                 self?.email = profile.email
-                self?.currentStatus = profile.currentStatus
                 self?.shortAbout = profile.shortAbout
                 self?.about = NSAttributedString(string: profile.about, attributes: [
                     :

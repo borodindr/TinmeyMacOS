@@ -59,7 +59,6 @@ struct EditProfileView: View {
         Form {
             textField("Name", text: $viewModel.name)
             textField("Email", text: $viewModel.email)
-            textField("Current status", text: $viewModel.currentStatus)
             textField("Short about", text: $viewModel.shortAbout)
             multilineTextField("About", text: $viewModel.about)
             Button(action: viewModel.updateProfile) {

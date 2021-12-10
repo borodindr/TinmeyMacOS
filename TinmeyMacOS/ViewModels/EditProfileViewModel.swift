@@ -14,7 +14,6 @@ final class EditProfileViewModel: ObservableObject {
     @Published var alert: AlertType? = nil
     @Published var name = ""
     @Published var email = ""
-    @Published var currentStatus = ""
     @Published var shortAbout = ""
     @Published var about = ""
     
@@ -40,7 +39,6 @@ final class EditProfileViewModel: ObservableObject {
             } receiveValue: { [weak self] profile in
                 self?.name = profile.name
                 self?.email = profile.email
-                self?.currentStatus = profile.currentStatus
                 self?.shortAbout = profile.shortAbout
                 self?.about = profile.about
             }
@@ -51,7 +49,6 @@ final class EditProfileViewModel: ObservableObject {
         let newProfile = ProfileAPIModel(
             name: name,
             email: email,
-            currentStatus: currentStatus,
             shortAbout: shortAbout,
             about: about
         )
@@ -68,7 +65,6 @@ final class EditProfileViewModel: ObservableObject {
             } receiveValue: { [weak self] profile in
                 self?.name = profile.name
                 self?.email = profile.email
-                self?.currentStatus = profile.currentStatus
                 self?.shortAbout = profile.shortAbout
                 self?.about = profile.about
             }
