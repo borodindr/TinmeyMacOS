@@ -16,58 +16,19 @@ struct HomeView: View {
     
     
     var body: some View {
-//        ZStack {
-            content
-//            if viewModel.isLoading {
-//                Color.black.opacity(0.5)
-//                VStack {
-//                    Spacer()
-//                    ProgressIndicator(size: .regular)
-//                    Spacer()
-//                }
-//            } else if case let .error(message) = viewModel.alert {
-//                Color.black.opacity(0.5)
-//                VStack {
-//                    Spacer()
-//                    Text("Error loading profile")
-//                        .font(.title)
-//                    Text(message)
-//                        .font(.body)
-//                    Button(action: viewModel.getProfile) {
-//                        Text("Reload")
-//                    }
-//                    Spacer()
-//                }
-//            }
-//        }
-//        .onAppear {
-//            viewModel.getProfile()
-//        }
+        content
     }
     
     
     var content: some View {
-        List {
-//            textField("Current status", text: $viewModel.currentStatus)
-//            EditSectionView(sectionType: .covers)
+        ScrollView {
             VStack(spacing: 32) {
                 VStack {
                     Text("Profile")
                         .font(.title)
                     EditProfileView()
-//                    Form {
-//                        textField("Name", text: $viewModel.name)
-//                        textField("Email", text: $viewModel.email)
-//                        textField("Current status", text: $viewModel.currentStatus)
-//                        textField("Short about", text: $viewModel.shortAbout)
-//                        multilineTextField("About", text: $viewModel.about)
-//                        Button(action: viewModel.updateProfile) {
-//                            Text("Save profile")
-//                        }
-//                    }
-//                    .padding()
                 }
-
+                
                 VStack {
                     Text("Sections")
                         .font(.title)
@@ -104,8 +65,6 @@ struct HomeView: View {
                     RoundedRectangle(cornerRadius: 4)
                         .stroke(Color.secondary, lineWidth: 0.5)
                 )
-//            TextField("", text: text)
-//                .textFieldStyle(RoundedBorderTextFieldStyle())
         }
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RootView: View {
-    @StateObject var viewModel = RootViewModel()
+    @ObservedObject var viewModel = RootViewModel()
     
     var body: some View {
         HStack(spacing: 0) {
@@ -37,7 +37,6 @@ struct RootView: View {
             }
             .frame(minWidth: 250, maxWidth: .infinity, maxHeight: .infinity)
         }
-        .edgesIgnoringSafeArea(.all)
     }
 }
 

@@ -10,8 +10,7 @@ import SwiftUI
 struct WorksListView: View {
     @ObservedObject private var viewModel: WorksListViewModel
     
-    @State private var createWorkPresented = false
-    @State private var workToEdit: Work? = nil
+    @State private var editWork: EditWork?
     
     init(workType: Work.WorkType) {
         self.viewModel = WorksListViewModel(workType: workType)
@@ -35,20 +34,11 @@ struct WorksListView: View {
         }
         .padding(.top, 20)
         .edgesIgnoringSafeArea(.all)
-        .sheet(isPresented: $createWorkPresented, onDismiss: {
+        .sheet(item: $editWork, onDismiss: {
             viewModel.loadAllWorks()
-        }, content: {
-            EditWorkView(workType: viewModel.workType,
-                         availableTags: viewModel.availableTags,
-                         isPresented: $createWorkPresented)
-        })
-        .sheet(item: $workToEdit, onDismiss: {
-            viewModel.loadAllWorks()
-        }, content: { work in
-            EditWorkView(work: work,
-                         workType: viewModel.workType,
-                         availableTags: viewModel.availableTags,
-                         workToEdit: $workToEdit)
+        }, content: { _ in
+            EditWorkView(editWork: $editWork,
+                         availableTags: viewModel.availableTags)
         })
         .alert(item: $viewModel.error) { error in
             Alert(
@@ -65,7 +55,7 @@ struct WorksListView: View {
     private var list: some View {
         List {
             Button("Add new") {
-                createWorkPresented = true
+                editWork = EditWork(type: viewModel.workType)
             }
             ForEach(viewModel.works, id: \.self) { work in
                 let workIndex = viewModel.works.firstIndex(of: work)
@@ -90,7 +80,7 @@ struct WorksListView: View {
     }
     
     private func editWork(_ work: Work) {
-        workToEdit = work
+        editWork = EditWork(work: work, type: viewModel.workType)
     }
     
     private func deleteWork(_ work: Work) {

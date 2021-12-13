@@ -10,21 +10,8 @@ import SwiftUI
 struct EditWorkView: View {
     @ObservedObject private var viewModel: EditWorksViewModel
     
-    init(workType: Work.WorkType, availableTags: [String], isPresented: Binding<Bool>) {
-        self.viewModel = EditWorksViewModel(
-            workType: workType,
-            availableTags: availableTags,
-            isPresented: isPresented
-        )
-    }
-    
-    init(work: Work, workType: Work.WorkType, availableTags: [String], workToEdit: Binding<Work?>) {
-        self.viewModel = EditWorksViewModel(
-            work: work,
-            workType: workType,
-            availableTags: availableTags,
-            workToEdit: workToEdit
-        )
+    init(editWork: Binding<EditWork?>, availableTags: [String]) {
+        self.viewModel = EditWorksViewModel(editWork: editWork, availableTags: availableTags)
     }
     
     var body: some View {
@@ -47,8 +34,7 @@ struct EditWorkView: View {
                 
                 HStack {
                     Button(action: {
-                        viewModel.isPresented = false
-                        viewModel.workToEdit = nil
+                        viewModel.editWork = nil
                     }, label: {
                         Text("Dismiss")
                     })
@@ -85,7 +71,7 @@ struct EditWorkView: View {
     // MARK: - Boxes
     var boxes: some View {
         HStack(spacing: 0) {
-            switch viewModel.workLayout {
+            switch viewModel.editWork?.layout {
             case .leftBody:
                 bodyBox
                 firstImageBox
@@ -108,6 +94,9 @@ struct EditWorkView: View {
             case .rightLargeBody:
                 firstImageBox
                 largeBodyBox
+                
+            case .none:
+                Text("Error!")
             }
         }
     }
@@ -252,15 +241,13 @@ struct EditWorkView: View {
 struct EditBookCoverView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            EditWorkView(
-                work: .preview,
-                workType: .cover,
-                availableTags: ["Some", "tags", "data", "source"],
-                workToEdit: .constant(.preview))
-            EditWorkView(
-                workType: .cover,
-                availableTags: ["Some", "tags", "data", "source"],
-                isPresented: .constant(true))
+            
+            EditWorkView(editWork: .constant(EditWork(work: .preview, type: .cover)),
+                         availableTags: ["Some", "tags", "data", "source"])
+            
+            EditWorkView(editWork: .constant(EditWork(type: .cover)),
+                         availableTags: ["Some", "tags", "data", "source"])
+            
         }
     }
 }

@@ -15,37 +15,39 @@ struct ErrorDescription: Identifiable {
 }
 
 class EditWorksViewModel: ObservableObject {
-    let work: Work?
-    let workType: Work.WorkType
-    @Published var newFirstImagePath: URL? = nil
+    @Binding var editWork: EditWork?
+    @Binding var newFirstImagePath: URL?
     var currentFirstImagePath: URL? {
-        work?.firstImageURL
+        editWork?.currentFirstImagePath
     }
-    @Published var newSecondImagePath: URL? = nil
+    @Binding var newSecondImagePath: URL?
     var currentSecondImagePath: URL? {
-        work?.secondImageURL
+        editWork?.currentSecondImagePath
     }
-    @Published var titleText: String
-    @Published var descriptionText: String
-    @Published var tags: [String]
+    @Binding var titleText: String
+    @Binding var descriptionText: String
+    @Binding var tags: [String]
     let availableTags: [String]
-    @Published var seeMoreLink: String
-    @Binding var isPresented: Bool
-    @Binding var workToEdit: Work?
+    @Binding var seeMoreLink: String
     @Published private(set) var isLoading = false
     @Published var error: ErrorDescription? = nil
-    @Published var workLayout: Work.LayoutType
     
     var title: String {
-        if let work = work {
-            return "Edit Work \"\(work.title)\""
+        guard let editWork = editWork else {
+            return ""
+        }
+        if editWork.id != nil {
+            return "Edit Work \"\(editWork.title)\""
         } else {
-            return "Create new \(workType.rawValue)"
+            return "Create new \(editWork.type.rawValue)"
         }
     }
     
     var canMoveBodyLeft: Bool {
-        switch workLayout {
+        guard let editWork = editWork else {
+            return false
+        }
+        switch editWork.layout {
         case .middleBody, .rightBody, .rightLargeBody:
             return true
         case .leftBody, .leftLargeBody:
@@ -54,7 +56,10 @@ class EditWorksViewModel: ObservableObject {
     }
     
     var canMoveBodyRight: Bool {
-        switch workLayout {
+        guard let editWork = editWork else {
+            return false
+        }
+        switch editWork.layout {
         case .leftBody, .middleBody, .leftLargeBody:
             return true
         case .rightBody, .rightLargeBody:
@@ -63,7 +68,10 @@ class EditWorksViewModel: ObservableObject {
     }
     
     var changeBodyBoxStateTitle: String {
-        switch workLayout {
+        guard let editWork = editWork else {
+            return ""
+        }
+        switch editWork.layout {
         case .leftBody, .middleBody, .rightBody:
             return "Expand"
         case .leftLargeBody, .rightLargeBody:
@@ -74,45 +82,57 @@ class EditWorksViewModel: ObservableObject {
     private let worksService: WorksAPIService
     private var subscriptions = Set<AnyCancellable>()
     
-    init(workType: Work.WorkType, availableTags: [String], isPresented: Binding<Bool>) {
-        self.work = nil
-        self.workType = workType
-        self.titleText = ""
-        self.descriptionText = ""
-        self.tags = []
+    init(editWork: Binding<EditWork?>, availableTags: [String]) {
+        self._editWork = editWork
         self.availableTags = availableTags
-        self.seeMoreLink = ""
-        self._isPresented = isPresented
-        self._workToEdit = .constant(nil)
-        self.workLayout = .leftBody
-        self.worksService = WorksAPIService(workType: workType)
-    }
-    
-    init(work: Work, workType: Work.WorkType, availableTags: [String], workToEdit: Binding<Work?>) {
-        self.work = work
-        self.workType = workType
-        self.titleText = work.title
-        self.descriptionText = work.description
-        self.tags = work.tags
-        self.availableTags = availableTags
-        self.seeMoreLink = work.seeMoreLink?.absoluteString ?? ""
-        self._isPresented = .constant(false)
-        self._workToEdit = workToEdit
-        self.workLayout = work.layout
-        self.worksService = WorksAPIService(workType: workType)
+        self.worksService = WorksAPIService(workType: editWork.wrappedValue?.type ?? .cover)
+        
+        _seeMoreLink = .init(get: {
+            editWork.wrappedValue?.seeMoreLink ?? ""
+        }, set: { newValue in
+            editWork.wrappedValue?.seeMoreLink = newValue
+        })
+        _titleText = .init(get: {
+            editWork.wrappedValue?.title ?? ""
+        }, set: { newValue in
+            editWork.wrappedValue?.title = newValue
+        })
+        _descriptionText = .init(get: {
+            editWork.wrappedValue?.description ?? ""
+        }, set: { newValue in
+            editWork.wrappedValue?.description = newValue
+        })
+        _tags = .init(get: {
+            editWork.wrappedValue?.tags ?? []
+        }, set: { newValue in
+            editWork.wrappedValue?.tags = newValue
+        })
+        _newFirstImagePath = .init(get: {
+            editWork.wrappedValue?.newFirstImagePath
+        }, set: { newValue in
+            editWork.wrappedValue?.newFirstImagePath = newValue
+        })
+        _newSecondImagePath = .init(get: {
+            editWork.wrappedValue?.newSecondImagePath
+        }, set: { newValue in
+            editWork.wrappedValue?.newSecondImagePath = newValue
+        })
     }
     
     func createOrUpdate() {
+        guard let editWork = editWork else {
+            return
+        }
         let newWork = Work.Create(
-            type: workType,
-            title: titleText,
-            description: descriptionText,
-            layout: workLayout,
-            seeMoreLink: URL(string: seeMoreLink),
-            tags: tags
+            type: editWork.type,
+            title: editWork.title,
+            description: editWork.description,
+            layout: editWork.layout,
+            seeMoreLink: URL(string: editWork.seeMoreLink),
+            tags: editWork.tags
         )
-        if let work = work {
-            update(workID: work.id, to: newWork)
+        if let id = editWork.id {
+            update(workID: id, to: newWork)
         } else {
             create(newWork: newWork)
         }
@@ -133,8 +153,7 @@ class EditWorksViewModel: ObservableObject {
             .sink { [weak self] completion in
                 switch completion {
                 case .finished:
-                    self?.isPresented = false
-                    self?.workToEdit = nil
+                    self?.editWork = nil
                     self?.isLoading = false
                 case .failure(let error):
                     print("Create Error:", error)
@@ -162,8 +181,7 @@ class EditWorksViewModel: ObservableObject {
             .sink { [weak self] completion in
                 switch completion {
                 case .finished:
-                    self?.isPresented = false
-                    self?.workToEdit = nil
+                    self?.editWork = nil
                     self?.isLoading = false
                 case .failure(let error):
                     self?.isLoading = false
@@ -176,15 +194,15 @@ class EditWorksViewModel: ObservableObject {
     }
     
     func deleteTag(_ tagToDelete: String) {
-        guard let indexToDelete = tags.firstIndex(of: tagToDelete) else {
+        guard let indexToDelete = editWork?.tags.firstIndex(of: tagToDelete) else {
             return
         }
-        tags.remove(at: indexToDelete)
+        editWork?.tags.remove(at: indexToDelete)
     }
     
     func addTag(_ tagToAdd: String) {
-        guard !tags.contains(tagToAdd) else { return }
-        tags.append(tagToAdd)
+        guard !(editWork?.tags.contains(tagToAdd) ?? false) else { return }
+        editWork?.tags.append(tagToAdd)
     }
     
     private func addNewImages(to work: Work) -> AnyPublisher<Void, Error> {
@@ -197,7 +215,7 @@ class EditWorksViewModel: ObservableObject {
     }
     
     private func addNewFirstImageIfNeeded(to work: Work) -> AnyPublisher<Void, Error> {
-        if let imagePath = newFirstImagePath {
+        if let imagePath = editWork?.newFirstImagePath {
             return worksService.addFirstImage(from: imagePath, to: work.id)
         } else {
             return Just(())
@@ -208,7 +226,7 @@ class EditWorksViewModel: ObservableObject {
     }
     
     private func addNewSecondImageIfNeeded(to work: Work) -> AnyPublisher<Void, Error> {
-        if let imagePath = newSecondImagePath {
+        if let imagePath = editWork?.newSecondImagePath {
             return worksService.addSecondImage(from: imagePath, to: work.id)
         } else {
             return Just(())
@@ -219,41 +237,47 @@ class EditWorksViewModel: ObservableObject {
     }
     
     func moveBodyRight() {
-        switch workLayout {
+        switch editWork?.layout {
         case .leftBody:
-            workLayout = .middleBody
+            editWork?.layout = .middleBody
         case .middleBody:
-            workLayout = .rightBody
+            editWork?.layout = .rightBody
         case .leftLargeBody:
-            workLayout = .rightLargeBody
+            editWork?.layout = .rightLargeBody
         case .rightBody, .rightLargeBody:
+            break
+        case .none:
             break
         }
     }
     
     func moveBodyLeft() {
-        switch workLayout {
+        switch editWork?.layout {
         case .middleBody:
-            workLayout = .leftBody
+            editWork?.layout = .leftBody
         case .rightBody:
-            workLayout = .middleBody
+            editWork?.layout = .middleBody
         case .rightLargeBody:
-            workLayout = .leftLargeBody
+            editWork?.layout = .leftLargeBody
         case .leftBody, .leftLargeBody:
+            break
+        case .none:
             break
         }
     }
     
     func changeBodyBoxState() {
-        switch workLayout {
+        switch editWork?.layout {
         case .leftBody:
-            workLayout = .leftLargeBody
+            editWork?.layout = .leftLargeBody
         case .middleBody, .rightBody:
-            workLayout = .rightLargeBody
+            editWork?.layout = .rightLargeBody
         case .leftLargeBody:
-            workLayout = .leftBody
+            editWork?.layout = .leftBody
         case .rightLargeBody:
-            workLayout = .middleBody
+            editWork?.layout = .middleBody
+        case .none:
+            break
         }
     }
     

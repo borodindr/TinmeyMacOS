@@ -11,45 +11,50 @@ struct SettingsView: View {
     @ObservedObject var viewModel = SettingsViewModel()
     
     var body: some View {
-        List {
-            if viewModel.isAuthorized {
-                VStack(alignment: .leading, spacing: 32) {
+        ScrollView {
+            HStack {
+                if viewModel.isAuthorized {
+                    VStack(alignment: .leading, spacing: 32) {
+                        VStack(alignment: .leading) {
+                            Text("Authorized")
+                            Button(action: viewModel.logout) {
+                                Text("Logout")
+                            }
+                            .disabled(viewModel.isLoading)
+                        }
+                        
+                        VStack(alignment: .leading) {
+                            Text("Change password:")
+                            SecureField("Current password", text: $viewModel.currentPassword)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                            SecureField("New password", text: $viewModel.newPassword)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                            SecureField("Repeat new password", text: $viewModel.repeatNewPassword)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                            
+                            Button(action: viewModel.changePassword) {
+                                Text("Change password")
+                            }
+                        }
+                    }
+                    .padding()
+                    .frame(width: 300)
+                } else {
                     VStack(alignment: .leading) {
-                        Text("Authorized")
-                        Button(action: viewModel.logout) {
-                            Text("Logout")
+                        Text("Authorize")
+                        TextField("Username", text: $viewModel.username)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        SecureField("Password", text: $viewModel.password)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        Button(action: viewModel.login) {
+                            Text("Login")
                         }
                         .disabled(viewModel.isLoading)
                     }
-                    
-                    VStack(alignment: .leading) {
-                        Text("Change password:")
-                        SecureField("Current password", text: $viewModel.currentPassword)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                        SecureField("New password", text: $viewModel.newPassword)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                        SecureField("Repeat new password", text: $viewModel.repeatNewPassword)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                        
-                        Button(action: viewModel.changePassword) {
-                            Text("Change password")
-                        }
-                    }
+                    .padding()
+                    .frame(width: 300)
                 }
-                .frame(width: 300)
-            } else {
-                VStack(alignment: .leading) {
-                    Text("Authorize")
-                    TextField("Username", text: $viewModel.username)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                    SecureField("Password", text: $viewModel.password)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                    Button(action: viewModel.login) {
-                        Text("Login")
-                    }
-                    .disabled(viewModel.isLoading)
-                }
-                .frame(width: 300)
+                Spacer()
             }
         }
         .alert(item: $viewModel.alert) { alert in

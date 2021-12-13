@@ -63,6 +63,7 @@
 		32932A6C272B20FB004DD0B9 /* APIURLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32932A6B272B20FB004DD0B9 /* APIURLBuilder.swift */; };
 		32932A6E272B219B004DD0B9 /* InfoPlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32932A6D272B219B004DD0B9 /* InfoPlist.swift */; };
 		32932A7327309B36004DD0B9 /* TextArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32932A7227309B36004DD0B9 /* TextArea.swift */; };
+		329811ED276588AD007351D6 /* EditWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329811EC276588AD007351D6 /* EditWork.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +144,7 @@
 		32932A6B272B20FB004DD0B9 /* APIURLBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIURLBuilder.swift; sourceTree = "<group>"; };
 		32932A6D272B219B004DD0B9 /* InfoPlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPlist.swift; sourceTree = "<group>"; };
 		32932A7227309B36004DD0B9 /* TextArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextArea.swift; sourceTree = "<group>"; };
+		329811EC276588AD007351D6 /* EditWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWork.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				3236C7B726DC0EFB002122B3 /* APIModels.swift */,
+				329811EC276588AD007351D6 /* EditWork.swift */,
 				3236C7B826DC0EFB002122B3 /* BookCover.swift */,
 				3236C7B926DC0EFB002122B3 /* AppSection.swift */,
 				3234CBBE2714C0E10069A3CC /* AlertType.swift */,
@@ -503,6 +506,7 @@
 			files = (
 				32932A6C272B20FB004DD0B9 /* APIURLBuilder.swift in Sources */,
 				3236C7D226DC0F6C002122B3 /* WorkView.swift in Sources */,
+				329811ED276588AD007351D6 /* EditWork.swift in Sources */,
 				32932A6E272B219B004DD0B9 /* InfoPlist.swift in Sources */,
 				3234CBB4271491730069A3CC /* HomeViewModel.swift in Sources */,
 				3234CBBB2714BEA20069A3CC /* SectionsAPIService.swift in Sources */,
