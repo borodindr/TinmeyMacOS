@@ -174,13 +174,13 @@ struct EditWorkView: View {
     
     var moveLeftButton: some View {
         Button(action: viewModel.moveBodyLeft) {
-            Image("arrow_left")
+            Image(nsImage: NSImage(named: NSImage.touchBarGoBackTemplateName)!)
         }
     }
     
     var moveRightButton: some View {
         Button(action: viewModel.moveBodyRight) {
-            Image("arrow_right")
+            Image(nsImage: NSImage(named: NSImage.touchBarGoForwardTemplateName)!)
         }
     }
     

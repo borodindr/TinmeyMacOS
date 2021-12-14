@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AppKit
 
 enum AppSection {
     case home
@@ -15,16 +16,16 @@ enum AppSection {
 }
 
 extension AppSection {
-    var imageName: String {
+    var imageName: String? {
         switch self {
         case .home:
-            return "house"
+            return NSImage.homeTemplateName
         case .covers:
-            return "book"
+            return nil
         case .layouts:
-            return "book_closed"
+            return nil
         case .settings:
-            return "gear"
+            return NSImage.smartBadgeTemplateName
         }
     }
     

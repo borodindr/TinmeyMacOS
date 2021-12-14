@@ -22,9 +22,12 @@ struct TabButton: View {
 //            }
         }, label: {
             VStack(spacing: 7) {
-                Image(section.imageName)
-                    .font(.system(size: 16, weight: .semibold))
-                    .foregroundColor(isSelected ? .white : .gray)
+                if let imageName = section.imageName,
+                   let image = NSImage(named: imageName) {
+                    Image(nsImage: image)
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundColor(isSelected ? .white : .gray)
+                }
                 
                 Text(section.title)
                     .fontWeight(.semibold)

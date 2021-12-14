@@ -18,7 +18,7 @@ struct TagView: View {
                 .fixedSize()
             if let onDelete = onDelete {
                 Button(action: onDelete) {
-                    Image("clear_fill")
+                    Image(nsImage: NSImage(named: NSImage.stopProgressFreestandingTemplateName)!)
                 }
                 .buttonStyle(BorderlessButtonStyle())
             }

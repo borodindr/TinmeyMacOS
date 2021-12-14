@@ -80,7 +80,7 @@ struct WorkView: View {
                     Button {
                         onMoveUp(work)
                     } label: {
-                        Image("arrow_up")
+                        Image(nsImage: NSImage(named: NSImage.touchBarGoUpTemplateName)!)
                     }
                 }
                 
@@ -88,7 +88,7 @@ struct WorkView: View {
                     Button {
                         onMoveDown(work)
                     } label: {
-                        Image("arrow_down")
+                        Image(nsImage: NSImage(named: NSImage.touchBarGoDownTemplateName)!)
                     }
                 }
             }
@@ -96,13 +96,13 @@ struct WorkView: View {
             Button {
                 onEdit(work)
             } label: {
-                Image("edit")
+                Image(nsImage: NSImage(named: NSImage.touchBarComposeTemplateName)!)
             }
             
             Button {
                 onDelete(work)
             } label: {
-                Image("trash")
+                Image(nsImage: NSImage(named: NSImage.touchBarDeleteTemplateName)!)
             }
         }
     }

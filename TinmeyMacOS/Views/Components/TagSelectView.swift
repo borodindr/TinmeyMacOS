@@ -29,7 +29,7 @@ struct TagSelectView: View {
             Button {
                 onSelect(availableTags[selectedTagIndex])
             } label: {
-                Image("add")
+                Image(nsImage: NSImage(named: NSImage.touchBarAddTemplateName)!)
             }
             .buttonStyle(PlainButtonStyle())
             .disabled(disableAddButton)

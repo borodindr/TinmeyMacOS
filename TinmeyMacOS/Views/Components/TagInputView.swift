@@ -20,7 +20,7 @@ struct TagInputView: View {
                 onSave(name)
                 name = ""
             } label: {
-                Image("add")
+                Image(nsImage: NSImage(named: NSImage.touchBarAddTemplateName)!)
             }
             .buttonStyle(BorderlessButtonStyle())
         }
