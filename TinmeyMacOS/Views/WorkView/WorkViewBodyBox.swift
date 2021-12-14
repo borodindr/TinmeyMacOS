@@ -11,7 +11,7 @@ struct WorkViewBodyBox: View {
     let title: String
     let description: String
     let tags: [String]
-    let onSeeWork: () -> ()
+    var seeMoreLink: URL?
     
     var body: some View {
         HStack {
@@ -23,15 +23,17 @@ struct WorkViewBodyBox: View {
                     .foregroundColor(.secondary)
                 Spacer()
                 TagsListView(tags: tags)
-                Button("See work") {
-                    onSeeWork()
+                if let link = seeMoreLink {
+                    Button("See work") {
+                        NSWorkspace.shared.open(link)
+                    }
+                    .font(.system(size: 13))
+                    .buttonStyle(PlainButtonStyle())
+                    .padding(.horizontal, 7)
+                    .padding(.vertical, 5)
+                    .background(Color.secondary)
+                    .cornerRadius(2.5)
                 }
-                .font(.system(size: 13))
-                .buttonStyle(PlainButtonStyle())
-                .padding(.horizontal, 7)
-                .padding(.vertical, 5)
-                .background(Color.secondary)
-                .cornerRadius(2.5)
             }
             Spacer()
         }
@@ -48,8 +50,7 @@ struct WorkViewBodyBox_Previews: PreviewProvider {
         WorkViewBodyBox(
             title: work.title,
             description: work.description,
-            tags: work.tags) {
-                print("See work")
-            }
+            tags: work.tags
+        )
     }
 }

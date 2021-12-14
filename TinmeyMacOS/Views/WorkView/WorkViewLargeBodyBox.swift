@@ -11,11 +11,11 @@ struct WorkViewLargeBodyBox: View {
     let title: String
     let description: String
     let tags: [String]
-    let onSeeWork: () -> ()
+    var seeMoreLink: URL?
     
     var body: some View {
         HStack {
-            WorkViewBodyBox(title: title, description: description, tags: tags, onSeeWork: onSeeWork)
+            WorkViewBodyBox(title: title, description: description, tags: tags, seeMoreLink: seeMoreLink)
             Spacer()
         }
         .frame(width: 600, height: 300)
@@ -25,8 +25,6 @@ struct WorkViewLargeBodyBox: View {
 struct WorkViewLargeBodyBox_Previews: PreviewProvider {
     static var previews: some View {
         let work = Work.preview
-        WorkViewLargeBodyBox(title: work.title, description: work.description, tags: work.tags) {
-            print("See work")
-        }
+        WorkViewLargeBodyBox(title: work.title, description: work.description, tags: work.tags, seeMoreLink: work.seeMoreLink)
     }
 }

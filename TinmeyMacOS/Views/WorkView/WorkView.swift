@@ -14,21 +14,12 @@ struct WorkView: View {
     var onEdit: (Work) -> ()
     var onDelete: (Work) -> ()
     
-    @State private var showControls = false
-    
     var body: some View {
         HStack(spacing: 20) {
             boxesForLayout
                 .background(Color.black)
                 .border(Color.gray, width: 1)
-            if showControls {
-                controls
-            }
-        }
-        .onHover { isHovering in
-            withAnimation {
-                showControls = isHovering
-            }
+            controls
         }
     }
     
@@ -40,7 +31,7 @@ struct WorkView: View {
                 WorkViewBodyBox(title: work.title,
                                 description: work.description,
                                 tags: work.tags,
-                                onSeeWork: onSeeWork)
+                                seeMoreLink: work.seeMoreLink)
                 WorkViewImageBox(imageURL: work.firstImageURL)
                 WorkViewImageBox(imageURL: work.secondImageURL)
             case .middleBody:
@@ -48,7 +39,7 @@ struct WorkView: View {
                 WorkViewBodyBox(title: work.title,
                                 description: work.description,
                                 tags: work.tags,
-                                onSeeWork: onSeeWork)
+                                seeMoreLink: work.seeMoreLink)
                 WorkViewImageBox(imageURL: work.secondImageURL)
             case .rightBody:
                 WorkViewImageBox(imageURL: work.firstImageURL)
@@ -56,19 +47,19 @@ struct WorkView: View {
                 WorkViewBodyBox(title: work.title,
                                 description: work.description,
                                 tags: work.tags,
-                                onSeeWork: onSeeWork)
+                                seeMoreLink: work.seeMoreLink)
             case .leftLargeBody:
                 WorkViewLargeBodyBox(title: work.title,
                                      description: work.description,
                                      tags: work.tags,
-                                     onSeeWork: onSeeWork)
+                                     seeMoreLink: work.seeMoreLink)
                 WorkViewImageBox(imageURL: work.firstImageURL)
             case .rightLargeBody:
                 WorkViewImageBox(imageURL: work.firstImageURL)
                 WorkViewLargeBodyBox(title: work.title,
-                                description: work.description,
+                                     description: work.description,
                                      tags: work.tags,
-                                onSeeWork: onSeeWork)
+                                     seeMoreLink: work.seeMoreLink)
             }
         }
     }
@@ -82,6 +73,7 @@ struct WorkView: View {
                     } label: {
                         Image(nsImage: NSImage(named: NSImage.touchBarGoUpTemplateName)!)
                     }
+                    .buttonStyle(PlainButtonStyle())
                 }
                 
                 if let onMoveDown = onMoveDown {
@@ -90,6 +82,7 @@ struct WorkView: View {
                     } label: {
                         Image(nsImage: NSImage(named: NSImage.touchBarGoDownTemplateName)!)
                     }
+                    .buttonStyle(PlainButtonStyle())
                 }
             }
             
@@ -98,20 +91,17 @@ struct WorkView: View {
             } label: {
                 Image(nsImage: NSImage(named: NSImage.touchBarComposeTemplateName)!)
             }
+            .buttonStyle(PlainButtonStyle())
             
             Button {
                 onDelete(work)
             } label: {
                 Image(nsImage: NSImage(named: NSImage.touchBarDeleteTemplateName)!)
             }
+            .buttonStyle(PlainButtonStyle())
         }
     }
     
-    private func onSeeWork() {
-        if let url = work.seeMoreLink {
-            NSWorkspace.shared.open(url)
-        }
-    }
 }
 
 struct BookCoverView_Previews: PreviewProvider {
