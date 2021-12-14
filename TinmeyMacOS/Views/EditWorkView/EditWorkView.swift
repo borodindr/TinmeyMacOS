@@ -106,6 +106,7 @@ struct EditWorkView: View {
             EditWorkViewBodyBox(title: $viewModel.titleText,
                                 description: $viewModel.descriptionText,
                                 tags: viewModel.tags,
+                                needSeeMoreLink: viewModel.seeMoreLink != "",
                                 onTagDelete: viewModel.deleteTag)
                 .background(Color.black)
                 .border(Color.gray, width: 1)
@@ -119,6 +120,7 @@ struct EditWorkView: View {
                 EditWorkViewBodyBox(title: $viewModel.titleText,
                                     description: $viewModel.descriptionText,
                                     tags: viewModel.tags,
+                                    needSeeMoreLink: viewModel.seeMoreLink != "",
                                     onTagDelete: viewModel.deleteTag)
                 Spacer()
             }
