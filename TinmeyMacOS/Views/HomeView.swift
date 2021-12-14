@@ -9,7 +9,6 @@ import SwiftUI
 import TinmeyCore
 
 struct HomeView: View {
-    @ObservedObject var viewModel = HomeViewModel()
     private let sections: [SectionAPIModel.SectionType] = [
         .covers,
         .layouts]

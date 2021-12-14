@@ -14,15 +14,13 @@ final class EditProfileViewModel: ObservableObject {
     @Published var alert: AlertType? = nil
     @Published var name = ""
     @Published var email = ""
+    @Published var location = ""
     @Published var shortAbout = ""
     @Published var about = ""
     
     private let service = ProfileAPIService()
     private var subscriptions = Set<AnyCancellable>()
     
-    init() {
-//        getProfile()
-    }
     
     func getProfile() {
         isLoading = true
@@ -39,6 +37,7 @@ final class EditProfileViewModel: ObservableObject {
             } receiveValue: { [weak self] profile in
                 self?.name = profile.name
                 self?.email = profile.email
+                self?.location = profile.location
                 self?.shortAbout = profile.shortAbout
                 self?.about = profile.about
             }
@@ -49,6 +48,7 @@ final class EditProfileViewModel: ObservableObject {
         let newProfile = ProfileAPIModel(
             name: name,
             email: email,
+            location: location,
             shortAbout: shortAbout,
             about: about
         )
@@ -65,6 +65,7 @@ final class EditProfileViewModel: ObservableObject {
             } receiveValue: { [weak self] profile in
                 self?.name = profile.name
                 self?.email = profile.email
+                self?.location = profile.location
                 self?.shortAbout = profile.shortAbout
                 self?.about = profile.about
             }
