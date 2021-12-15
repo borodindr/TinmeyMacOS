@@ -6,7 +6,7 @@
 //
 
 import XCTest
-import TinmeyMacOS
+@testable import TinmeyMacOS
 
 class TinmeyMacOSTests: XCTestCase {
 

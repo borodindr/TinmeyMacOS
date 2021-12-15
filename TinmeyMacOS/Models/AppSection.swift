@@ -16,16 +16,16 @@ enum AppSection {
 }
 
 extension AppSection {
-    var imageName: String? {
+    var imageName: String {
         switch self {
         case .home:
-            return NSImage.homeTemplateName
+            return "house"
         case .covers:
-            return nil
+            return "book_cover"
         case .layouts:
-            return nil
+            return "book_open"
         case .settings:
-            return NSImage.smartBadgeTemplateName
+            return "gear"
         }
     }
     

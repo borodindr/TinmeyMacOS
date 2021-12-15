@@ -26,16 +26,15 @@ struct TagSelectView: View {
             .frame(minWidth: 100)
             .fixedSize()
             
-            Button {
+            
+            IconButton("add") {
                 onSelect(availableTags[selectedTagIndex])
-            } label: {
-                Image(nsImage: NSImage(named: NSImage.touchBarAddTemplateName)!)
             }
-            .buttonStyle(PlainButtonStyle())
             .disabled(disableAddButton)
         }
         .padding(.vertical, 4)
         .padding(.horizontal, 6)
+        .padding(.trailing, 4)
         .background(Color.blue)
         .clipShape(Capsule())
     }

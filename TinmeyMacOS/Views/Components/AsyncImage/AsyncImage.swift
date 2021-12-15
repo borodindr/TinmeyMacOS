@@ -43,7 +43,7 @@ struct AsyncImage_Previews: PreviewProvider {
             .path("EEDC3EB8-CE9E-4AE5-8D3B-03ADB2EDEEA0")
             .buildURL()
         return AsyncImage(url: url) {
-            Image(nsImage: NSImage(named: NSImage.addTemplateName)!)
+            Image("no_image")
         }
     }
 }

@@ -17,17 +17,14 @@ struct TabButton: View {
     
     var body: some View {
         Button(action: {
-//            withAnimation {
-                selectedSection = section
-//            }
+            selectedSection = section
         }, label: {
             VStack(spacing: 7) {
-                if let imageName = section.imageName,
-                   let image = NSImage(named: imageName) {
-                    Image(nsImage: image)
-                        .font(.system(size: 16, weight: .semibold))
-                        .foregroundColor(isSelected ? .white : .gray)
-                }
+                Image(section.imageName)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 24, height: 24)
+                    .foregroundColor(isSelected ? .white : .gray)
                 
                 Text(section.title)
                     .fontWeight(.semibold)

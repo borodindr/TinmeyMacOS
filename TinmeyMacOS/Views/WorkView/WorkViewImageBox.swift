@@ -12,7 +12,10 @@ struct WorkViewImageBox: View {
     
     var body: some View {
         AsyncImage(url: imageURL) {
-            Image(nsImage: NSImage(named: NSImage.touchBarBookmarksTemplateName)!)
+            Image("no_image")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 40, height: 40)
         }
         .aspectRatio(contentMode: .fit)
         .frame(width: 300, height: 300)

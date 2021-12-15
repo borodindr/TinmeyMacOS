@@ -10,22 +10,24 @@ import SwiftUI
 struct TagInputView: View {
     @State var name = ""
     var onSave: (String) -> ()
+    private var disableAddButton: Bool {
+        name == ""
+    }
     
     var body: some View {
         HStack {
             TextField("Enter new tag name", text: $name)
                 .font(.caption)
                 .fixedSize()
-            Button {
+            IconButton("add") {
                 onSave(name)
                 name = ""
-            } label: {
-                Image(nsImage: NSImage(named: NSImage.touchBarAddTemplateName)!)
             }
-            .buttonStyle(BorderlessButtonStyle())
+            .disabled(disableAddButton)
         }
         .padding(.vertical, 4)
         .padding(.horizontal, 6)
+        .padding(.trailing, 4)
         .background(Color.blue)
         .clipShape(Capsule())
     }

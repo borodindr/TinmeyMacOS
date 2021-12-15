@@ -11,6 +11,11 @@ struct IconButton: View {
     let iconName: String
     let action: () -> ()
     
+    init(_ iconName: String, action: @escaping () -> ()) {
+        self.iconName = iconName
+        self.action = action
+    }
+    
     var body: some View {
         Button(action: action) {
             Image(iconName)

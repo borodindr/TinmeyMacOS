@@ -165,12 +165,12 @@ struct EditWorkView: View {
     var bodyBoxControls: some View {
         HStack {
             if viewModel.canMoveBodyLeft {
-                IconButton(iconName: "arrow_left",
+                IconButton("arrow_left",
                            action: viewModel.moveBodyLeft)
             }
             changeBodyBoxStateButton
             if viewModel.canMoveBodyRight {
-                IconButton(iconName: "arrow_right",
+                IconButton("arrow_right",
                            action: viewModel.moveBodyRight)
             }
         }

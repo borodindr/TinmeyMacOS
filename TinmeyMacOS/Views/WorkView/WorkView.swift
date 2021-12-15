@@ -65,34 +65,30 @@ struct WorkView: View {
     }
     
     private var controls: some View {
-        HStack {
-            VStack {
-                if let onMoveUp = onMoveUp {
-                    IconButton(iconName: "arrow_up") {
-                        onMoveUp(work)
+        HStack(spacing: 16) {
+            if onMoveUp != nil || onMoveDown != nil {
+                VStack(spacing: 16) {
+                    if let onMoveUp = onMoveUp {
+                        IconButton("arrow_up") {
+                            onMoveUp(work)
+                        }
                     }
-                }
-                
-                if let onMoveDown = onMoveDown {
-                    IconButton(iconName: "arrow_down") {
-                        onMoveDown(work)
+                    
+                    if let onMoveDown = onMoveDown {
+                        IconButton("arrow_down") {
+                            onMoveDown(work)
+                        }
                     }
                 }
             }
             
-            Button {
+            IconButton("edit") {
                 onEdit(work)
-            } label: {
-                Image(nsImage: NSImage(named: NSImage.touchBarComposeTemplateName)!)
             }
-            .buttonStyle(PlainButtonStyle())
             
-            Button {
+            IconButton("trash") {
                 onDelete(work)
-            } label: {
-                Image(nsImage: NSImage(named: NSImage.touchBarDeleteTemplateName)!)
             }
-            .buttonStyle(PlainButtonStyle())
         }
     }
     

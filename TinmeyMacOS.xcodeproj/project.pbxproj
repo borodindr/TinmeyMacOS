@@ -31,7 +31,6 @@
 		3236C78F26DC0EBF002122B3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3236C78E26DC0EBF002122B3 /* Preview Assets.xcassets */; };
 		3236C79226DC0EBF002122B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3236C79026DC0EBF002122B3 /* Main.storyboard */; };
 		3236C79E26DC0EBF002122B3 /* TinmeyMacOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C79D26DC0EBF002122B3 /* TinmeyMacOSTests.swift */; };
-		3236C7A926DC0EBF002122B3 /* TinmeyMacOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7A826DC0EBF002122B3 /* TinmeyMacOSUITests.swift */; };
 		3236C7BA26DC0EFB002122B3 /* APIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7B726DC0EFB002122B3 /* APIModels.swift */; };
 		3236C7BB26DC0EFB002122B3 /* BookCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7B826DC0EFB002122B3 /* BookCover.swift */; };
 		3236C7BC26DC0EFB002122B3 /* AppSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C7B926DC0EFB002122B3 /* AppSection.swift */; };
@@ -74,13 +73,6 @@
 			remoteGlobalIDString = 3236C78026DC0EBC002122B3;
 			remoteInfo = TinmeyMacOS;
 		};
-		3236C7A526DC0EBF002122B3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3236C77926DC0EBC002122B3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3236C78026DC0EBC002122B3;
-			remoteInfo = TinmeyMacOS;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -102,7 +94,7 @@
 		3234CBBE2714C0E10069A3CC /* AlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertType.swift; sourceTree = "<group>"; };
 		3234CBC0271591670069A3CC /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		3234CBC2271591770069A3CC /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
-		3236C78126DC0EBC002122B3 /* Tinmey portfolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tinmey portfolio.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3236C78126DC0EBC002122B3 /* TinmeyMacOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinmeyMacOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3236C78426DC0EBC002122B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3236C78926DC0EBC002122B3 /* TinmeyMacOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TinmeyMacOS.xcdatamodel; sourceTree = "<group>"; };
 		3236C78B26DC0EBF002122B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -113,9 +105,6 @@
 		3236C79926DC0EBF002122B3 /* TinmeyMacOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinmeyMacOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3236C79D26DC0EBF002122B3 /* TinmeyMacOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinmeyMacOSTests.swift; sourceTree = "<group>"; };
 		3236C79F26DC0EBF002122B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3236C7A426DC0EBF002122B3 /* TinmeyMacOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinmeyMacOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3236C7A826DC0EBF002122B3 /* TinmeyMacOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinmeyMacOSUITests.swift; sourceTree = "<group>"; };
-		3236C7AA26DC0EBF002122B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3236C7B726DC0EFB002122B3 /* APIModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIModels.swift; sourceTree = "<group>"; };
 		3236C7B826DC0EFB002122B3 /* BookCover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCover.swift; sourceTree = "<group>"; };
 		3236C7B926DC0EFB002122B3 /* AppSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSection.swift; sourceTree = "<group>"; };
@@ -165,13 +154,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3236C7A126DC0EBF002122B3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -200,7 +182,6 @@
 			children = (
 				3236C78326DC0EBC002122B3 /* TinmeyMacOS */,
 				3236C79C26DC0EBF002122B3 /* TinmeyMacOSTests */,
-				3236C7A726DC0EBF002122B3 /* TinmeyMacOSUITests */,
 				3236C78226DC0EBC002122B3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -208,9 +189,8 @@
 		3236C78226DC0EBC002122B3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3236C78126DC0EBC002122B3 /* Tinmey portfolio.app */,
+				3236C78126DC0EBC002122B3 /* TinmeyMacOS.app */,
 				3236C79926DC0EBF002122B3 /* TinmeyMacOSTests.xctest */,
-				3236C7A426DC0EBF002122B3 /* TinmeyMacOSUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -250,15 +230,6 @@
 				3236C79F26DC0EBF002122B3 /* Info.plist */,
 			);
 			path = TinmeyMacOSTests;
-			sourceTree = "<group>";
-		};
-		3236C7A726DC0EBF002122B3 /* TinmeyMacOSUITests */ = {
-			isa = PBXGroup;
-			children = (
-				3236C7A826DC0EBF002122B3 /* TinmeyMacOSUITests.swift */,
-				3236C7AA26DC0EBF002122B3 /* Info.plist */,
-			);
-			path = TinmeyMacOSUITests;
 			sourceTree = "<group>";
 		};
 		3236C7B626DC0EFB002122B3 /* Models */ = {
@@ -385,7 +356,7 @@
 				324BEB6727170909001AEE0D /* WrappingHStack */,
 			);
 			productName = TinmeyMacOS;
-			productReference = 3236C78126DC0EBC002122B3 /* Tinmey portfolio.app */;
+			productReference = 3236C78126DC0EBC002122B3 /* TinmeyMacOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 		3236C79826DC0EBF002122B3 /* TinmeyMacOSTests */ = {
@@ -406,24 +377,6 @@
 			productReference = 3236C79926DC0EBF002122B3 /* TinmeyMacOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		3236C7A326DC0EBF002122B3 /* TinmeyMacOSUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3236C7B326DC0EBF002122B3 /* Build configuration list for PBXNativeTarget "TinmeyMacOSUITests" */;
-			buildPhases = (
-				3236C7A026DC0EBF002122B3 /* Sources */,
-				3236C7A126DC0EBF002122B3 /* Frameworks */,
-				3236C7A226DC0EBF002122B3 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				3236C7A626DC0EBF002122B3 /* PBXTargetDependency */,
-			);
-			name = TinmeyMacOSUITests;
-			productName = TinmeyMacOSUITests;
-			productReference = 3236C7A426DC0EBF002122B3 /* TinmeyMacOSUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -437,10 +390,6 @@
 						CreatedOnToolsVersion = 12.5.1;
 					};
 					3236C79826DC0EBF002122B3 = {
-						CreatedOnToolsVersion = 12.5.1;
-						TestTargetID = 3236C78026DC0EBC002122B3;
-					};
-					3236C7A326DC0EBF002122B3 = {
 						CreatedOnToolsVersion = 12.5.1;
 						TestTargetID = 3236C78026DC0EBC002122B3;
 					};
@@ -466,7 +415,6 @@
 			targets = (
 				3236C78026DC0EBC002122B3 /* TinmeyMacOS */,
 				3236C79826DC0EBF002122B3 /* TinmeyMacOSTests */,
-				3236C7A326DC0EBF002122B3 /* TinmeyMacOSUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -484,13 +432,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		3236C79726DC0EBF002122B3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3236C7A226DC0EBF002122B3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -563,14 +504,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3236C7A026DC0EBF002122B3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3236C7A926DC0EBF002122B3 /* TinmeyMacOSUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -578,11 +511,6 @@
 			isa = PBXTargetDependency;
 			target = 3236C78026DC0EBC002122B3 /* TinmeyMacOS */;
 			targetProxy = 3236C79A26DC0EBF002122B3 /* PBXContainerItemProxy */;
-		};
-		3236C7A626DC0EBF002122B3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3236C78026DC0EBC002122B3 /* TinmeyMacOS */;
-			targetProxy = 3236C7A526DC0EBF002122B3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -735,7 +663,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.borodindr.TinmeyMacOS;
-				PRODUCT_NAME = "Tinmey portfolio";
+				PRODUCT_NAME = TinmeyMacOS;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -762,7 +690,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.borodindr.TinmeyMacOS;
-				PRODUCT_NAME = "Tinmey portfolio";
+				PRODUCT_NAME = TinmeyMacOS;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -808,46 +736,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TinmeyMacOS.app/Contents/MacOS/TinmeyMacOS";
-			};
-			name = Release;
-		};
-		3236C7B426DC0EBF002122B3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = UU896HB87U;
-				INFOPLIST_FILE = TinmeyMacOSUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.borodindr.TinmeyMacOSUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = TinmeyMacOS;
-			};
-			name = Debug;
-		};
-		3236C7B526DC0EBF002122B3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = UU896HB87U;
-				INFOPLIST_FILE = TinmeyMacOSUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.borodindr.TinmeyMacOSUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = TinmeyMacOS;
 			};
 			name = Release;
 		};
@@ -934,7 +822,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.borodindr.TinmeyMacOS;
-				PRODUCT_NAME = "Tinmey portfolio";
+				PRODUCT_NAME = TinmeyMacOS;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Stage;
@@ -958,26 +846,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TinmeyMacOS.app/Contents/MacOS/TinmeyMacOS";
-			};
-			name = Stage;
-		};
-		32932A6A272B19BF004DD0B9 /* Stage */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = UU896HB87U;
-				INFOPLIST_FILE = TinmeyMacOSUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.borodindr.TinmeyMacOSUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = TinmeyMacOS;
 			};
 			name = Stage;
 		};
@@ -1010,16 +878,6 @@
 				3236C7B126DC0EBF002122B3 /* Debug */,
 				32932A69272B19BF004DD0B9 /* Stage */,
 				3236C7B226DC0EBF002122B3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3236C7B326DC0EBF002122B3 /* Build configuration list for PBXNativeTarget "TinmeyMacOSUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3236C7B426DC0EBF002122B3 /* Debug */,
-				32932A6A272B19BF004DD0B9 /* Stage */,
-				3236C7B526DC0EBF002122B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
