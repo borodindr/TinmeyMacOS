@@ -12,6 +12,7 @@ struct EditWorkViewBodyBox: View {
     @Binding var title: String
     @Binding var description: String
     var tags: [String] = []
+    var needSeeMoreLink: Bool
     var onTagDelete: (String) -> ()
     
 //    init(title: Binding<String>, description: Binding<String>) {
@@ -63,8 +64,10 @@ struct EditWorkViewBodyBox: View {
                             .stroke(Color.secondary, lineWidth: 0.5))
                 Spacer()
                 TagsListView(tags: tags, onDelete: onTagDelete)
-
-                BoxLinkButton(text: "See work")
+                
+                if needSeeMoreLink {
+                    BoxLinkButton(text: "See work")
+                }
             }
             Spacer()
         }
@@ -94,7 +97,8 @@ struct EditWorkViewBodyBox_Previews: PreviewProvider {
         let work = Work.preview
         EditWorkViewBodyBox(
             title: .constant(work.title),
-            description: .constant(work.description)) { _ in
+            description: .constant(work.description),
+            needSeeMoreLink: work.seeMoreLink != nil) { _ in
                 
             }
     }

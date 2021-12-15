@@ -106,6 +106,7 @@ struct EditWorkView: View {
             EditWorkViewBodyBox(title: $viewModel.titleText,
                                 description: $viewModel.descriptionText,
                                 tags: viewModel.tags,
+                                needSeeMoreLink: viewModel.seeMoreLink != "",
                                 onTagDelete: viewModel.deleteTag)
                 .background(Color.black)
                 .border(Color.gray, width: 1)
@@ -119,6 +120,7 @@ struct EditWorkView: View {
                 EditWorkViewBodyBox(title: $viewModel.titleText,
                                     description: $viewModel.descriptionText,
                                     tags: viewModel.tags,
+                                    needSeeMoreLink: viewModel.seeMoreLink != "",
                                     onTagDelete: viewModel.deleteTag)
                 Spacer()
             }
@@ -163,24 +165,14 @@ struct EditWorkView: View {
     var bodyBoxControls: some View {
         HStack {
             if viewModel.canMoveBodyLeft {
-                moveLeftButton
+                IconButton(iconName: "arrow_left",
+                           action: viewModel.moveBodyLeft)
             }
             changeBodyBoxStateButton
             if viewModel.canMoveBodyRight {
-                moveRightButton
+                IconButton(iconName: "arrow_right",
+                           action: viewModel.moveBodyRight)
             }
-        }
-    }
-    
-    var moveLeftButton: some View {
-        Button(action: viewModel.moveBodyLeft) {
-            Image(nsImage: NSImage(named: NSImage.touchBarGoBackTemplateName)!)
-        }
-    }
-    
-    var moveRightButton: some View {
-        Button(action: viewModel.moveBodyRight) {
-            Image(nsImage: NSImage(named: NSImage.touchBarGoForwardTemplateName)!)
         }
     }
     

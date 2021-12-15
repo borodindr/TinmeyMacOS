@@ -63,6 +63,7 @@
 		32932A6E272B219B004DD0B9 /* InfoPlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32932A6D272B219B004DD0B9 /* InfoPlist.swift */; };
 		32932A7327309B36004DD0B9 /* TextArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32932A7227309B36004DD0B9 /* TextArea.swift */; };
 		329811ED276588AD007351D6 /* EditWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329811EC276588AD007351D6 /* EditWork.swift */; };
+		329811EF27693123007351D6 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329811EE27693123007351D6 /* IconButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,7 +102,7 @@
 		3234CBBE2714C0E10069A3CC /* AlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertType.swift; sourceTree = "<group>"; };
 		3234CBC0271591670069A3CC /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		3234CBC2271591770069A3CC /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
-		3236C78126DC0EBC002122B3 /* TinmeyMacOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinmeyMacOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3236C78126DC0EBC002122B3 /* Tinmey portfolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tinmey portfolio.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3236C78426DC0EBC002122B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3236C78926DC0EBC002122B3 /* TinmeyMacOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TinmeyMacOS.xcdatamodel; sourceTree = "<group>"; };
 		3236C78B26DC0EBF002122B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -143,6 +144,7 @@
 		32932A6D272B219B004DD0B9 /* InfoPlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPlist.swift; sourceTree = "<group>"; };
 		32932A7227309B36004DD0B9 /* TextArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextArea.swift; sourceTree = "<group>"; };
 		329811EC276588AD007351D6 /* EditWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWork.swift; sourceTree = "<group>"; };
+		329811EE27693123007351D6 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,7 +208,7 @@
 		3236C78226DC0EBC002122B3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3236C78126DC0EBC002122B3 /* TinmeyMacOS.app */,
+				3236C78126DC0EBC002122B3 /* Tinmey portfolio.app */,
 				3236C79926DC0EBF002122B3 /* TinmeyMacOSTests.xctest */,
 				3236C7A426DC0EBF002122B3 /* TinmeyMacOSUITests.xctest */,
 			);
@@ -331,6 +333,7 @@
 			children = (
 				326EA02E26DE67A600C94B5E /* AsyncImage */,
 				3236C7CB26DC0F6C002122B3 /* BlurView.swift */,
+				329811EE27693123007351D6 /* IconButton.swift */,
 				3236C7CD26DC0F6C002122B3 /* TabButton.swift */,
 				326EA03326DE751600C94B5E /* ProgressIndicator.swift */,
 				3219602D270C9944002A0E11 /* MultilineTextField.swift */,
@@ -382,7 +385,7 @@
 				324BEB6727170909001AEE0D /* WrappingHStack */,
 			);
 			productName = TinmeyMacOS;
-			productReference = 3236C78126DC0EBC002122B3 /* TinmeyMacOS.app */;
+			productReference = 3236C78126DC0EBC002122B3 /* Tinmey portfolio.app */;
 			productType = "com.apple.product-type.application";
 		};
 		3236C79826DC0EBF002122B3 /* TinmeyMacOSTests */ = {
@@ -501,6 +504,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				329811EF27693123007351D6 /* IconButton.swift in Sources */,
 				32932A6C272B20FB004DD0B9 /* APIURLBuilder.swift in Sources */,
 				3236C7D226DC0F6C002122B3 /* WorkView.swift in Sources */,
 				329811ED276588AD007351D6 /* EditWork.swift in Sources */,
@@ -731,7 +735,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.borodindr.TinmeyMacOS;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Tinmey portfolio";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -758,7 +762,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.borodindr.TinmeyMacOS;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Tinmey portfolio";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -930,7 +934,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.borodindr.TinmeyMacOS;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Tinmey portfolio";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Stage;
