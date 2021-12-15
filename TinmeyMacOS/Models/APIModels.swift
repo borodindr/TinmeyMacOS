@@ -28,7 +28,7 @@ extension Work {
             createdAt: Date(),
             updatedAt: Date(),
             title: "Title of the cover",
-            description: "Some interesting description of the cover",
+            description: "?Some interesting description of the cover\nNew line text",
             layout: layout,
             seeMoreLink: URL(string: "https://github.com"),
             tags: ["Some", "tag", "example"]

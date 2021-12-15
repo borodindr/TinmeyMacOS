@@ -18,9 +18,12 @@ struct TagView: View {
                 .fixedSize()
             if let onDelete = onDelete {
                 Button(action: onDelete) {
-                    Image(nsImage: NSImage(named: NSImage.stopProgressFreestandingTemplateName)!)
+                    Image("clear")
+                        .resizable()
+                        .scaledToFit()
                 }
                 .buttonStyle(BorderlessButtonStyle())
+                .frame(width: 15, height: 15)
             }
         }
         .padding(.vertical, 4)

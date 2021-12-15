@@ -21,19 +21,21 @@ struct WorkViewBodyBox: View {
                 Text(description)
                     .font(.system(size: 15))
                     .foregroundColor(.secondary)
-                Spacer()
+                    .layoutPriority(10)
+//                    .lineLimit(3)
+                Spacer(minLength: 0)
                 TagsListView(tags: tags)
-                if let link = seeMoreLink {
-                    Button("See work") {
-                        NSWorkspace.shared.open(link)
-                    }
-                    .font(.system(size: 13))
-                    .buttonStyle(PlainButtonStyle())
-                    .padding(.horizontal, 7)
-                    .padding(.vertical, 5)
-                    .background(Color.secondary)
-                    .cornerRadius(2.5)
-                }
+//                if let link = seeMoreLink {
+//                    Button("See work") {
+//                        NSWorkspace.shared.open(link)
+//                    }
+//                    .font(.system(size: 13))
+//                    .buttonStyle(PlainButtonStyle())
+//                    .padding(.horizontal, 7)
+//                    .padding(.vertical, 5)
+//                    .background(Color.secondary)
+//                    .cornerRadius(2.5)
+//                }
             }
             Spacer()
         }
@@ -50,7 +52,8 @@ struct WorkViewBodyBox_Previews: PreviewProvider {
         WorkViewBodyBox(
             title: work.title,
             description: work.description,
-            tags: work.tags
+            tags: work.tags,
+            seeMoreLink: work.seeMoreLink
         )
     }
 }

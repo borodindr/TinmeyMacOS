@@ -32,7 +32,6 @@ struct WorksListView: View {
             }
             Spacer()
         }
-        .padding(.top, 20)
         .edgesIgnoringSafeArea(.all)
         .sheet(item: $editWork, onDismiss: {
             viewModel.loadAllWorks()

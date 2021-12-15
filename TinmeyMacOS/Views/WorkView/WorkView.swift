@@ -68,21 +68,15 @@ struct WorkView: View {
         HStack {
             VStack {
                 if let onMoveUp = onMoveUp {
-                    Button {
+                    IconButton(iconName: "arrow_up") {
                         onMoveUp(work)
-                    } label: {
-                        Image(nsImage: NSImage(named: NSImage.touchBarGoUpTemplateName)!)
                     }
-                    .buttonStyle(PlainButtonStyle())
                 }
                 
                 if let onMoveDown = onMoveDown {
-                    Button {
+                    IconButton(iconName: "arrow_down") {
                         onMoveDown(work)
-                    } label: {
-                        Image(nsImage: NSImage(named: NSImage.touchBarGoDownTemplateName)!)
                     }
-                    .buttonStyle(PlainButtonStyle())
                 }
             }
             
