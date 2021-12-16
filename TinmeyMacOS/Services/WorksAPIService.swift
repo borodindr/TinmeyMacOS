@@ -21,8 +21,8 @@ protocol WorksProviderService {
     func delete(workID: UUID) -> AnyPublisher<Void, Error>
     func addFirstImage(from fileURL: URL, to workID: UUID) -> AnyPublisher<Void, Error>
     func addSecondImage(from fileURL: URL, to workID: UUID) -> AnyPublisher<Void, Error>
-//    func loadImage(workImageID: UUID) -> AnyPublisher<Data, Error>
     func reorder(workID: UUID, direction: Work.ReorderDirection) -> AnyPublisher<Work, Error>
+    func swapImages(workID: UUID) -> AnyPublisher<Work, Error>
 }
 
 class WorksPreviewService: WorksProviderService {
@@ -77,6 +77,11 @@ class WorksPreviewService: WorksProviderService {
             .eraseToAnyPublisher()
     }
     
+    func swapImages(workID: UUID) -> AnyPublisher<Work, Error> {
+        Fail(error: WorksPreviewError.notImplemented)
+            .eraseToAnyPublisher()
+    }
+    
 }
 
 class WorksAPIService: WorksProviderService {
@@ -116,7 +121,8 @@ class WorksAPIService: WorksProviderService {
     }
     
     func update(workID: UUID, to newWork: Work.Create) -> AnyPublisher<Work, Error> {
-        api.put(workID.uuidString, body: newWork)    }
+        api.put(workID.uuidString, body: newWork)
+    }
     
     func delete(workID: UUID) -> AnyPublisher<Void, Error> {
         api.delete(workID.uuidString)
@@ -136,6 +142,10 @@ class WorksAPIService: WorksProviderService {
     
     func reorder(workID: UUID, direction: Work.ReorderDirection) -> AnyPublisher<Work, Error> {
         api.put(workID.uuidString, "reorder", direction.rawValue)
+    }
+    
+    func swapImages(workID: UUID) -> AnyPublisher<Work, Error> {
+        api.put(workID.uuidString, "swap")
     }
     
     private func addImage(_ imageType: ImageType, from fileURL: URL, to workID: UUID) -> AnyPublisher<Void, Error> {

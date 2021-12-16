@@ -96,7 +96,7 @@ struct EditWorkView: View {
                 largeBodyBox
                 
             case .none:
-                Text("Error!")
+                Text("Error! Reload edit page.")
             }
         }
     }
@@ -133,30 +133,20 @@ struct EditWorkView: View {
     
     var firstImageBox: some View {
         VStack(spacing: 8) {
-            if let selectedImagePath = viewModel.newFirstImagePath {
-                WorkViewImageBox(imageURL: selectedImagePath)
-                    .background(Color.black)
-                    .border(Color.gray, width: 1)
-            } else {
-                WorkViewImageBox(imageURL: viewModel.currentFirstImagePath)
-                    .background(Color.black)
-                    .border(Color.gray, width: 1)
-            }
+            let url = viewModel.newFirstImagePath ?? viewModel.currentFirstImagePath
+            WorkViewImageBox(imageURL: url)
+                .background(Color.black)
+                .border(Color.gray, width: 1)
             firstImageBoxControls
         }
     }
     
     var secondImageBox: some View {
         VStack(spacing: 8) {
-            if let selectedImagePath = viewModel.newSecondImagePath {
-                WorkViewImageBox(imageURL: selectedImagePath)
-                    .background(Color.black)
-                    .border(Color.gray, width: 1)
-            } else {
-                WorkViewImageBox(imageURL: viewModel.currentSecondImagePath)
-                    .background(Color.black)
-                    .border(Color.gray, width: 1)
-            }
+            let url = viewModel.newSecondImagePath ?? viewModel.currentSecondImagePath
+            WorkViewImageBox(imageURL: url)
+                .background(Color.black)
+                .border(Color.gray, width: 1)
             secondImageBoxControls
         }
     }
@@ -184,16 +174,15 @@ struct EditWorkView: View {
     
     var firstImageBoxControls: some View {
         HStack {
-            Button {
-                let panel = NSOpenPanel()
-                panel.allowsMultipleSelection = false
-                panel.canChooseDirectories = false
-                if panel.runModal() == .OK, let url = panel.url {
-                    viewModel.newFirstImagePath = url
-                }
-            } label: {
+            if viewModel.canMoveFirstImageLeft {
+                IconButton("arrow_left",
+                           action: viewModel.moveFirstImageLeft)
+            }
+            
+            Button(action: selectFirstImage) {
                 Text("Select")
             }
+            
             if viewModel.newFirstImagePath != nil {
                 Button {
                     viewModel.newFirstImagePath = nil
@@ -201,21 +190,25 @@ struct EditWorkView: View {
                     Text("Reset")
                 }
             }
+            
+            if viewModel.canMoveFirstImageRight {
+                IconButton("arrow_right",
+                           action: viewModel.moveFirstImageRight)
+            }
         }
     }
     
     var secondImageBoxControls: some View {
         HStack {
-            Button {
-                let panel = NSOpenPanel()
-                panel.allowsMultipleSelection = false
-                panel.canChooseDirectories = false
-                if panel.runModal() == .OK, let url = panel.url {
-                    viewModel.newSecondImagePath = url
-                }
-            } label: {
+            if viewModel.canMoveSecondImageLeft {
+                IconButton("arrow_left",
+                           action: viewModel.moveSecondImageLeft)
+            }
+            
+            Button(action: selectSecondImage) {
                 Text("Select")
             }
+            
             if viewModel.newSecondImagePath != nil {
                 Button {
                     viewModel.newSecondImagePath = nil
@@ -223,9 +216,31 @@ struct EditWorkView: View {
                     Text("Reset")
                 }
             }
+            
+            if viewModel.canMoveSecondImageRight {
+                IconButton("arrow_right",
+                           action: viewModel.moveSecondImageRight)
+            }
         }
     }
     
+    private func selectFirstImage() {
+        let panel = NSOpenPanel()
+        panel.allowsMultipleSelection = false
+        panel.canChooseDirectories = false
+        if panel.runModal() == .OK, let url = panel.url {
+            viewModel.newFirstImagePath = url
+        }
+    }
+    
+    private func selectSecondImage() {
+        let panel = NSOpenPanel()
+        panel.allowsMultipleSelection = false
+        panel.canChooseDirectories = false
+        if panel.runModal() == .OK, let url = panel.url {
+            viewModel.newSecondImagePath = url
+        }
+    }
 }
 
 

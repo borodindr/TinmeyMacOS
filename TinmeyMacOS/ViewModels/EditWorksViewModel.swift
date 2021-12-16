@@ -18,11 +18,19 @@ class EditWorksViewModel: ObservableObject {
     @Binding var editWork: EditWork?
     @Binding var newFirstImagePath: URL?
     var currentFirstImagePath: URL? {
-        editWork?.currentFirstImagePath
+        if needImageSwap {
+            return editWork?.currentSecondImagePath
+        } else {
+            return editWork?.currentFirstImagePath
+        }
     }
     @Binding var newSecondImagePath: URL?
     var currentSecondImagePath: URL? {
-        editWork?.currentSecondImagePath
+        if needImageSwap {
+            return editWork?.currentFirstImagePath
+        } else {
+            return editWork?.currentSecondImagePath
+        }
     }
     @Binding var titleText: String
     @Binding var descriptionText: String
@@ -31,6 +39,7 @@ class EditWorksViewModel: ObservableObject {
     @Binding var seeMoreLink: String
     @Published private(set) var isLoading = false
     @Published var error: ErrorDescription? = nil
+    @Published var needImageSwap = false
     
     var title: String {
         guard let editWork = editWork else {
@@ -63,6 +72,54 @@ class EditWorksViewModel: ObservableObject {
         case .leftBody, .middleBody, .leftLargeBody:
             return true
         case .rightBody, .rightLargeBody:
+            return false
+        }
+    }
+    
+    var canMoveFirstImageLeft: Bool {
+        guard let editWork = editWork else {
+            return false
+        }
+        switch editWork.layout {
+        case .leftBody, .leftLargeBody:
+            return true
+        case .middleBody, .rightBody, .rightLargeBody:
+            return false
+        }
+    }
+    
+    var canMoveFirstImageRight: Bool {
+        guard let editWork = editWork else {
+            return false
+        }
+        switch editWork.layout {
+        case .leftBody, .middleBody, .rightBody, .rightLargeBody:
+            return true
+        case .leftLargeBody:
+            return false
+        }
+    }
+    
+    var canMoveSecondImageLeft: Bool {
+        guard let editWork = editWork else {
+            return false
+        }
+        switch editWork.layout {
+        case .leftBody, .middleBody, .rightBody:
+            return true
+        case .leftLargeBody, .rightLargeBody:
+            return false
+        }
+    }
+    
+    var canMoveSecondImageRight: Bool {
+        guard let editWork = editWork else {
+            return false
+        }
+        switch editWork.layout {
+        case .rightBody:
+            return true
+        case .leftBody, .middleBody, .leftLargeBody, .rightLargeBody:
             return false
         }
     }
@@ -169,6 +226,15 @@ class EditWorksViewModel: ObservableObject {
     func update(workID: UUID, to newWork: Work.Create) {
         isLoading = true
         worksService.update(workID: workID, to: newWork)
+            .flatMap { [weak self] work -> AnyPublisher<Work, Error> in
+                guard let self = self else {
+                    return Just(work)
+                        .ignoreOutput()
+                        .setFailureType(to: Error.self)
+                        .eraseToAnyPublisher()
+                }
+                return self.swapOnServerIfNeeded(work: work)
+            }
             .flatMap { [weak self] work -> AnyPublisher<Void, Error> in
                 guard let self = self else {
                     return Just(())
@@ -205,6 +271,16 @@ class EditWorksViewModel: ObservableObject {
         editWork?.tags.append(tagToAdd)
     }
     
+    private func swapOnServerIfNeeded(work: Work) -> AnyPublisher<Work, Error> {
+        let hasUnchangedImages = newFirstImagePath == nil || newSecondImagePath == nil
+        guard needImageSwap, hasUnchangedImages else {
+            return Just(work)
+                .setFailureType(to: Error.self)
+                .eraseToAnyPublisher()
+        }
+        return worksService.swapImages(workID: work.id)
+    }
+    
     private func addNewImages(to work: Work) -> AnyPublisher<Void, Error> {
         Publishers
             .Merge(
@@ -236,6 +312,14 @@ class EditWorksViewModel: ObservableObject {
         }
     }
     
+    private func swapImages() {
+        needImageSwap.toggle()
+        let newFirstImagePath = self.newSecondImagePath
+        let newSecondImagePath = self.newFirstImagePath
+        self.newFirstImagePath = newFirstImagePath
+        self.newSecondImagePath = newSecondImagePath
+    }
+    
     func moveBodyRight() {
         switch editWork?.layout {
         case .leftBody:
@@ -260,6 +344,62 @@ class EditWorksViewModel: ObservableObject {
         case .rightLargeBody:
             editWork?.layout = .leftLargeBody
         case .leftBody, .leftLargeBody:
+            break
+        case .none:
+            break
+        }
+    }
+    
+    func moveFirstImageLeft() {
+        switch editWork?.layout {
+        case .leftBody:
+            editWork?.layout = .middleBody
+        case .leftLargeBody:
+            editWork?.layout = .rightLargeBody
+        case .middleBody, .rightBody, .rightLargeBody:
+            break
+        case .none:
+            break
+        }
+    }
+    
+    func moveFirstImageRight() {
+        switch editWork?.layout {
+        case .leftBody:
+            swapImages()
+        case .middleBody:
+            editWork?.layout = .leftBody
+        case .rightBody:
+            swapImages()
+        case .rightLargeBody:
+            editWork?.layout = .leftLargeBody
+        case .leftLargeBody:
+            break
+        case .none:
+            break
+        }
+    }
+    
+    func moveSecondImageLeft() {
+        switch editWork?.layout {
+        case .leftBody:
+            swapImages()
+        case .middleBody:
+            editWork?.layout = .rightBody
+        case .rightBody:
+            swapImages()
+        case .leftLargeBody, .rightLargeBody:
+            break
+        case .none:
+            break
+        }
+    }
+    
+    func moveSecondImageRight() {
+        switch editWork?.layout {
+        case .rightBody:
+            editWork?.layout = .middleBody
+        case .leftBody, .middleBody, .leftLargeBody, .rightLargeBody:
             break
         case .none:
             break
