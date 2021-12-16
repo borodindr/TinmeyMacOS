@@ -53,8 +53,10 @@ struct WorksListView: View {
     
     private var list: some View {
         List {
-            Button("Add new") {
-                editWork = EditWork(type: viewModel.workType)
+            if AuthAPIService.isAuthorized {
+                Button("Add new") {
+                    editWork = EditWork(type: viewModel.workType)
+                }
             }
             ForEach(viewModel.works, id: \.self) { work in
                 let workIndex = viewModel.works.firstIndex(of: work)

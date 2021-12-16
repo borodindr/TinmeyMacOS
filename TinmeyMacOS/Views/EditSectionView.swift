@@ -76,8 +76,10 @@ struct EditSectionView: View {
                 firstImageBox
                 secondImageBox
             }
-            Button(action: viewModel.saveSection) {
-                Text("Save \(viewModel.sectionType.rawValue) section")
+            if AuthAPIService.isAuthorized {
+                Button(action: viewModel.saveSection) {
+                    Text("Save \(viewModel.sectionType.rawValue) section")
+                }
             }
         }
         .padding()
@@ -90,6 +92,7 @@ struct EditSectionView: View {
                 .frame(width: 100, alignment: .trailing)
             TextField("", text: text)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
+                .disabled(!AuthAPIService.isAuthorized)
         }
     }
     
@@ -98,7 +101,9 @@ struct EditSectionView: View {
             WorkViewImageBox(imageURL: viewModel.newFirstImagePath)
                 .background(Color.black)
                 .border(Color.gray, width: 1)
-            firstImageBoxControls
+            if AuthAPIService.isAuthorized {
+                firstImageBoxControls
+            }
         }
     }
     
@@ -107,7 +112,9 @@ struct EditSectionView: View {
             WorkViewImageBox(imageURL: viewModel.newSecondImagePath)
                 .background(Color.black)
                 .border(Color.gray, width: 1)
-            secondImageBoxControls
+            if AuthAPIService.isAuthorized {
+                secondImageBoxControls
+            }
         }
     }
     

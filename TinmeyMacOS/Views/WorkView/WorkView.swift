@@ -19,7 +19,9 @@ struct WorkView: View {
             boxesForLayout
                 .background(Color.black)
                 .border(Color.gray, width: 1)
-            controls
+            if AuthAPIService.isAuthorized {
+                controls
+            }
         }
     }
     

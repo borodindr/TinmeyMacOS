@@ -62,8 +62,10 @@ struct EditProfileView: View {
             textField("Location", text: $viewModel.location)
             textField("Short about", text: $viewModel.shortAbout)
             multilineTextField("About", text: $viewModel.about)
-            Button(action: viewModel.updateProfile) {
-                Text("Save profile")
+            if AuthAPIService.isAuthorized {
+                Button(action: viewModel.updateProfile) {
+                    Text("Save profile")
+                }
             }
         }
         .padding()
@@ -76,6 +78,7 @@ struct EditProfileView: View {
                 .frame(width: 100, alignment: .trailing)
             TextField("", text: text)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
+                .disabled(!AuthAPIService.isAuthorized)
         }
     }
     
@@ -91,6 +94,7 @@ struct EditProfileView: View {
                     RoundedRectangle(cornerRadius: 4)
                         .stroke(Color.secondary, lineWidth: 0.5)
                 )
+                .disabled(!AuthAPIService.isAuthorized)
         }
     }
 }
