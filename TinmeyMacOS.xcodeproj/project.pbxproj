@@ -63,6 +63,7 @@
 		32932A7327309B36004DD0B9 /* TextArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32932A7227309B36004DD0B9 /* TextArea.swift */; };
 		329811ED276588AD007351D6 /* EditWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329811EC276588AD007351D6 /* EditWork.swift */; };
 		329811EF27693123007351D6 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329811EE27693123007351D6 /* IconButton.swift */; };
+		32FD4E79276AB0AB0086B242 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 32FD4E78276AB0AB0086B242 /* KeychainAccess */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +142,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32FD4E79276AB0AB0086B242 /* KeychainAccess in Frameworks */,
 				3236C7DC26DC0F9A002122B3 /* TinmeyCore in Frameworks */,
 				324BEB6827170909001AEE0D /* WrappingHStack in Frameworks */,
 				3236C7DF26DC0FCF002122B3 /* Alamofire in Frameworks */,
@@ -354,6 +356,7 @@
 				3236C7DB26DC0F9A002122B3 /* TinmeyCore */,
 				3236C7DE26DC0FCF002122B3 /* Alamofire */,
 				324BEB6727170909001AEE0D /* WrappingHStack */,
+				32FD4E78276AB0AB0086B242 /* KeychainAccess */,
 			);
 			productName = TinmeyMacOS;
 			productReference = 3236C78126DC0EBC002122B3 /* TinmeyMacOS.app */;
@@ -408,6 +411,7 @@
 				3236C7DA26DC0F9A002122B3 /* XCRemoteSwiftPackageReference "TinmeyCore" */,
 				3236C7DD26DC0FCF002122B3 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				324BEB6627170909001AEE0D /* XCRemoteSwiftPackageReference "WrappingHStack" */,
+				32FD4E77276AB0AB0086B242 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = 3236C78226DC0EBC002122B3 /* Products */;
 			projectDirPath = "";
@@ -909,6 +913,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		32FD4E77276AB0AB0086B242 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -926,6 +938,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 324BEB6627170909001AEE0D /* XCRemoteSwiftPackageReference "WrappingHStack" */;
 			productName = WrappingHStack;
+		};
+		32FD4E78276AB0AB0086B242 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 32FD4E77276AB0AB0086B242 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
 		};
 /* End XCSwiftPackageProductDependency section */
 
