@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3236C78026DC0EBC002122B3"
-               BuildableName = "TinmeyMacOS.app"
+               BuildableName = "Tinmey portfolio.app"
                BlueprintName = "TinmeyMacOS"
                ReferencedContainer = "container:TinmeyMacOS.xcodeproj">
             </BuildableReference>
@@ -65,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3236C78026DC0EBC002122B3"
-            BuildableName = "TinmeyMacOS.app"
+            BuildableName = "Tinmey portfolio.app"
             BlueprintName = "TinmeyMacOS"
             ReferencedContainer = "container:TinmeyMacOS.xcodeproj">
          </BuildableReference>
@@ -82,7 +82,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3236C78026DC0EBC002122B3"
-            BuildableName = "TinmeyMacOS.app"
+            BuildableName = "Tinmey portfolio.app"
             BlueprintName = "TinmeyMacOS"
             ReferencedContainer = "container:TinmeyMacOS.xcodeproj">
          </BuildableReference>
