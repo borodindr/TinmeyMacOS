@@ -95,7 +95,7 @@
 		3234CBBE2714C0E10069A3CC /* AlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertType.swift; sourceTree = "<group>"; };
 		3234CBC0271591670069A3CC /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		3234CBC2271591770069A3CC /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
-		3236C78126DC0EBC002122B3 /* TinmeyMacOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinmeyMacOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3236C78126DC0EBC002122B3 /* Tinmey portfolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tinmey portfolio.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3236C78426DC0EBC002122B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3236C78926DC0EBC002122B3 /* TinmeyMacOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TinmeyMacOS.xcdatamodel; sourceTree = "<group>"; };
 		3236C78B26DC0EBF002122B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -191,7 +191,7 @@
 		3236C78226DC0EBC002122B3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3236C78126DC0EBC002122B3 /* TinmeyMacOS.app */,
+				3236C78126DC0EBC002122B3 /* Tinmey portfolio.app */,
 				3236C79926DC0EBF002122B3 /* TinmeyMacOSTests.xctest */,
 			);
 			name = Products;
@@ -359,7 +359,7 @@
 				32FD4E78276AB0AB0086B242 /* KeychainAccess */,
 			);
 			productName = TinmeyMacOS;
-			productReference = 3236C78126DC0EBC002122B3 /* TinmeyMacOS.app */;
+			productReference = 3236C78126DC0EBC002122B3 /* Tinmey portfolio.app */;
 			productType = "com.apple.product-type.application";
 		};
 		3236C79826DC0EBF002122B3 /* TinmeyMacOSTests */ = {
@@ -667,7 +667,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.borodindr.TinmeyMacOS;
-				PRODUCT_NAME = TinmeyMacOS;
+				PRODUCT_NAME = "Tinmey portfolio";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -694,7 +694,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.borodindr.TinmeyMacOS;
-				PRODUCT_NAME = TinmeyMacOS;
+				PRODUCT_NAME = "Tinmey portfolio";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -717,7 +717,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.borodindr.TinmeyMacOSTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TinmeyMacOS.app/Contents/MacOS/TinmeyMacOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tinmey portfolio.app/Contents/MacOS/Tinmey portfolio";
 			};
 			name = Debug;
 		};
@@ -739,7 +739,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.borodindr.TinmeyMacOSTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TinmeyMacOS.app/Contents/MacOS/TinmeyMacOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tinmey portfolio.app/Contents/MacOS/Tinmey portfolio";
 			};
 			name = Release;
 		};
@@ -826,7 +826,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.borodindr.TinmeyMacOS;
-				PRODUCT_NAME = TinmeyMacOS;
+				PRODUCT_NAME = "Tinmey portfolio - TEST";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Stage;
@@ -849,7 +849,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.borodindr.TinmeyMacOSTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TinmeyMacOS.app/Contents/MacOS/TinmeyMacOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tinmey portfolio.app/Contents/MacOS/Tinmey portfolio";
 			};
 			name = Stage;
 		};
