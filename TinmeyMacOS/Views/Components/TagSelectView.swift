@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct TagSelectView: View {
+    @Binding var selectedTags: [String]
     var availableTags: [String]
-    var onSelect: (String) -> ()
     
     @State private var selectedTagIndex: Int = -1
     private var disableAddButton: Bool {
@@ -28,7 +28,7 @@ struct TagSelectView: View {
             
             
             IconButton("add") {
-                onSelect(availableTags[selectedTagIndex])
+                addTag(at: selectedTagIndex)
             }
             .disabled(disableAddButton)
         }
@@ -38,10 +38,17 @@ struct TagSelectView: View {
         .background(Color.blue)
         .clipShape(Capsule())
     }
+    
+    private func addTag(at tagIndex: Int) {
+        let tagToAdd = availableTags[tagIndex]
+        guard !selectedTags.contains(tagToAdd) else { return }
+        selectedTags.append(tagToAdd)
+    }
 }
 
 struct TagSelectView_Previews: PreviewProvider {
     static var previews: some View {
-        TagSelectView(availableTags: ["Some", "tags", "data", "source source source"]) { _ in }
+        TagSelectView(selectedTags: .constant(["tag"]),
+                      availableTags: ["Some", "tags", "data", "source source source"])
     }
 }

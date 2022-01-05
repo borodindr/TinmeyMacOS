@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TinmeyCore
 
 struct WorkView: View {
     var work: Work
@@ -16,52 +17,31 @@ struct WorkView: View {
     
     var body: some View {
         HStack(spacing: 20) {
-            boxesForLayout
-                .background(Color.black)
-                .border(Color.gray, width: 1)
+            content
             if AuthAPIService.isAuthorized {
                 controls
             }
+            Spacer()
         }
     }
     
+    private var columns: Int {
+        3
+    }
+    
+    private var rows: Int {
+        (work.items.count - 1) / columns + 1
+    }
+    
     @ViewBuilder
-    private var boxesForLayout: some View {
-        HStack(spacing: 0) {
-            switch work.layout {
-            case .leftBody:
-                WorkViewBodyBox(title: work.title,
-                                description: work.description,
-                                tags: work.tags,
-                                seeMoreLink: work.seeMoreLink)
-                WorkViewImageBox(imageURL: work.firstImageURL)
-                WorkViewImageBox(imageURL: work.secondImageURL)
-            case .middleBody:
-                WorkViewImageBox(imageURL: work.firstImageURL)
-                WorkViewBodyBox(title: work.title,
-                                description: work.description,
-                                tags: work.tags,
-                                seeMoreLink: work.seeMoreLink)
-                WorkViewImageBox(imageURL: work.secondImageURL)
-            case .rightBody:
-                WorkViewImageBox(imageURL: work.firstImageURL)
-                WorkViewImageBox(imageURL: work.secondImageURL)
-                WorkViewBodyBox(title: work.title,
-                                description: work.description,
-                                tags: work.tags,
-                                seeMoreLink: work.seeMoreLink)
-            case .leftLargeBody:
-                WorkViewLargeBodyBox(title: work.title,
-                                     description: work.description,
-                                     tags: work.tags,
-                                     seeMoreLink: work.seeMoreLink)
-                WorkViewImageBox(imageURL: work.firstImageURL)
-            case .rightLargeBody:
-                WorkViewImageBox(imageURL: work.firstImageURL)
-                WorkViewLargeBodyBox(title: work.title,
-                                     description: work.description,
-                                     tags: work.tags,
-                                     seeMoreLink: work.seeMoreLink)
+    private var content: some View {
+        VStack(spacing: 0) {
+            ForEach(work.twoDArray) { row in
+                HStack(spacing: 0) {
+                    ForEach(row) { item in
+                        WorkItemView(work: work, item: item)
+                    }
+                }
             }
         }
     }

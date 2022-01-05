@@ -9,10 +9,22 @@ import SwiftUI
 
 struct AsyncImage<Placeholder: View>: View {
     @ObservedObject private var loader: ImageLoader
-    private let placeholder: Placeholder
+    private let placeholder: (() -> Placeholder)?
     
-    init(url: URL?, @ViewBuilder placeholder: () -> Placeholder) {
-        self.placeholder = placeholder()
+    private static var defaultPlaceholder: some View {
+        Image("no_image")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 40, height: 40) as! Placeholder
+    }
+    
+    init(url: URL?, @ViewBuilder placeholder: @escaping () -> Placeholder) {
+        self.placeholder = placeholder
+        loader = ImageLoader(url: url)
+    }
+    
+    init(url: URL?) where Placeholder == Image {
+        self.placeholder = nil
         loader = ImageLoader(url: url)
     }
     
@@ -29,7 +41,14 @@ struct AsyncImage<Placeholder: View>: View {
                 Image(nsImage: image)
                     .resizable()
             } else {
-                placeholder
+                if let placeholder = placeholder {
+                    placeholder()
+                } else {
+                    Image("no_image")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 40, height: 40)
+                }
             }
         }
     }

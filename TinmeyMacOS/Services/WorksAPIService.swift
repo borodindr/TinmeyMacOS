@@ -19,8 +19,8 @@ protocol WorksProviderService {
     func create(newWork: Work.Create) -> AnyPublisher<Work, Error>
     func update(workID: UUID, to newWork: Work.Create) -> AnyPublisher<Work, Error>
     func delete(workID: UUID) -> AnyPublisher<Void, Error>
-    func addFirstImage(from fileURL: URL, to workID: UUID) -> AnyPublisher<Void, Error>
-    func addSecondImage(from fileURL: URL, to workID: UUID) -> AnyPublisher<Void, Error>
+    func addImage(from fileURL: URL, to imageID: UUID) -> AnyPublisher<Void, Error>
+    func deleteImage(imageID: UUID) -> AnyPublisher<Void, Error>
     func reorder(workID: UUID, direction: Work.ReorderDirection) -> AnyPublisher<Work, Error>
     func swapImages(workID: UUID) -> AnyPublisher<Work, Error>
 }
@@ -57,20 +57,15 @@ class WorksPreviewService: WorksProviderService {
             .eraseToAnyPublisher()
     }
     
-    func addFirstImage(from fileURL: URL, to workID: UUID) -> AnyPublisher<Void, Error> {
+    func addImage(from fileURL: URL, to imageID: UUID) -> AnyPublisher<Void, Error> {
         Fail(error: WorksPreviewError.notImplemented)
             .eraseToAnyPublisher()
     }
     
-    func addSecondImage(from fileURL: URL, to workID: UUID) -> AnyPublisher<Void, Error> {
+    func deleteImage(imageID: UUID) -> AnyPublisher<Void, Error> {
         Fail(error: WorksPreviewError.notImplemented)
             .eraseToAnyPublisher()
     }
-    
-//    func loadImage(workImageID: UUID) -> AnyPublisher<Data, Error> {
-//        Fail(error: WorksPreviewError.notImplemented)
-//            .eraseToAnyPublisher()
-//    }
     
     func reorder(workID: UUID, direction: Work.ReorderDirection) -> AnyPublisher<Work, Error> {
         Fail(error: WorksPreviewError.notImplemented)
@@ -95,13 +90,15 @@ class WorksAPIService: WorksProviderService {
     
     let workType: Work.WorkType
     
-    private let api = APIService(basePathComponents: "works")
+    private let api: APIService//(basePathComponents: "works")
+    private let imagesService = APIService(basePathComponents: "work_images")
     private var getAllWorksParameters: AllWorksParameters {
         AllWorksParameters(type: workType)
     }
     
     required init(workType: Work.WorkType) {
         self.workType = workType
+        self.api = APIService(basePathComponents: workType.rawValue)
     }
     
     var decoder: JSONDecoder {
@@ -113,44 +110,39 @@ class WorksAPIService: WorksProviderService {
     
     
     func allWorks() -> AnyPublisher<[Work], Error> {
-        api.get(query: getAllWorksParameters)
+        api.get(query: getAllWorksParameters).map([Work].init).eraseToAnyPublisher()
     }
     
     func create(newWork: Work.Create) -> AnyPublisher<Work, Error> {
-        api.post(body: newWork)
+        api.post(body: newWork.asAPIModel).map(Work.init).eraseToAnyPublisher()
     }
     
     func update(workID: UUID, to newWork: Work.Create) -> AnyPublisher<Work, Error> {
-        api.put(workID.uuidString, body: newWork)
+        api.put(workID.uuidString, body: newWork.asAPIModel).map(Work.init).eraseToAnyPublisher()
     }
     
     func delete(workID: UUID) -> AnyPublisher<Void, Error> {
         api.delete(workID.uuidString)
     }
     
-    func addFirstImage(from fileURL: URL, to workID: UUID) -> AnyPublisher<Void, Error> {
-        addImage(.firstImage, from: fileURL, to: workID)
+    func addImage(from fileURL: URL, to imageID: UUID) -> AnyPublisher<Void, Error> {
+        imagesService.upload(imageID.uuidString, from: fileURL)
     }
     
-    func addSecondImage(from fileURL: URL, to workID: UUID) -> AnyPublisher<Void, Error> {
-        addImage(.secondImage, from: fileURL, to: workID)
+    func deleteImage(imageID: UUID) -> AnyPublisher<Void, Error> {
+        imagesService.delete(imageID.uuidString)
     }
     
     func loadImage(workImageID: UUID) -> AnyPublisher<Data, Error> {
-        api.download("images", workImageID.uuidString)
+        imagesService.download(workImageID.uuidString)
     }
     
-    func reorder(workID: UUID, direction: Work.ReorderDirection) -> AnyPublisher<Work, Error> {
+    func reorder(workID: UUID, direction: WorkAPIModel.ReorderDirection) -> AnyPublisher<Work, Error> {
         api.put(workID.uuidString, "reorder", direction.rawValue)
     }
     
     func swapImages(workID: UUID) -> AnyPublisher<Work, Error> {
         api.put(workID.uuidString, "swap")
-    }
-    
-    private func addImage(_ imageType: ImageType, from fileURL: URL, to workID: UUID) -> AnyPublisher<Void, Error> {
-        api.upload(workID.uuidString, imageType.rawValue,
-                   from: fileURL)
     }
 }
 

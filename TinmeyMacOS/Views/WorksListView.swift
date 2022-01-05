@@ -9,8 +9,7 @@ import SwiftUI
 
 struct WorksListView: View {
     @ObservedObject private var viewModel: WorksListViewModel
-    
-    @State private var editWork: EditWork?
+    @State private var editWork: EditWorkType?
     
     init(workType: Work.WorkType) {
         self.viewModel = WorksListViewModel(workType: workType)
@@ -35,9 +34,13 @@ struct WorksListView: View {
         .edgesIgnoringSafeArea(.all)
         .sheet(item: $editWork, onDismiss: {
             viewModel.loadAllWorks()
-        }, content: { _ in
-            EditWorkView(editWork: $editWork,
-                         availableTags: viewModel.availableTags)
+        }, content: { editWork in
+            switch editWork {
+            case .edit(let work):
+                EditWorkView(work: work, type: viewModel.workType, availableTags: viewModel.availableTags)
+            case .new:
+                EditWorkView(work: nil, type: viewModel.workType, availableTags: viewModel.availableTags)
+            }
         })
         .alert(item: $viewModel.error) { error in
             Alert(
@@ -55,7 +58,7 @@ struct WorksListView: View {
         List {
             if AuthAPIService.isAuthorized {
                 Button("Add new") {
-                    editWork = EditWork(type: viewModel.workType)
+                    editWork = .new
                 }
             }
             ForEach(viewModel.works, id: \.self) { work in
@@ -81,11 +84,25 @@ struct WorksListView: View {
     }
     
     private func editWork(_ work: Work) {
-        editWork = EditWork(work: work, type: viewModel.workType)
+        editWork = .edit(work)
     }
     
     private func deleteWork(_ work: Work) {
         viewModel.delete(work: work)
+    }
+}
+
+extension WorksListView {
+    enum EditWorkType: Hashable {
+        case new
+        case edit(Work)
+        
+    }
+}
+
+extension WorksListView.EditWorkType: Identifiable {
+    var id: Self {
+        self
     }
 }
 

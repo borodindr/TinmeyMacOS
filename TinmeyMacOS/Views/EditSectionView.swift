@@ -98,67 +98,15 @@ struct EditSectionView: View {
     
     var firstImageBox: some View {
         VStack(spacing: 8) {
-            WorkViewImageBox(imageURL: viewModel.newFirstImagePath)
-                .background(Color.black)
-                .border(Color.gray, width: 1)
-            if AuthAPIService.isAuthorized {
-                firstImageBoxControls
-            }
+            EditSectionImageView(imagePath: viewModel.firstImagePath,
+                                 newImagePath: $viewModel.newFirstImageURL)
         }
     }
     
     var secondImageBox: some View {
         VStack(spacing: 8) {
-            WorkViewImageBox(imageURL: viewModel.newSecondImagePath)
-                .background(Color.black)
-                .border(Color.gray, width: 1)
-            if AuthAPIService.isAuthorized {
-                secondImageBoxControls
-            }
-        }
-    }
-    
-    var firstImageBoxControls: some View {
-        HStack {
-            Button {
-                let panel = NSOpenPanel()
-                panel.allowsMultipleSelection = false
-                panel.canChooseDirectories = false
-                if panel.runModal() == .OK, let url = panel.url {
-                    viewModel.newFirstImagePath = url
-                }
-            } label: {
-                Text("Select")
-            }
-            if viewModel.newFirstImagePath != viewModel.firstImageURL {
-                Button {
-                    viewModel.newFirstImagePath = viewModel.firstImageURL
-                } label: {
-                    Text("Reset")
-                }
-            }
-        }
-    }
-    
-    var secondImageBoxControls: some View {
-        HStack {
-            Button {
-                let panel = NSOpenPanel()
-                panel.allowsMultipleSelection = false
-                panel.canChooseDirectories = false
-                if panel.runModal() == .OK, let url = panel.url {
-                    viewModel.newSecondImagePath = url
-                }
-            } label: {
-                Text("Select")
-            }
-            if viewModel.newSecondImagePath != viewModel.secondImageURL {
-                Button {
-                    viewModel.newSecondImagePath = viewModel.secondImageURL
-                } label: {
-                    Text("Reset")
-                }
-            }
+            EditSectionImageView(imagePath: viewModel.secondImagePath,
+                                 newImagePath: $viewModel.newSecondImageURL)
         }
     }
 }

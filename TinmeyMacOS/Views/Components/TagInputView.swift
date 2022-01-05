@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct TagInputView: View {
-    @State var name = ""
-    var onSave: (String) -> ()
+    @Binding var tags: [String]
+    @State private var name = ""
     private var disableAddButton: Bool {
         name == ""
     }
@@ -20,7 +20,7 @@ struct TagInputView: View {
                 .font(.caption)
                 .fixedSize()
             IconButton("add") {
-                onSave(name)
+                addTag(name)
                 name = ""
             }
             .disabled(disableAddButton)
@@ -31,10 +31,15 @@ struct TagInputView: View {
         .background(Color.blue)
         .clipShape(Capsule())
     }
+    
+    private func addTag(_ tagToAdd: String) {
+        guard !tags.contains(tagToAdd) else { return }
+        tags.append(tagToAdd)
+    }
 }
 
 struct TagInputView_Previews: PreviewProvider {
     static var previews: some View {
-        TagInputView() { _ in }
+        TagInputView(tags: .constant(["tag"]))
     }
 }

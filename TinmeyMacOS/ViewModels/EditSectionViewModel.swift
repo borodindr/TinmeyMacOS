@@ -15,30 +15,26 @@ final class EditSectionViewModel: ObservableObject {
     @Published var title = ""
     @Published var subtitle = ""
     @Published var previewSubtitle = ""
-    @Published var newFirstImagePath: URL?
-    @Published var newSecondImagePath: URL?
+    @Published var newFirstImageURL: URL?
+    @Published var newSecondImageURL: URL?
     
     let sectionType: SectionAPIModel.SectionType
-    var firstImageURL: URL? {
-        baseImageURLBuilder.path("firstImage").buildURL()
+    var firstImagePath: String {
+        baseImageURLBuilder + "firstImage"
     }
     
-    var secondImageURL: URL? {
-        baseImageURLBuilder.path("secondImage").buildURL()
+    var secondImagePath: String {
+        baseImageURLBuilder + "secondImage"
     }
     
-    private var baseImageURLBuilder: APIURLBuilder {
-        APIURLBuilder.api()
-            .path("sections")
-            .path(sectionType.rawValue)
+    private var baseImageURLBuilder: String {
+        "sections/\(sectionType.rawValue)/"
     }
     private let service = SectionsAPIService()
     private var subscriptions = Set<AnyCancellable>()
     
     init(sectionType: SectionAPIModel.SectionType) {
         self.sectionType = sectionType
-        self.newFirstImagePath = firstImageURL
-        self.newSecondImagePath = secondImageURL
         loadSection()
     }
     
@@ -59,8 +55,8 @@ final class EditSectionViewModel: ObservableObject {
                 self?.title = section.preview.title
                 self?.subtitle = section.subtitle
                 self?.previewSubtitle = section.preview.subtitle
-                self?.newFirstImagePath = self?.firstImageURL
-                self?.newSecondImagePath = self?.secondImageURL
+                self?.newFirstImageURL = nil
+                self?.newSecondImageURL = nil
             }
             .store(in: &subscriptions)
     }
@@ -98,8 +94,8 @@ final class EditSectionViewModel: ObservableObject {
                 self?.title = section.preview.title
                 self?.subtitle = section.subtitle
                 self?.previewSubtitle = section.preview.subtitle
-                self?.newFirstImagePath = self?.firstImageURL
-                self?.newSecondImagePath = self?.secondImageURL
+                self?.newFirstImageURL = nil
+                self?.newSecondImageURL = nil
             }
             .store(in: &subscriptions)
     }
@@ -114,7 +110,7 @@ final class EditSectionViewModel: ObservableObject {
     }
     
     private func addNewFirstImageIfNeeded() -> AnyPublisher<Void, Error> {
-        if let imagePath = newFirstImagePath, imagePath != firstImageURL {
+        if let imagePath = newFirstImageURL {
             return service.addFirstImage(from: imagePath, for: sectionType)
         } else {
             return Just(())
@@ -125,7 +121,7 @@ final class EditSectionViewModel: ObservableObject {
     }
     
     private func addNewSecondImageIfNeeded() -> AnyPublisher<Void, Error> {
-        if let imagePath = newSecondImagePath, imagePath != secondImageURL {
+        if let imagePath = newSecondImageURL {
             return service.addSecondImage(from: imagePath, for: sectionType)
         } else {
             return Just(())
