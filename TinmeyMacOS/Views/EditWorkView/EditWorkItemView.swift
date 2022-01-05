@@ -34,9 +34,13 @@ struct EditWorkItemView: View {
                 onMoveForward: onMoveForward == nil ? nil : { onMoveForward?(item) }
             )
         case .image(let data):
-            if let imagePath = data.currentImagePath {
+            if data.currentImagePath == nil && data.newImagePath == nil {
+                EditWorkItemClearView { url in
+                    work.images[data.id]?.newImagePath = url
+                }
+            } else {
                 EditWorkItemImageView(
-                    imagePath: imagePath,
+                    imagePath: data.currentImagePath,
                     newImagePath: Binding(get: {
                         data.newImagePath
                     }, set: { newValue in
@@ -46,10 +50,6 @@ struct EditWorkItemView: View {
                     onMoveBackward: onMoveBackward == nil ? nil : { onMoveBackward?(item) },
                     onMoveForward: onMoveForward == nil ? nil : { onMoveForward?(item) }
                 )
-            } else {
-                EditWorkItemClearView { url in
-                    work.images[data.id]?.newImagePath = url
-                }
             }
         }
     }
