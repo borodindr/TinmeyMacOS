@@ -713,7 +713,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.borodindr.TinmeyMacOS;
 				PRODUCT_NAME = "Tinmey portfolio";
 				SWIFT_VERSION = 5.0;
@@ -740,7 +740,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.borodindr.TinmeyMacOS;
 				PRODUCT_NAME = "Tinmey portfolio";
 				SWIFT_VERSION = 5.0;
@@ -872,7 +872,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.borodindr.TinmeyMacOS;
 				PRODUCT_NAME = "Tinmey portfolio - TEST";
 				SWIFT_VERSION = 5.0;
@@ -941,8 +941,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/borodindr/TinmeyCore.git";
 			requirement = {
-				branch = "Improved-work-content";
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.0;
 			};
 		};
 		3236C7DD26DC0FCF002122B3 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
