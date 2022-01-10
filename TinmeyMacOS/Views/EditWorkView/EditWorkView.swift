@@ -27,9 +27,7 @@ struct EditWorkView: View {
                     
                     HStack {
                         if viewModel.work.canRemoveRow {
-                            Button {
-                                viewModel.work.removeRow()
-                            } label: {
+                            Button(action: removeRow) {
                                 Text("-")
                             }
                         }

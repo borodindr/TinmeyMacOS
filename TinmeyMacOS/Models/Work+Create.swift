@@ -7,6 +7,7 @@
 
 import Foundation
 import TinmeyCore
+import AppKit
 
 extension Work {
     struct Create {
@@ -239,8 +240,27 @@ extension Work.Image {
     struct Create {
         let id: UUID
         let isSaved: Bool
-        var currentImagePath: String?
-        var newImagePath: URL? = nil
+        var currentImageURL: URL?
+        var currentImage: NSImage? = nil
+        var newImageURL: URL? = nil
+        
+        init(
+            id: UUID,
+            isSaved: Bool,
+            currentImagePath: String? = nil,
+            currentImage: NSImage? = nil,
+            newImageURL: URL? = nil
+        ) {
+            self.id = id
+            self.isSaved = isSaved
+            if let path = currentImagePath {
+                self.currentImageURL = APIURLBuilder().path(path).buildURL()
+            } else {
+                self.currentImageURL = nil
+            }
+            self.currentImage = currentImage
+            self.newImageURL = newImageURL
+        }
     }
 }
 
@@ -258,7 +278,7 @@ extension Work.Image.Create {
             id: image.id,
             isSaved: true,
             currentImagePath: image.path,
-            newImagePath: nil
+            newImageURL: nil
         )
     }
 }
@@ -269,13 +289,14 @@ extension Work.Image.Create {
             id: UUID(),
             isSaved: false,
             currentImagePath: nil,
-            newImagePath: nil
+            newImageURL: nil
         )
     }
     
     mutating func clear() {
-        currentImagePath = nil
-        newImagePath = nil
+        currentImageURL = nil
+        currentImage = nil
+        newImageURL = nil
     }
 }
 

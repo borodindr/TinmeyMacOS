@@ -8,16 +8,13 @@
 import SwiftUI
 
 struct EditWorkItemImageView: View {
-    let imagePath: String?
-    @Binding var newImagePath: URL?
-    private var imageURL: URL? {
-        if let newImagePath = newImagePath {
-            return newImagePath
+    let remoteImage: NSImage?
+    @Binding var newImageURL: URL?
+    private var image: NSImage? {
+        if let newImageURL = newImageURL {
+            return NSImage(contentsOf: newImageURL)
         }
-        if let path = imagePath {
-            return APIURLBuilder().path(path).buildURL()
-        }
-        return nil
+        return remoteImage
     }
     var onClearImage: () -> ()
     let onMoveBackward: (() -> ())?
@@ -25,8 +22,9 @@ struct EditWorkItemImageView: View {
     
     var body: some View {
         EditWorkItemContainer {
-            if let imageURL = imageURL {
-                AsyncImage(url: imageURL)
+            if let image = image {
+                Image(nsImage: image)
+                    .resizable()
                     .aspectRatio(contentMode: .fit)
             } else {
                 Spacer()
@@ -40,12 +38,12 @@ struct EditWorkItemImageView: View {
             Button(action: selectImage) {
                 Text("Select image")
             }
-            if newImagePath != nil && imagePath != nil {
+            if newImageURL != nil && remoteImage != nil {
                 Button(action: restoreImage) {
                     Text("Restore")
                 }
             }
-            if newImagePath != nil || imagePath != nil {
+            if newImageURL != nil || remoteImage != nil {
                 Button(action: onClearImage) {
                     Text("Clear")
                 }
@@ -63,20 +61,20 @@ struct EditWorkItemImageView: View {
         panel.allowsMultipleSelection = false
         panel.canChooseDirectories = false
         if panel.runModal() == .OK, let url = panel.url {
-            newImagePath = url
+            newImageURL = url
         }
     }
     
     private func restoreImage() {
-        newImagePath = nil
+        newImageURL = nil
     }
 }
 
 struct EditWorkItemImageView_Previews: PreviewProvider {
     static var previews: some View {
         EditWorkItemImageView(
-            imagePath: nil,
-            newImagePath: .constant(nil)) {
+            remoteImage: nil,
+            newImageURL: .constant(nil)) {
                 
             } onMoveBackward: {
                 

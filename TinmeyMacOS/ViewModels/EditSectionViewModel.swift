@@ -8,6 +8,7 @@
 import SwiftUI
 import Combine
 import TinmeyCore
+import AppKit
 
 final class EditSectionViewModel: ObservableObject {
     @Published private(set) var isLoading = false
@@ -18,29 +19,21 @@ final class EditSectionViewModel: ObservableObject {
     @Published var newFirstImageURL: URL?
     @Published var newSecondImageURL: URL?
     
+    @Published var firstImage: NSImage?
+    @Published var secondImage: NSImage?
+    
     let sectionType: SectionAPIModel.SectionType
-    var firstImagePath: String {
-        baseImageURLBuilder + "firstImage"
-    }
-    
-    var secondImagePath: String {
-        baseImageURLBuilder + "secondImage"
-    }
-    
-    private var baseImageURLBuilder: String {
-        "sections/\(sectionType.rawValue)/"
-    }
     private let service = SectionsAPIService()
     private var subscriptions = Set<AnyCancellable>()
     
     init(sectionType: SectionAPIModel.SectionType) {
         self.sectionType = sectionType
-        loadSection()
     }
     
     func loadSection() {
         isLoading = true
         alert = nil
+        loadImages()
         service.getSection(ofType: sectionType)
             
             .sink { [weak self] completion in
@@ -97,6 +90,41 @@ final class EditSectionViewModel: ObservableObject {
                 self?.newFirstImageURL = nil
                 self?.newSecondImageURL = nil
             }
+            .store(in: &subscriptions)
+    }
+    
+    private func loadImages() {
+        loadFirstImage()
+        loadSecondImage()
+    }
+    
+    private func loadFirstImage() {
+        let url = APIURLBuilder()
+            .path("sections")
+            .path("covers")
+            .path("firstImage")
+            .buildURL()
+        return URLSession.shared.dataTaskPublisher(for: url)
+            .map(\.data)
+            .map { NSImage.init(data: $0) }
+            .replaceError(with: nil)
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.firstImage, on: self)
+            .store(in: &subscriptions)
+    }
+    
+    private func loadSecondImage() {
+        let url = APIURLBuilder()
+            .path("sections")
+            .path("covers")
+            .path("secondImage")
+            .buildURL()
+        return URLSession.shared.dataTaskPublisher(for: url)
+            .map(\.data)
+            .map { NSImage.init(data: $0) }
+            .replaceError(with: nil)
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.secondImage, on: self)
             .store(in: &subscriptions)
     }
     
