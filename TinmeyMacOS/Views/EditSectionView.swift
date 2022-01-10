@@ -99,14 +99,14 @@ struct EditSectionView: View {
     var firstImageBox: some View {
         VStack(spacing: 8) {
             EditSectionImageView(remoteImage: viewModel.firstImage,
-                                 newImagePath: $viewModel.newFirstImageURL)
+                                 newImageURL: $viewModel.newFirstImageURL)
         }
     }
     
     var secondImageBox: some View {
         VStack(spacing: 8) {
             EditSectionImageView(remoteImage: viewModel.secondImage,
-                                 newImagePath: $viewModel.newSecondImageURL)
+                                 newImageURL: $viewModel.newSecondImageURL)
         }
     }
 }
