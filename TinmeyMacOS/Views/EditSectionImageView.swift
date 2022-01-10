@@ -8,22 +8,21 @@
 import SwiftUI
 
 struct EditSectionImageView: View {
-    let imagePath: String?
+    let remoteImage: NSImage?
     @Binding var newImagePath: URL?
-    private var imageURL: URL? {
-        if let newImagePath = newImagePath {
-            return newImagePath
+    private var displayImage: NSImage? {
+        if let newImagePath = newImagePath,
+            let newImage = NSImage(contentsOf: newImagePath) {
+            return newImage
         }
-        if let path = imagePath {
-            return APIURLBuilder().path(path).buildURL()
-        }
-        return nil
+        return remoteImage
     }
     
     var body: some View {
         EditWorkItemContainer {
-            if let imageURL = imageURL {
-                AsyncImage(url: imageURL)
+            if let image = displayImage {
+                Image(nsImage: image)
+                    .resizable()
                     .aspectRatio(contentMode: .fit)
             } else {
                 Spacer()
@@ -32,7 +31,7 @@ struct EditSectionImageView: View {
             Button(action: selectImage) {
                 Text("Select image")
             }
-            if newImagePath != nil && imagePath != nil {
+            if newImagePath != nil && remoteImage != nil {
                 Button(action: restoreImage) {
                     Text("Restore")
                 }
@@ -57,7 +56,7 @@ struct EditSectionImageView: View {
 struct EditSectionImageView_Previews: PreviewProvider {
     static var previews: some View {
         EditSectionImageView(
-            imagePath: nil,
+            remoteImage: nil,
             newImagePath: .constant(nil))
     }
 }

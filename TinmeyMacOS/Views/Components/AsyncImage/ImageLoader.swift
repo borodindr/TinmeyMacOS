@@ -17,7 +17,6 @@ class ImageLoader: ObservableObject {
     
     init(url: URL?) {
         self.url = url
-        load()
     }
     
     deinit {

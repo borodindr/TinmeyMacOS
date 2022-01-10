@@ -46,6 +46,26 @@ class EditWorksViewModel: ObservableObject {
         }
         self.availableTags = availableTags
         self.worksService = WorksAPIService(workType: type)
+        loadImages()
+    }
+    
+    private let lock = NSRecursiveLock()
+    
+    func loadImages() {
+        for image in work.images {
+            guard let url = image.currentImageURL else { continue }
+            URLSession.shared.dataTaskPublisher(for: url)
+                .map(\.data)
+                .map { NSImage.init(data: $0) }
+                .replaceError(with: nil)
+                .receive(on: DispatchQueue.main)
+                .sink(receiveValue: { [weak self] loadedImage in
+                    self?.lock.lock()
+                    self?.work.images[image.id]?.currentImage = loadedImage
+                    self?.lock.unlock()
+                })
+                .store(in: &subscriptions)
+        }
     }
     
     func createOrUpdate(completion: @escaping () -> ()) {
@@ -94,9 +114,9 @@ class EditWorksViewModel: ObservableObject {
                     work.images,
                     newWork.images
                 ).compactMap { (image, newImage) -> AnyPublisher<Void, Error>? in
-                    if let url = newImage.newImagePath {
+                    if let url = newImage.newImageURL {
                         return worksService.addImage(from: url, to: image.id)
-                    } else if image.path != nil && newImage.currentImagePath == nil {
+                    } else if image.path != nil && newImage.currentImageURL == nil {
                         return worksService.deleteImage(imageID: image.id)
                     } else {
                         return nil
@@ -123,7 +143,7 @@ class EditWorksViewModel: ObservableObject {
     private func addNewImages(to work: Work) -> AnyPublisher<Void, Error> {
         let tasks = zip(
             work.images.map(\.id),
-            self.work.images.map(\.newImagePath)
+            self.work.images.map(\.newImageURL)
         ).compactMap { (id, url) -> AnyPublisher<Void, Error>? in
             guard let url = url else { return nil }
             return worksService.addImage(from: url, to: id)
