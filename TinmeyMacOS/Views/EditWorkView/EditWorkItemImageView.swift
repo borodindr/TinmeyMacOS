@@ -22,13 +22,7 @@ struct EditWorkItemImageView: View {
     
     var body: some View {
         EditWorkItemContainer {
-            if let image = image {
-                Image(nsImage: image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-            } else {
-                Spacer()
-            }
+            DropImage(image, droppedImageURL: $newImageURL)
         } controls: {
             if let onMoveBackward = onMoveBackward {
                 IconButton("arrow_left",
