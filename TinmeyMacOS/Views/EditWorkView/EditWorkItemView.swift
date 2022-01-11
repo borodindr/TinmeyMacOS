@@ -34,28 +34,22 @@ struct EditWorkItemView: View {
                 onMoveForward: onMoveForward == nil ? nil : { onMoveForward?(item) }
             )
         case .image(let data):
-            if data.currentImagePath == nil && data.newImagePath == nil {
-                EditWorkItemClearView { url in
-                    work.images[data.id]?.newImagePath = url
-                }
-            } else {
-                EditWorkItemImageView(
-                    imagePath: data.currentImagePath,
-                    newImagePath: Binding(get: {
-                        data.newImagePath
-                    }, set: { newValue in
-                        work.images[data.id]?.newImagePath = newValue
-                    }),
-                    onClearImage: { work.images[data.id]?.clear() },
-                    onMoveBackward: onMoveBackward == nil ? nil : { onMoveBackward?(item) },
-                    onMoveForward: onMoveForward == nil ? nil : { onMoveForward?(item) }
-                )
-            }
+            EditWorkItemImageView(
+                remoteImage: data.currentImage,
+                newImageURL: Binding(get: {
+                    data.newImageURL
+                }, set: { newValue in
+                    work.images[data.id]?.newImageURL = newValue
+                }),
+                onClearImage: { work.images[data.id]?.clear() },
+                onMoveBackward: onMoveBackward == nil ? nil : { onMoveBackward?(item) },
+                onMoveForward: onMoveForward == nil ? nil : { onMoveForward?(item) }
+            )
         }
     }
 }
 
-
+/*
 struct EditWorkItemView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
@@ -86,3 +80,4 @@ struct EditWorkItemView_Previews: PreviewProvider {
         }
     }
 }
+*/

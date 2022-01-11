@@ -90,23 +90,23 @@ struct EditSectionView: View {
             Text(placeholder)
                 .multilineTextAlignment(.trailing)
                 .frame(width: 100, alignment: .trailing)
-            TextField("", text: text)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+            TextView(text: text)
+                .font(.systemFont(ofSize: 12))
                 .disabled(!AuthAPIService.isAuthorized)
         }
     }
     
     var firstImageBox: some View {
         VStack(spacing: 8) {
-            EditSectionImageView(imagePath: viewModel.firstImagePath,
-                                 newImagePath: $viewModel.newFirstImageURL)
+            EditSectionImageView(remoteImage: viewModel.firstImage,
+                                 newImageURL: $viewModel.newFirstImageURL)
         }
     }
     
     var secondImageBox: some View {
         VStack(spacing: 8) {
-            EditSectionImageView(imagePath: viewModel.secondImagePath,
-                                 newImagePath: $viewModel.newSecondImageURL)
+            EditSectionImageView(remoteImage: viewModel.secondImage,
+                                 newImageURL: $viewModel.newSecondImageURL)
         }
     }
 }

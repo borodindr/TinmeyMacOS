@@ -15,49 +15,21 @@ struct EditWorkItemBodyView: View {
     let onMoveBackward: (() -> ())?
     let onMoveForward: (() -> ())?
     
-    private var attributedTitle: Binding<NSAttributedString> {
-        Binding<NSAttributedString> {
-            NSAttributedString(string: title, attributes: [
-                .font: NSFont.systemFont(ofSize: 25),
-                .foregroundColor: NSColor.labelColor
-            ])
-        } set: { newValue in
-            title = newValue.string
-        }
-    }
-    
-    private var attributedDescription: Binding<NSAttributedString> {
-        Binding {
-            NSAttributedString(string: description, attributes: [
-                .font: NSFont.systemFont(ofSize: 15),
-                .foregroundColor: NSColor.secondaryLabelColor
-            ])
-        } set: { newValue in
-            description = newValue.string
-        }
-    }
-    
-    private var titlePlaceholder: NSAttributedString {
-        placeholder("Title", font: .systemFont(ofSize: 25))
-    }
-    
-    private var descriptionPlaceholder: NSAttributedString {
-        placeholder("Description", font: .systemFont(ofSize: 15))
-    }
-    
     var body: some View {
         EditWorkItemContainer {
             HStack {
                 VStack(alignment: .leading, spacing: 15) {
-                    MultilineTextField(titlePlaceholder, text: attributedTitle, nsFont: .systemFont(ofSize: 25))
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 4)
-                                .stroke(Color.secondary, lineWidth: 0.5)
-                        )
-                    MultilineTextField(descriptionPlaceholder, text: attributedDescription, nsFont: .systemFont(ofSize: 15))
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 4)
-                                .stroke(Color.secondary, lineWidth: 0.5))
+                    TextView(text: $title)
+                        .placeholder("Title")
+                        .backgroundColor(.clear)
+                        .textColor(.labelColor)
+                        .font(.systemFont(ofSize: 25))
+                    
+                    TextView(text: $description)
+                        .placeholder("Description")
+                        .backgroundColor(.clear)
+                        .textColor(.secondaryLabelColor)
+                        .font(.systemFont(ofSize: 15))
                     Spacer()
                     TagsListView(tags: tags) { tagToDelete in
                         guard let indexToDelete = tags.firstIndex(of: tagToDelete) else {

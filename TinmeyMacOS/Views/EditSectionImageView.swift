@@ -8,31 +8,24 @@
 import SwiftUI
 
 struct EditSectionImageView: View {
-    let imagePath: String?
-    @Binding var newImagePath: URL?
-    private var imageURL: URL? {
-        if let newImagePath = newImagePath {
-            return newImagePath
+    let remoteImage: NSImage?
+    @Binding var newImageURL: URL?
+    private var image: NSImage? {
+        if let newImageURL = newImageURL,
+            let newImage = NSImage(contentsOf: newImageURL) {
+            return newImage
         }
-        if let path = imagePath {
-            return APIURLBuilder().path(path).buildURL()
-        }
-        return nil
+        return remoteImage
     }
     
     var body: some View {
         EditWorkItemContainer {
-            if let imageURL = imageURL {
-                AsyncImage(url: imageURL)
-                    .aspectRatio(contentMode: .fit)
-            } else {
-                Spacer()
-            }
+            DropImage(image, droppedImageURL: $newImageURL)
         } controls: {
             Button(action: selectImage) {
                 Text("Select image")
             }
-            if newImagePath != nil && imagePath != nil {
+            if newImageURL != nil && remoteImage != nil {
                 Button(action: restoreImage) {
                     Text("Restore")
                 }
@@ -45,19 +38,19 @@ struct EditSectionImageView: View {
         panel.allowsMultipleSelection = false
         panel.canChooseDirectories = false
         if panel.runModal() == .OK, let url = panel.url {
-            newImagePath = url
+            newImageURL = url
         }
     }
     
     private func restoreImage() {
-        newImagePath = nil
+        newImageURL = nil
     }
 }
 
 struct EditSectionImageView_Previews: PreviewProvider {
     static var previews: some View {
         EditSectionImageView(
-            imagePath: nil,
-            newImagePath: .constant(nil))
+            remoteImage: nil,
+            newImageURL: .constant(nil))
     }
 }

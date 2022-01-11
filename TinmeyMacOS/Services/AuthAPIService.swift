@@ -53,12 +53,11 @@ extension AuthAPIService {
             } else {
                 Keychain.delete(key: tokenKey)
             }
+            isAuthorized = newValue != nil
         }
     }
     
-    static var isAuthorized: Bool {
-        token != nil
-    }
+    static var isAuthorized = token != nil
     
     private static var tokenKey = "TINMEY-API-KEY"
 }
