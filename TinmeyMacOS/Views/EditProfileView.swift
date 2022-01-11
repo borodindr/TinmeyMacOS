@@ -56,11 +56,11 @@ struct EditProfileView: View {
     }
     
     var content: some View {
-        Form {
+        VStack {
             textField("Name", text: $viewModel.name)
             textField("Email", text: $viewModel.email)
             textField("Location", text: $viewModel.location)
-            textField("Short about", text: $viewModel.shortAbout)
+            multilineTextField("Short about", text: $viewModel.shortAbout)
             multilineTextField("About", text: $viewModel.about)
             if AuthAPIService.isAuthorized {
                 Button(action: viewModel.updateProfile) {
@@ -77,7 +77,12 @@ struct EditProfileView: View {
                 .multilineTextAlignment(.trailing)
                 .frame(width: 100, alignment: .trailing)
             TextField("", text: text)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .background(Color.black)
+                .cornerRadius(4)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 4)
+                        .stroke(Color.secondary, lineWidth: 0.5)
+                )
                 .disabled(!AuthAPIService.isAuthorized)
         }
     }
@@ -87,13 +92,8 @@ struct EditProfileView: View {
             Text(placeholder)
                 .multilineTextAlignment(.trailing)
                 .frame(width: 100, alignment: .trailing)
-            TextArea(text: text)
-                .frame(height: 200)
-                .padding(4)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 4)
-                        .stroke(Color.secondary, lineWidth: 0.5)
-                )
+            TextView(text: text)
+                .font(.systemFont(ofSize: 12))
                 .disabled(!AuthAPIService.isAuthorized)
         }
     }

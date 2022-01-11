@@ -38,34 +38,6 @@ struct HomeView: View {
             }
         }
     }
-    
-    func textField(_ placeholder: String, text: Binding<String>) -> some View {
-        HStack {
-            Text(placeholder)
-                .multilineTextAlignment(.trailing)
-                .frame(width: 100, alignment: .trailing)
-            TextField("", text: text)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-        }
-    }
-    
-    func multilineTextField(_ placeholder: String, text: Binding<NSAttributedString>) -> some View {
-        HStack {
-            Text(placeholder)
-                .multilineTextAlignment(.trailing)
-                .frame(width: 100, alignment: .trailing)
-            MultilineTextField(
-                NSAttributedString(),
-                text: text,
-                nsFont: .systemFont(ofSize: 12)
-            )
-                .padding(4)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 4)
-                        .stroke(Color.secondary, lineWidth: 0.5)
-                )
-        }
-    }
 }
 
 struct HomeView_Previews: PreviewProvider {

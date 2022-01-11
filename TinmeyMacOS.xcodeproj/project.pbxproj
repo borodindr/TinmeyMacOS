@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		32196022270B69F9002A0E11 /* WorksListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32196021270B69F9002A0E11 /* WorksListView.swift */; };
-		3219602E270C9944002A0E11 /* MultilineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3219602D270C9944002A0E11 /* MultilineTextField.swift */; };
+		3219602E270C9944002A0E11 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3219602D270C9944002A0E11 /* TextView.swift */; };
 		321D1C3C2778F60100A28468 /* WorkItemContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321D1C3B2778F60100A28468 /* WorkItemContainer.swift */; };
 		321D1C3E2779052C00A28468 /* WorkItemBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321D1C3D2779052C00A28468 /* WorkItemBodyView.swift */; };
 		321D1C40277905BE00A28468 /* WorkItemImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321D1C3F277905BE00A28468 /* WorkItemImageView.swift */; };
@@ -70,11 +70,11 @@
 		326EA03426DE751600C94B5E /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326EA03326DE751600C94B5E /* ProgressIndicator.swift */; };
 		32932A6C272B20FB004DD0B9 /* APIURLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32932A6B272B20FB004DD0B9 /* APIURLBuilder.swift */; };
 		32932A6E272B219B004DD0B9 /* InfoPlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32932A6D272B219B004DD0B9 /* InfoPlist.swift */; };
-		32932A7327309B36004DD0B9 /* TextArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32932A7227309B36004DD0B9 /* TextArea.swift */; };
 		329811EF27693123007351D6 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329811EE27693123007351D6 /* IconButton.swift */; };
 		32B1B76B278C7FE200371261 /* DropInfo+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B1B76A278C7FE200371261 /* DropInfo+Extension.swift */; };
 		32B1B76D278CF03E00371261 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B1B76C278CF03E00371261 /* URL+Extension.swift */; };
 		32B1B76F278CF40700371261 /* DropImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B1B76E278CF40700371261 /* DropImage.swift */; };
+		32B1B771278E483400371261 /* NSTextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B1B770278E483400371261 /* NSTextView+Extension.swift */; };
 		32BEEC3A2783C7FC005013EF /* APIModelConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BEEC392783C7FC005013EF /* APIModelConvertable.swift */; };
 		32BEEC3C2783D44B005013EF /* EditSectionImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BEEC3B2783D44B005013EF /* EditSectionImageView.swift */; };
 		32FD4E79276AB0AB0086B242 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 32FD4E78276AB0AB0086B242 /* KeychainAccess */; };
@@ -92,7 +92,7 @@
 
 /* Begin PBXFileReference section */
 		32196021270B69F9002A0E11 /* WorksListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorksListView.swift; sourceTree = "<group>"; };
-		3219602D270C9944002A0E11 /* MultilineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineTextField.swift; sourceTree = "<group>"; };
+		3219602D270C9944002A0E11 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		321D1C3B2778F60100A28468 /* WorkItemContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkItemContainer.swift; sourceTree = "<group>"; };
 		321D1C3D2779052C00A28468 /* WorkItemBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkItemBodyView.swift; sourceTree = "<group>"; };
 		321D1C3F277905BE00A28468 /* WorkItemImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkItemImageView.swift; sourceTree = "<group>"; };
@@ -156,11 +156,11 @@
 		326EA03326DE751600C94B5E /* ProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
 		32932A6B272B20FB004DD0B9 /* APIURLBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIURLBuilder.swift; sourceTree = "<group>"; };
 		32932A6D272B219B004DD0B9 /* InfoPlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPlist.swift; sourceTree = "<group>"; };
-		32932A7227309B36004DD0B9 /* TextArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextArea.swift; sourceTree = "<group>"; };
 		329811EE27693123007351D6 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		32B1B76A278C7FE200371261 /* DropInfo+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DropInfo+Extension.swift"; sourceTree = "<group>"; };
 		32B1B76C278CF03E00371261 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		32B1B76E278CF40700371261 /* DropImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropImage.swift; sourceTree = "<group>"; };
+		32B1B770278E483400371261 /* NSTextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextView+Extension.swift"; sourceTree = "<group>"; };
 		32BEEC392783C7FC005013EF /* APIModelConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIModelConvertable.swift; sourceTree = "<group>"; };
 		32BEEC3B2783D44B005013EF /* EditSectionImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSectionImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -344,8 +344,7 @@
 				329811EE27693123007351D6 /* IconButton.swift */,
 				3236C7CD26DC0F6C002122B3 /* TabButton.swift */,
 				326EA03326DE751600C94B5E /* ProgressIndicator.swift */,
-				3219602D270C9944002A0E11 /* MultilineTextField.swift */,
-				32932A7227309B36004DD0B9 /* TextArea.swift */,
+				3219602D270C9944002A0E11 /* TextView.swift */,
 				324BEB64271702B6001AEE0D /* TagView.swift */,
 				323FB1DF2717144300B31A22 /* TagInputView.swift */,
 				323FB1DD2717113100B31A22 /* TagsListView.swift */,
@@ -374,6 +373,7 @@
 				324A8A5E2783B9D40044D622 /* Array+Extension.swift */,
 				32B1B76A278C7FE200371261 /* DropInfo+Extension.swift */,
 				32B1B76C278CF03E00371261 /* URL+Extension.swift */,
+				32B1B770278E483400371261 /* NSTextView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -504,7 +504,7 @@
 				324A8A5F2783B9D40044D622 /* Array+Extension.swift in Sources */,
 				32BEEC3A2783C7FC005013EF /* APIModelConvertable.swift in Sources */,
 				3234CBB92714BC410069A3CC /* ProfileAPIService.swift in Sources */,
-				3219602E270C9944002A0E11 /* MultilineTextField.swift in Sources */,
+				3219602E270C9944002A0E11 /* TextView.swift in Sources */,
 				324A8A5D278398320044D622 /* UUID+Extension.swift in Sources */,
 				32B1B76B278C7FE200371261 /* DropInfo+Extension.swift in Sources */,
 				321D1C3C2778F60100A28468 /* WorkItemContainer.swift in Sources */,
@@ -530,7 +530,6 @@
 				323FB1E2271724CC00B31A22 /* TagSelectView.swift in Sources */,
 				3245F364277BBFC400165534 /* EditWorkItemContainer.swift in Sources */,
 				3236C7BC26DC0EFB002122B3 /* AppSection.swift in Sources */,
-				32932A7327309B36004DD0B9 /* TextArea.swift in Sources */,
 				3234CBB02714691A0069A3CC /* SettingsViewModel.swift in Sources */,
 				3236C78A26DC0EBC002122B3 /* TinmeyMacOS.xcdatamodeld in Sources */,
 				32B1B76F278CF40700371261 /* DropImage.swift in Sources */,
@@ -538,6 +537,7 @@
 				326EA03026DE67B500C94B5E /* ImageLoader.swift in Sources */,
 				3236C7C726DC0F63002122B3 /* RootViewModel.swift in Sources */,
 				3245F35C277B9F3900165534 /* EditWorkItemView.swift in Sources */,
+				32B1B771278E483400371261 /* NSTextView+Extension.swift in Sources */,
 				3234CBB627149D3E0069A3CC /* EditSectionView.swift in Sources */,
 				3234CBAA27145A700069A3CC /* AuthAPIService.swift in Sources */,
 				326EA03226DE67C000C94B5E /* AsyncImage.swift in Sources */,

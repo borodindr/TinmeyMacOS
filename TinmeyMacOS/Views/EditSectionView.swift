@@ -90,8 +90,8 @@ struct EditSectionView: View {
             Text(placeholder)
                 .multilineTextAlignment(.trailing)
                 .frame(width: 100, alignment: .trailing)
-            TextField("", text: text)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+            TextView(text: text)
+                .font(.systemFont(ofSize: 12))
                 .disabled(!AuthAPIService.isAuthorized)
         }
     }
