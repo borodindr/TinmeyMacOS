@@ -101,7 +101,7 @@ final class EditSectionViewModel: ObservableObject {
     private func loadFirstImage() {
         let url = APIURLBuilder()
             .path("sections")
-            .path("covers")
+            .path(sectionType.rawValue)
             .path("firstImage")
             .buildURL()
         return URLSession.shared.dataTaskPublisher(for: url)
@@ -116,7 +116,7 @@ final class EditSectionViewModel: ObservableObject {
     private func loadSecondImage() {
         let url = APIURLBuilder()
             .path("sections")
-            .path("covers")
+            .path(sectionType.rawValue)
             .path("secondImage")
             .buildURL()
         return URLSession.shared.dataTaskPublisher(for: url)

@@ -721,7 +721,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.borodindr.TinmeyMacOS;
 				PRODUCT_NAME = "Tinmey portfolio";
 				SWIFT_VERSION = 5.0;
@@ -748,7 +748,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.borodindr.TinmeyMacOS;
 				PRODUCT_NAME = "Tinmey portfolio";
 				SWIFT_VERSION = 5.0;
@@ -880,7 +880,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.borodindr.TinmeyMacOS;
 				PRODUCT_NAME = "Tinmey portfolio - TEST";
 				SWIFT_VERSION = 5.0;
