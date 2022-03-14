@@ -31,9 +31,9 @@ struct WorksListView: View {
                     grid
                 }
             }
+            .padding()
 //            Spacer()
         }
-        .edgesIgnoringSafeArea(.all)
         .sheet(item: $editWork, onDismiss: {
             viewModel.loadAllWorks()
         }, content: { editWork in
@@ -51,12 +51,11 @@ struct WorksListView: View {
                 dismissButton: .default(Text("Close"))
             )
         }
-        .refreshable {
-            viewModel.loadAllWorks()
+        .toolbar {
+            Button("Reload") {
+                viewModel.loadAllWorks()
+            }
         }
-//        .onAppear(perform: {
-//            
-//        })
     }
     
     private var grid: some View {
@@ -65,39 +64,16 @@ struct WorksListView: View {
             alignment: .center,
             spacing: 8) {
                 ForEach(viewModel.works, id: \.self) { work in
-                    WorkItemImageView(imagePath: work.images.first?.path)
-                    
-//                    let workIndex = viewModel.works.firstIndex(of: work)
-//                    let isFirst = workIndex == 0
-//                    let isLast = workIndex == viewModel.works.count - 1
-//                    WorkView(work: work,
-//                             onMoveUp: isFirst ? nil : moveWorkUp,
-//                             onMoveDown: isLast ? nil : moveWorkDown,
-//                             onEdit: editWork,
-//                             onDelete: deleteWork)
+                    let workIndex = viewModel.works.firstIndex(of: work)
+                    let isFirst = workIndex == 0
+                    let isLast = workIndex == viewModel.works.count - 1
+                    WorkView(work: work,
+                             onMoveLeft: isFirst ? nil : moveWorkUp,
+                             onMoveRight: isLast ? nil : moveWorkDown,
+                             onEdit: editWork,
+                             onDelete: deleteWork)
                 }
             }
-    }
-    
-    private var list: some View {
-        List {
-            if AuthAPIService.isAuthorized {
-                Button("Add new") {
-                    editWork = .new
-                }
-            }
-            ForEach(viewModel.works, id: \.self) { work in
-                let workIndex = viewModel.works.firstIndex(of: work)
-                let isFirst = workIndex == 0
-                let isLast = workIndex == viewModel.works.count - 1
-                WorkView(work: work,
-                         onMoveUp: isFirst ? nil : moveWorkUp,
-                         onMoveDown: isLast ? nil : moveWorkDown,
-                         onEdit: editWork,
-                         onDelete: deleteWork)
-            }
-        }
-        .listStyle(SidebarListStyle())
     }
     
     private func moveWorkUp(_ work: Work) {

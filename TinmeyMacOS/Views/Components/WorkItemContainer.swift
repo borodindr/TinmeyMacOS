@@ -17,8 +17,6 @@ struct WorkItemContainer<Content: View>: View {
     var body: some View {
         content
             .frame(width: 300, height: 300)
-            .border(Color.gray, width: 1)
-            .background(Color.black)
     }
 }
 

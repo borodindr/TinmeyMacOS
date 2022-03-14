@@ -8,41 +8,38 @@
 import SwiftUI
 
 struct RootView: View {
-//    @ObservedObject var viewModel = RootViewModel()
     @State
-    private var selectedSection: AppSection = .works
-    private let sections = AppSection.allCases
+    private var selectedSection: AppSection? = .works
+    private let sections: [[AppSection]] = [
+        [.works, .layouts],
+        [.settings]
+    ]
     
     var body: some View {
         NavigationView {
-//            TabView {
-//                ForEach(sections, id: \.self) { section in
-//                    NavigationView {
-//                        destination(for: section)
-//                    }
-//                    .tabItem {
-//                        Label {
-//                            Text(section.title)
-//                        } icon: {
-//                            Image(systemName: section.imageName)
-//                        }
-//                    }
-//                }
-//            }
             List {
                 ForEach(sections, id: \.self) { section in
-                    NavigationLink {
-                        destination(for: section)
-                    } label: {
-                        Label {
-                            Text(section.title)
-                        } icon: {
-                            Image(systemName: section.imageName)
+                    Section {
+                        ForEach(section, id: \.self) { item in
+                            NavigationLink(tag: item, selection: $selectedSection) {
+                                destination(for: item)
+                            } label: {
+                                Label {
+                                    Text(item.title)
+                                } icon: {
+                                    Image(systemName: item.imageName)
+                                }
+                            }
                         }
                     }
                 }
             }
             .frame(minWidth: 200)
+            .toolbar {
+                Button(action: toggleSidebar) {
+                    Image(systemName: "sidebar.leading")
+                }
+            }
             EmptyView()
         }
     }
@@ -57,6 +54,15 @@ struct RootView: View {
         case .settings:
             SettingsView()
         }
+    }
+    
+    private func toggleSidebar() {
+        NSApp.keyWindow?
+            .firstResponder?
+            .tryToPerform(
+                #selector(NSSplitViewController.toggleSidebar(_:)),
+                with: nil
+            )
     }
 }
 

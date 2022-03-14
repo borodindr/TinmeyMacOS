@@ -18,9 +18,7 @@ struct IconButton: View {
     
     var body: some View {
         Button(action: action) {
-            Image(iconName)
-                .resizable()
-                .scaledToFit()
+            Image(systemName: iconName)
         }
         .buttonStyle(PlainButtonStyle())
         .frame(width: 15, height: 15)

@@ -10,61 +10,67 @@ import TinmeyCore
 
 struct WorkView: View {
     var work: Work
-    var onMoveUp: ((Work) -> ())?
-    var onMoveDown: ((Work) -> ())?
+    var onMoveLeft: ((Work) -> ())?
+    var onMoveRight: ((Work) -> ())?
     var onEdit: (Work) -> ()
     var onDelete: (Work) -> ()
     
+    @State
+    private var showControls = false
+    
     var body: some View {
-        HStack(spacing: 20) {
-            content
-            if AuthAPIService.isAuthorized {
-                controls
-            }
-            Spacer()
+        image
+            .overlay(overlay)
+            .onHover { hovering in
+                withAnimation {
+                    showControls = hovering
+                }
         }
     }
     
-    private var columns: Int {
-        3
-    }
-    
-    private var rows: Int {
-        (work.items.count - 1) / columns + 1
+    private var image: some View {
+        WorkItemImageView(imagePath: work.images.first?.path)
     }
     
     @ViewBuilder
-    private var content: some View {
-        VStack(spacing: 0) {
-            ForEach(work.twoDArray) { row in
-                HStack(spacing: 0) {
-                    ForEach(row) { item in
-                        WorkItemView(work: work, item: item)
-                    }
+    private var overlay: some View {
+        if showControls {
+            VStack(spacing: 16) {
+                Spacer()
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(work.title)
+                        .font(.title)
+                    Text(work.description)
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                controls
             }
+            .padding()
+            .background(
+                Color.black.opacity(0.7)
+            )
         }
     }
     
     private var controls: some View {
-        HStack(spacing: 16) {
-            if onMoveUp != nil || onMoveDown != nil {
-                VStack(spacing: 16) {
-                    if let onMoveUp = onMoveUp {
-                        IconButton("arrow_up") {
-                            onMoveUp(work)
+        HStack(spacing: 24) {
+            if needArrows {
+                HStack(spacing: 8) {
+                    if let onMoveLeft = onMoveLeft {
+                        IconButton("arrow.left") {
+                            onMoveLeft(work)
                         }
                     }
                     
-                    if let onMoveDown = onMoveDown {
-                        IconButton("arrow_down") {
-                            onMoveDown(work)
+                    if let onMoveRight = onMoveRight {
+                        IconButton("arrow.right") {
+                            onMoveRight(work)
                         }
                     }
                 }
             }
             
-            IconButton("edit") {
+            IconButton("square.and.pencil") {
                 onEdit(work)
             }
             
@@ -74,6 +80,9 @@ struct WorkView: View {
         }
     }
     
+    private var needArrows: Bool {
+        onMoveLeft != nil || onMoveRight != nil
+    }
 }
 
 struct BookCoverView_Previews: PreviewProvider {
