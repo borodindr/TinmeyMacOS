@@ -28,9 +28,9 @@ struct RootView: View {
                 case .home:
                     HomeView()
                 case .covers:
-                    WorksListView(workType: .cover)
+                    WorksListView()
                 case .layouts:
-                    WorksListView(workType: .layout)
+                    WorksListView()
                 case .settings:
                     SettingsView()
                 }

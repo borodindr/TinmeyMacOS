@@ -14,8 +14,6 @@ extension Work {
         var title: String
         var description: String
         var tags: [String]
-        var seeMoreLink: String
-        var bodyIndex: Int
         var images: [Image.Create]
     }
 }
@@ -26,8 +24,6 @@ extension Work.Create {
             title: work.title,
             description: work.description,
             tags: work.tags,
-            seeMoreLink: work.seeMoreLink?.absoluteString ?? "",
-            bodyIndex: work.bodyIndex,
             images: work.images.map(Work.Image.Create.init)
         )
     }
@@ -37,8 +33,6 @@ extension Work.Create {
             title: "",
             description: "",
             tags: [],
-            seeMoreLink: "",
-            bodyIndex: 0,
             images: [.clear, .clear]
         )
     }
@@ -50,8 +44,6 @@ extension Work.Create: APIInput {
             title: title,
             description: description,
             tags: tags,
-            seeMoreLink: URL(string: seeMoreLink),
-            bodyIndex: bodyIndex,
             images: images.asAPIModel
         )
     }
@@ -76,7 +68,7 @@ extension Work.Create {
     
     private func makeTwoDArray() -> [[Work.Item.Create]] {
         var list: [Work.Item.Create] = images.map { .image($0) }
-        list.insert(.body, at: bodyIndex)
+        list.insert(.body, at: 0)
         
         let columns = 3
         
@@ -107,9 +99,6 @@ extension Work.Create {
         guard let bodyIndex = array.firstIndex(of: .body) else {
             fatalError("Attempted to update EditWork without body item: \(String(describing: twoDArray))")
         }
-        if self.bodyIndex != bodyIndex {
-            self.bodyIndex = bodyIndex
-        }
         array.remove(at: bodyIndex)
         let images = array.map { item -> Work.Image.Create in
             guard case let .image(image) = item else {
@@ -118,40 +107,6 @@ extension Work.Create {
             return image
         }
         self.images = images
-    }
-    
-    func canMoveForward(item: Work.Item.Create) -> Bool {
-        switch item {
-        case .body:
-            return canMoveBodyForward
-        case .image(let image):
-            return canMoveImageForward(image)
-        }
-    }
-    
-    func canMoveBackward(item: Work.Item.Create) -> Bool {
-        switch item {
-        case .body:
-            return canMoveBodyBackward
-        case .image(let image):
-            return canMoveImageBackward(image)
-        }
-    }
-    
-    private var canMoveBodyForward: Bool {
-        bodyIndex < images.count
-    }
-    
-    private var canMoveBodyBackward: Bool {
-        bodyIndex > 0
-    }
-    
-    private func canMoveImageForward(_ image: Work.Image.Create) -> Bool {
-        images.last != image || bodyIndex == images.count
-    }
-    
-    private func canMoveImageBackward(_ image: Work.Image.Create) -> Bool {
-        images.first != image || bodyIndex == 0
     }
     
     var canRemoveRow: Bool {
@@ -172,68 +127,6 @@ extension Work.Create {
             images.removeLast()
         }
     }
-    
-    mutating func moveForward(item: Work.Item.Create) {
-        switch item {
-        case .body:
-            moveBodyForward()
-        case .image(let image):
-            moveImageForward(image)
-        }
-    }
-    
-    mutating func moveBackward(item: Work.Item.Create) {
-        switch item {
-        case .body:
-            moveBodyBackward()
-        case .image(let image):
-            moveImageBackward(image)
-        }
-    }
-    
-    mutating func moveBodyForward() {
-        guard canMoveBodyForward else {
-            print("Attempted to move body forward while it is not allowed.", String(describing: self))
-            return
-        }
-        bodyIndex += 1
-    }
-
-    mutating func moveBodyBackward() {
-        guard canMoveBodyBackward else {
-            print("Attempted to move body backward while it is not allowed.", String(describing: self))
-            return
-        }
-        bodyIndex -= 1
-    }
-    
-    mutating func moveImageForward(_ image: Work.Image.Create) {
-        guard canMoveImageForward(image) else {
-            print("Attempted to move image forward while it is not allowed.", String(describing: self))
-            return
-        }
-        guard let index = images.firstIndex(of: image) else { return }
-        if bodyIndex == index + 1 {
-            moveBodyBackward()
-        } else {
-            images.move(from: index, to: index + 1)
-        }
-    }
-    
-    mutating func moveImageBackward(_ image: Work.Image.Create) {
-        guard canMoveImageBackward(image) else {
-            print("Attempted to move image backward while it is not allowed.", String(describing: self))
-            return
-        }
-        guard let index = images.firstIndex(of: image) else { return }
-        if bodyIndex == index {
-            moveBodyForward()
-        } else {
-            images.move(from: index, to: index - 1)
-        }
-    }
-    
-    
 }
 
 extension Work.Image {

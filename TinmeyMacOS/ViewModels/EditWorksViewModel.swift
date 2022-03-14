@@ -16,9 +16,6 @@ struct ErrorDescription: Identifiable {
 
 class EditWorksViewModel: ObservableObject {
     let id: Work.ID?
-    var workType: Work.WorkType {
-        worksService.workType
-    }
     @Published var work: Work.Create
     let availableTags: [String]
     @Published private(set) var isLoading = false
@@ -29,14 +26,14 @@ class EditWorksViewModel: ObservableObject {
         if id != nil {
             return "Edit Work \"\(work.title)\""
         } else {
-            return "Create new \(workType.rawValue)"
+            return "Create new work"
         }
     }
     
-    private let worksService: WorksAPIService
+    private let worksService = WorksAPIService()
     private var subscriptions = Set<AnyCancellable>()
     
-    init(work: Work? = nil, type: Work.WorkType, availableTags: [String]) {
+    init(work: Work? = nil, availableTags: [String]) {
         if let work = work {
             self.id = work.id
             self.work = Work.Create(work)
@@ -45,7 +42,6 @@ class EditWorksViewModel: ObservableObject {
             self.work = Work.Create()
         }
         self.availableTags = availableTags
-        self.worksService = WorksAPIService(workType: type)
         loadImages()
     }
     

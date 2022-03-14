@@ -11,9 +11,7 @@ import Alamofire
 import TinmeyCore
 
 protocol WorksProviderService {
-    var workType: Work.WorkType { get }
-    
-    init(workType: Work.WorkType)
+    init()
     
     func allWorks() -> AnyPublisher<[Work], Error>
     func create(newWork: Work.Create) -> AnyPublisher<Work, Error>
@@ -30,11 +28,7 @@ class WorksPreviewService: WorksProviderService {
         case notImplemented
     }
     
-    let workType: Work.WorkType
-    
-    required init(workType: Work.WorkType) {
-        self.workType = workType
-    }
+    required init() { }
     
     func allWorks() -> AnyPublisher<[Work], Error> {
         Just([Work].preview)
@@ -80,26 +74,14 @@ class WorksPreviewService: WorksProviderService {
 }
 
 class WorksAPIService: WorksProviderService {
-    private struct AllWorksParameters: Codable {
-        let type: Work.WorkType
-    }
-    
     private struct ReorderParameters: Encodable {
         let direction: Work.ReorderDirection
     }
     
-    let workType: Work.WorkType
-    
-    private let api: APIService//(basePathComponents: "works")
+    private let api = APIService(basePathComponents: "works")
     private let imagesService = APIService(basePathComponents: "work_images")
-    private var getAllWorksParameters: AllWorksParameters {
-        AllWorksParameters(type: workType)
-    }
     
-    required init(workType: Work.WorkType) {
-        self.workType = workType
-        self.api = APIService(basePathComponents: workType.rawValue)
-    }
+    required init() { }
     
     var decoder: JSONDecoder {
         let decoder = JSONDecoder()
@@ -110,7 +92,7 @@ class WorksAPIService: WorksProviderService {
     
     
     func allWorks() -> AnyPublisher<[Work], Error> {
-        api.get(query: getAllWorksParameters).map([Work].init).eraseToAnyPublisher()
+        api.get().map([Work].init).eraseToAnyPublisher()
     }
     
     func create(newWork: Work.Create) -> AnyPublisher<Work, Error> {

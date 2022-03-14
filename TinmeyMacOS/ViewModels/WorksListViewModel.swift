@@ -15,9 +15,6 @@ class WorksListViewModel: ObservableObject {
     @Published private(set) var isLoading = false
     @Published var error: ErrorDescription? = nil
     
-    var workType: Work.WorkType {
-        service.workType
-    }
     private let service: WorksProviderService
     private let tagsService = TagsAPIService()
     private var subscriptions = Set<AnyCancellable>()
@@ -26,8 +23,8 @@ class WorksListViewModel: ObservableObject {
         self.service = service
     }
     
-    init(workType: Work.WorkType) {
-        self.service = WorksAPIService(workType: workType)
+    init() {
+        self.service = WorksAPIService()
     }
     
     func loadAllWorks() {

@@ -11,7 +11,6 @@ struct EditWorkItemBodyView: View {
     @Binding var title: String
     @Binding var description: String
     @Binding var tags: [String]
-    var needSeeMoreLink: Bool
     let onMoveBackward: (() -> ())?
     let onMoveForward: (() -> ())?
     
@@ -36,10 +35,6 @@ struct EditWorkItemBodyView: View {
                             return
                         }
                         tags.remove(at: indexToDelete)
-                    }
-                    
-                    if needSeeMoreLink {
-                        BoxLinkButton(text: "See work")
                     }
                 }
                 Spacer()
@@ -82,8 +77,7 @@ struct EditWorkItemBodyView_Previews: PreviewProvider {
         EditWorkItemBodyView(
             title: .constant("Title"),
             description: .constant("Description"),
-            tags: .constant(["tag"]),
-            needSeeMoreLink: true) {
+            tags: .constant(["tag"])) {
                 
             } onMoveForward: {
                 

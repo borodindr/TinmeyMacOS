@@ -11,8 +11,8 @@ struct WorksListView: View {
     @ObservedObject private var viewModel: WorksListViewModel
     @State private var editWork: EditWorkType?
     
-    init(workType: Work.WorkType) {
-        self.viewModel = WorksListViewModel(workType: workType)
+    init() {
+        self.viewModel = WorksListViewModel()
     }
     
     // for preview
@@ -37,9 +37,9 @@ struct WorksListView: View {
         }, content: { editWork in
             switch editWork {
             case .edit(let work):
-                EditWorkView(work: work, type: viewModel.workType, availableTags: viewModel.availableTags)
+                EditWorkView(work: work, availableTags: viewModel.availableTags)
             case .new:
-                EditWorkView(work: nil, type: viewModel.workType, availableTags: viewModel.availableTags)
+                EditWorkView(work: nil, availableTags: viewModel.availableTags)
             }
         })
         .alert(item: $viewModel.error) { error in
@@ -110,7 +110,7 @@ struct WorksListView_Previews: PreviewProvider {
     static var previews: some View {
         WorksListView(
             viewModel: WorksListViewModel(
-                service: WorksPreviewService(workType: .cover)
+                service: WorksPreviewService()
             )
         )
             .frame(width: 1200, height: 2000)

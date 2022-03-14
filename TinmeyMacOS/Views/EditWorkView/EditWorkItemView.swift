@@ -29,7 +29,6 @@ struct EditWorkItemView: View {
                 title: $work.title,
                 description: $work.description,
                 tags: $work.tags,
-                needSeeMoreLink: !work.seeMoreLink.isEmpty,
                 onMoveBackward: onMoveBackward == nil ? nil : { onMoveBackward?(item) },
                 onMoveForward: onMoveForward == nil ? nil : { onMoveForward?(item) }
             )

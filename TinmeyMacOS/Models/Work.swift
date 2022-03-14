@@ -13,13 +13,11 @@ struct Work {
     let title: String
     let description: String
     let tags: [String]
-    let seeMoreLink: URL?
-    let bodyIndex: Int
     let images: [Image]
     
     var items: [Item] {
         var items = images.map { Item.image($0) }
-        items.insert(.body(self), at: bodyIndex)
+        items.insert(.body(self), at: 0)
         return items
     }
 }
@@ -29,7 +27,6 @@ extension Work: Codable { }
 extension Work: Hashable { }
 
 extension Work {
-    typealias WorkType = WorkAPIModel.WorkType
     typealias ReorderDirection = WorkAPIModel.ReorderDirection
 }
 
@@ -40,8 +37,6 @@ extension Work: APIOutput {
             title: apiModel.title,
             description: apiModel.description,
             tags: apiModel.tags,
-            seeMoreLink: apiModel.seeMoreLink,
-            bodyIndex: apiModel.bodyIndex,
             images: apiModel.images.map(Image.init)
         )
     }
@@ -81,8 +76,6 @@ extension Work {
             title: "Title of the cover",
             description: "?Some interesting description of the cover",
             tags: ["Some", "tag", "example"],
-            seeMoreLink: URL(string: "https://github.com"),
-            bodyIndex: 0,
             images: [.preview, .preview]
         )
     }
