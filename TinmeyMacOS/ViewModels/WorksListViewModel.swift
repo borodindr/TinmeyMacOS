@@ -19,12 +19,9 @@ class WorksListViewModel: ObservableObject {
     private let tagsService = TagsAPIService()
     private var subscriptions = Set<AnyCancellable>()
     
-    init(service: WorksProviderService) {
+    init(service: WorksProviderService = WorksAPIService()) {
         self.service = service
-    }
-    
-    init() {
-        self.service = WorksAPIService()
+        loadAllWorks()
     }
     
     func loadAllWorks() {

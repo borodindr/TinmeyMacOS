@@ -30,10 +30,7 @@ struct DropImage: View {
         .frame(minWidth: 0, maxWidth: .infinity,
                minHeight: 0, maxHeight: .infinity)
         .border(border, width: 3)
-        .onDrop(of: [kUTTypeFileURL,
-                      kUTTypeData]
-                         .map { $0 as String },
-                delegate: self)
+        .onDrop(of: [.fileURL, .data], delegate: self)
     }
     
     private var border: some ShapeStyle {

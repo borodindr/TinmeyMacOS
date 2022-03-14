@@ -8,34 +8,54 @@
 import SwiftUI
 
 struct RootView: View {
-    @ObservedObject var viewModel = RootViewModel()
+//    @ObservedObject var viewModel = RootViewModel()
+    @State
+    private var selectedSection: AppSection = .works
+    private let sections = AppSection.allCases
     
     var body: some View {
-        HStack(spacing: 0) {
-            VStack {
-                ForEach(viewModel.mainSections, id: \.self) { section in
-                    TabButton(section: section, selectedSection: $viewModel.selectedSection)
+        NavigationView {
+//            TabView {
+//                ForEach(sections, id: \.self) { section in
+//                    NavigationView {
+//                        destination(for: section)
+//                    }
+//                    .tabItem {
+//                        Label {
+//                            Text(section.title)
+//                        } icon: {
+//                            Image(systemName: section.imageName)
+//                        }
+//                    }
+//                }
+//            }
+            List {
+                ForEach(sections, id: \.self) { section in
+                    NavigationLink {
+                        destination(for: section)
+                    } label: {
+                        Label {
+                            Text(section.title)
+                        } icon: {
+                            Image(systemName: section.imageName)
+                        }
+                    }
                 }
-                Spacer()
-                TabButton(section: .settings, selectedSection: $viewModel.selectedSection)
             }
-            .padding()
-            .padding(.top, 35)
-            .background(BlurView())
-            
-            ZStack {
-                switch viewModel.selectedSection {
-                case .home:
-                    HomeView()
-                case .covers:
-                    WorksListView()
-                case .layouts:
-                    WorksListView()
-                case .settings:
-                    SettingsView()
-                }
-            }
-            .frame(minWidth: 250, maxWidth: .infinity, maxHeight: .infinity)
+            .frame(minWidth: 200)
+            EmptyView()
+        }
+    }
+    
+    @ViewBuilder
+    private func destination(for section: AppSection) -> some View {
+        switch section {
+        case .works:
+            WorksListView()
+        case .layouts:
+            Text("In development :(")
+        case .settings:
+            SettingsView()
         }
     }
 }

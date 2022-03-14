@@ -42,7 +42,7 @@ struct TabButton: View {
 }
 
 struct TabButton_Previews: PreviewProvider {
-    static let selectedSection = AppSection.home
+    static let selectedSection = AppSection.works
     static var previews: some View {
         ForEach(AppSection.allCases, id: \.self) { section in
             TabButton(section: section, selectedSection: .constant(selectedSection))

@@ -13,8 +13,8 @@ extension DropInfo {
         case wrongIdentifierType
     }
     
-    private var types: [String] {
-        [kUTTypeFileURL as String]
+    private var types: [UTType] {
+        [.fileURL]
     }
     
     @discardableResult

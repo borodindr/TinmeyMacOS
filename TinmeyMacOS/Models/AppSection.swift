@@ -9,8 +9,7 @@ import Foundation
 import AppKit
 
 enum AppSection {
-    case home
-    case covers
+    case works
     case layouts
     case settings
 }
@@ -18,12 +17,10 @@ enum AppSection {
 extension AppSection {
     var imageName: String {
         switch self {
-        case .home:
-            return "house"
-        case .covers:
-            return "book_cover"
+        case .works:
+            return "book.closed"
         case .layouts:
-            return "book_open"
+            return "book"
         case .settings:
             return "gear"
         }
@@ -31,10 +28,8 @@ extension AppSection {
     
     var title: String {
         switch self {
-        case .home:
-            return "Home"
-        case .covers:
-            return "Book Covers"
+        case .works:
+            return "Works"
         case .layouts:
             return "Book Layouts"
         case .settings:

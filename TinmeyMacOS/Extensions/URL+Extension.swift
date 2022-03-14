@@ -6,24 +6,17 @@
 //
 
 import Foundation
+import UniformTypeIdentifiers
 
 extension URL {
-    func conforms(to identifier: String) -> Bool {
-        let fileExt = pathExtension
-        guard let uti = UTTypeCreatePreferredIdentifierForTag(
-            kUTTagClassFilenameExtension,
-            fileExt as CFString,
-            nil
-        ) else {
+    func conforms(to contentType: UTType) -> Bool {
+        guard let fileType = UTType(filenameExtension: pathExtension) else {
             return false
         }
-        return UTTypeConformsTo(
-            uti.takeRetainedValue(),
-            identifier as CFString
-        )
+        return fileType.conforms(to: contentType)
     }
     
     func isImage() -> Bool {
-        conforms(to: kUTTypeImage as String)
+        conforms(to: UTType.image)
     }
 }

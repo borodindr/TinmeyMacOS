@@ -21,15 +21,17 @@ struct WorksListView: View {
     }
     
     var body: some View {
-        VStack(spacing: 0) {
-            if viewModel.isLoading && viewModel.works.isEmpty {
-                Spacer()
-                ProgressIndicator(size: .regular)
-                Spacer()
-            } else {
-                list
+        ScrollView {
+            VStack {
+                if viewModel.isLoading && viewModel.works.isEmpty {
+                    Spacer()
+                    ProgressIndicator(size: .regular)
+                    Spacer()
+                } else {
+                    grid
+                }
             }
-            Spacer()
+//            Spacer()
         }
         .edgesIgnoringSafeArea(.all)
         .sheet(item: $editWork, onDismiss: {
@@ -49,9 +51,32 @@ struct WorksListView: View {
                 dismissButton: .default(Text("Close"))
             )
         }
-        .onAppear(perform: {
+        .refreshable {
             viewModel.loadAllWorks()
-        })
+        }
+//        .onAppear(perform: {
+//            
+//        })
+    }
+    
+    private var grid: some View {
+        LazyVGrid(
+            columns: Array(repeating: GridItem(.fixed(300)), count: 3),
+            alignment: .center,
+            spacing: 8) {
+                ForEach(viewModel.works, id: \.self) { work in
+                    WorkItemImageView(imagePath: work.images.first?.path)
+                    
+//                    let workIndex = viewModel.works.firstIndex(of: work)
+//                    let isFirst = workIndex == 0
+//                    let isLast = workIndex == viewModel.works.count - 1
+//                    WorkView(work: work,
+//                             onMoveUp: isFirst ? nil : moveWorkUp,
+//                             onMoveDown: isLast ? nil : moveWorkDown,
+//                             onEdit: editWork,
+//                             onDelete: deleteWork)
+                }
+            }
     }
     
     private var list: some View {

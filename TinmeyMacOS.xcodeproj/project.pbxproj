@@ -14,6 +14,7 @@
 		321D1C40277905BE00A28468 /* WorkItemImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321D1C3F277905BE00A28468 /* WorkItemImageView.swift */; };
 		321D1C42277905C900A28468 /* WorkItemClearView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321D1C41277905C900A28468 /* WorkItemClearView.swift */; };
 		321D1C442779085900A28468 /* WorkItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321D1C432779085900A28468 /* WorkItemView.swift */; };
+		3228555227DFA54800256A1A /* TinmeyMacOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3228555127DFA54800256A1A /* TinmeyMacOSApp.swift */; };
 		3234CBAA27145A700069A3CC /* AuthAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234CBA927145A700069A3CC /* AuthAPIService.swift */; };
 		3234CBAC27145D570069A3CC /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234CBAB27145D570069A3CC /* Keychain.swift */; };
 		3234CBAE271468E70069A3CC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234CBAD271468E70069A3CC /* SettingsView.swift */; };
@@ -98,6 +99,7 @@
 		321D1C3F277905BE00A28468 /* WorkItemImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkItemImageView.swift; sourceTree = "<group>"; };
 		321D1C41277905C900A28468 /* WorkItemClearView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkItemClearView.swift; sourceTree = "<group>"; };
 		321D1C432779085900A28468 /* WorkItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkItemView.swift; sourceTree = "<group>"; };
+		3228555127DFA54800256A1A /* TinmeyMacOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinmeyMacOSApp.swift; sourceTree = "<group>"; };
 		3234CBA927145A700069A3CC /* AuthAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPIService.swift; sourceTree = "<group>"; };
 		3234CBAB27145D570069A3CC /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		3234CBAD271468E70069A3CC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				3236C78426DC0EBC002122B3 /* AppDelegate.swift */,
+				3228555127DFA54800256A1A /* TinmeyMacOSApp.swift */,
 				3236C7C926DC0F6C002122B3 /* Views */,
 				3236C7C026DC0F63002122B3 /* ViewModels */,
 				3236C7B626DC0EFB002122B3 /* Models */,
@@ -514,6 +517,7 @@
 				32BEEC3C2783D44B005013EF /* EditSectionImageView.swift in Sources */,
 				3245F360277BBA1700165534 /* EditWorkItemImageView.swift in Sources */,
 				3234CBBF2714C0E10069A3CC /* AlertType.swift in Sources */,
+				3228555227DFA54800256A1A /* TinmeyMacOSApp.swift in Sources */,
 				3234CBBD2714C0A20069A3CC /* EditSectionViewModel.swift in Sources */,
 				32B1B76D278CF03E00371261 /* URL+Extension.swift in Sources */,
 				3236C7C526DC0F63002122B3 /* WorksListViewModel.swift in Sources */,

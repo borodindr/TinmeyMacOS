@@ -8,7 +8,7 @@
 import SwiftUI
 
 class RootViewModel: ObservableObject {
-    @Published var selectedSection: AppSection = .home
+    @Published var selectedSection: AppSection = .works
     
-    var mainSections: [AppSection] = [.home, .covers, .layouts]
+    var mainSections: [AppSection] = [.works, .layouts]
 }
