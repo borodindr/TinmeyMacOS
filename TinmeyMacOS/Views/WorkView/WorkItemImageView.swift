@@ -8,22 +8,18 @@
 import SwiftUI
 
 struct WorkItemImageView: View {
-    let imagePath: String?
-    private var imageURL: URL? {
-        guard let path = imagePath else {
-            return nil
-        }
-        return APIURLBuilder().path(path).buildURL()
-    }
+    let imageURL: URL?
     
     var body: some View {
         WorkItemContainer {
-            AsyncImage(url: imageURL) {
+            AsyncImage(url: imageURL, content: { image in
+                image.resizable()
+            }, placeholder: {
                 Image("no_image")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 40, height: 40)
-            }
+            })
             .aspectRatio(contentMode: .fit)
         }
     }
@@ -31,6 +27,6 @@ struct WorkItemImageView: View {
 
 struct WorkItemImageView_Previews: PreviewProvider {
     static var previews: some View {
-        WorkItemImageView(imagePath: nil)
+        WorkItemImageView(imageURL: nil)
     }
 }

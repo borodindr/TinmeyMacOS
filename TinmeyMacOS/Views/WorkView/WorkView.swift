@@ -23,7 +23,7 @@ struct WorkView: View {
     }
     
     private var image: some View {
-        WorkItemImageView(imagePath: work.images.first?.path)
+        WorkItemImageView(imageURL: work.images.first?.url)
     }
     
     private var overlay: some View {

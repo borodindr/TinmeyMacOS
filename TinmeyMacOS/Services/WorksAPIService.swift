@@ -108,7 +108,7 @@ class WorksAPIService: WorksProviderService {
     }
     
     func addImage(from fileURL: URL, to imageID: UUID) -> AnyPublisher<Void, Error> {
-        imagesService.upload(imageID.uuidString, from: fileURL)
+        api.upload("images", imageID.uuidString, from: fileURL)
     }
     
     func deleteImage(imageID: UUID) -> AnyPublisher<Void, Error> {

@@ -12,6 +12,12 @@ extension Work {
     struct Image {
         let id: UUID
         let path: String?
+        var url: URL? {
+            guard let path = path else {
+                return nil
+            }
+            return APIURLBuilder().path(path).buildURL()
+        }
     }
 }
 

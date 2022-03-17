@@ -16,16 +16,14 @@ struct EditWorkView: View {
     
     var body: some View {
         ZStack {
-//            ScrollView {
-                VStack(alignment: .center, spacing: 8) {
-                    title
-                    images
-                    fields
-                    tags
-                    controls
-                }
-                .padding()
-//            }
+            VStack(alignment: .center, spacing: 8) {
+                title
+                images
+                fields
+                tags
+                controls
+            }
+            .padding()
             
             if viewModel.isLoading {
                 Color.black.opacity(0.5)
@@ -59,8 +57,7 @@ struct EditWorkView: View {
             HStack {
                 ForEach($viewModel.work.images, id: \.self) { $image in
                     EditWorkItemImageView(
-                        remoteImage: image.currentImage,
-                        newImageURL: $image.newImageURL,
+                        image: $image,
                         onDeleteImage: { viewModel.work.images.removeAll(where: { $0 == image}) },
                         onMoveLeft: { moveImageForward(item: image) },
                         onMoveRight: { moveImageBackward(item: image) }

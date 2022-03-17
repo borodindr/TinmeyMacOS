@@ -8,24 +8,27 @@
 import SwiftUI
 
 struct DropImage: View {
-    var image: NSImage?
     @Binding var droppedImageURL: URL?
     @State private var isDropAllowed: Bool? = nil
     
-    init(_ image: NSImage? = nil, droppedImageURL: Binding<URL?>) {
-        self.image = image
+    init(droppedImageURL: Binding<URL?>) {
         self._droppedImageURL = droppedImageURL
     }
     
     var body: some View {
         Group {
-            if let image = image {
-                Image(nsImage: image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-            } else {
-                Spacer()
-            }
+            AsyncImage(url: droppedImageURL, content: { phase in
+                switch phase {
+                case .success(let image):
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                case .failure, .empty:
+                    Spacer()
+                @unknown default:
+                    fatalError()
+                }
+            })
         }
         .frame(minWidth: 0, maxWidth: .infinity,
                minHeight: 0, maxHeight: .infinity)

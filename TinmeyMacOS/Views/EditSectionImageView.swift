@@ -20,7 +20,7 @@ struct EditSectionImageView: View {
     
     var body: some View {
         EditWorkItemContainer {
-            DropImage(image, droppedImageURL: $newImageURL)
+            DropImage(droppedImageURL: $newImageURL)
         } controls: {
             Button(action: selectImage) {
                 Text("Select image")

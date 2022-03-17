@@ -8,21 +8,14 @@
 import SwiftUI
 
 struct EditWorkItemImageView: View {
-    let remoteImage: NSImage?
-    @Binding var newImageURL: URL?
-    private var image: NSImage? {
-        if let newImageURL = newImageURL {
-            return NSImage(contentsOf: newImageURL)
-        }
-        return remoteImage
-    }
+    @Binding var image: Work.Image.Create
     var onDeleteImage: () -> ()
     let onMoveLeft: (() -> ())?
     let onMoveRight: (() -> ())?
     
     var body: some View {
         EditWorkItemContainer {
-            DropImage(image, droppedImageURL: $newImageURL)
+            DropImage(droppedImageURL: $image.url)
         } controls: {
             VStack {
                 Spacer()
@@ -43,13 +36,6 @@ struct EditWorkItemImageView: View {
                     IconButton("square.and.pencil", action: selectImage)
                     IconButton("trash", action: onDeleteImage)
                         .foregroundColor(.red)
-                    
-                    if newImageURL != nil && remoteImage != nil {
-                        Button(action: restoreImage) {
-                            Text("Restore")
-                        }
-                    }
-                    
                 }
             }
             .padding()
@@ -62,20 +48,15 @@ struct EditWorkItemImageView: View {
     
     private func selectImage() {
         selectImage { url in
-            newImageURL = url
+            image.url = url
         }
-    }
-    
-    private func restoreImage() {
-        newImageURL = nil
     }
 }
 
 struct EditWorkItemImageView_Previews: PreviewProvider {
     static var previews: some View {
         EditWorkItemImageView(
-            remoteImage: nil,
-            newImageURL: .constant(nil)) {
+            image: .constant(.init(.preview))) {
                 
             } onMoveLeft: {
                 

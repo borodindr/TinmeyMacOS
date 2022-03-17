@@ -43,73 +43,78 @@ extension Work.Create: APIInput {
 extension Work.Create: Hashable { }
 
 extension Work.Image {
-    struct Create {
-        let id: UUID
-        let isSaved: Bool
-        var currentImageURL: URL?
-        var currentImage: NSImage? = nil
-        var newImageURL: URL? = nil
+    enum Create {
         
-        init(
-            id: UUID,
-            isSaved: Bool,
-            currentImagePath: String? = nil,
-            currentImage: NSImage? = nil,
-            newImageURL: URL? = nil
-        ) {
-            self.id = id
-            self.isSaved = isSaved
-            if let path = currentImagePath {
-                self.currentImageURL = APIURLBuilder().path(path).buildURL()
-            } else {
-                self.currentImageURL = nil
+        case remote(id: UUID, url: URL?)
+        case local(url: URL)
+        
+        var url: URL? {
+            get {
+                switch self {
+                case .remote(_, let url):
+                    return url
+                case .local(let url):
+                    return url
+                }
             }
-            self.currentImage = currentImage
-            self.newImageURL = newImageURL
+            set {
+                guard let newURL = newValue else {
+                    print("Warning: Setting nil to localURL in Work.Image.Create is not supported.")
+                    return
+                }
+                switch self {
+                case .local:
+                    self = .local(url: newURL)
+                case .remote:
+                    self = .init(url: newURL)
+                }
+            }
         }
     }
 }
 
 extension Work.Image.Create: Hashable { }
-extension Work.Image.Create: Identifiable { }
+//extension Work.Image.Create: Identifiable {
+//    var id: UUID {
+//        switch self {
+//        case .remote(let id, _, _), .local(let id, _):
+//            return id
+//        }
+//    }
+//}
 extension Work.Image.Create: APIInput {
     var asAPIModel: WorkAPIModel.Image.Create {
-        .init(id: isSaved ? id : nil)
+        switch self {
+        case .local:
+            return .init(id: nil)
+        case .remote(let id, _):
+            return .init(id: id)
+        }
     }
 }
 
 extension Work.Image.Create {
     init(_ image: Work.Image) {
-        self.init(
-            id: image.id,
-            isSaved: true,
-            currentImagePath: image.path,
-            newImageURL: nil
-        )
+        self = .remote(id: image.id, url: image.url)
     }
     
     init(url: URL) {
-        self.init(
-            id: UUID(),
-            isSaved: false,
-            newImageURL: url
-        )
+        self = .local(url: url)
     }
 }
 
 extension Work.Image.Create {
-    static var clear: Self {
-        Work.Image.Create(
-            id: UUID(),
-            isSaved: false,
-            currentImagePath: nil,
-            newImageURL: nil
-        )
-    }
+//    static var clear: Self {
+//        Work.Image.Create(
+//            id: UUID(),
+//            currentImageURL: nil,
+//            newImageURL: nil
+//        )
+//    }
     
-    mutating func clear() {
-        currentImageURL = nil
-        currentImage = nil
-        newImageURL = nil
-    }
+//    mutating func clear() {
+//        currentImageURL = nil
+//        currentImage = nil
+//        newImageURL = nil
+//    }
 }
