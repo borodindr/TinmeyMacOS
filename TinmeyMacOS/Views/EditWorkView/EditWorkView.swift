@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EditWorkView: View {
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) var dismiss
     @ObservedObject private var viewModel: EditWorksViewModel
     init(work: Work?, availableTags: [String]) {
         self.viewModel = EditWorksViewModel(work: work, availableTags: availableTags)
@@ -16,57 +16,16 @@ struct EditWorkView: View {
     
     var body: some View {
         ZStack {
-            ScrollView {
+//            ScrollView {
                 VStack(alignment: .center, spacing: 8) {
-                    // Title
-                    Text(viewModel.title)
-                        .font(.title)
-                        .padding(.top, 16)
-                    
-                    boxes
-                    
-                    HStack {
-                        if viewModel.work.canRemoveRow {
-                            Button(action: removeRow) {
-                                Text("-")
-                            }
-                        }
-
-                        Button {
-                            viewModel.work.addRow()
-                        } label: {
-                            Text("+")
-                        }
-                        
-                    }
-                    
-                    // Tags
-                    HStack {
-                        TagInputView(tags: $viewModel.work.tags)
-                        TagSelectView(selectedTags: $viewModel.work.tags,
-                                      availableTags: viewModel.availableTags)
-                        Spacer()
-                    }
-                    
-                    // Controls
-                    HStack {
-                        Button(action: {
-                            presentationMode.wrappedValue.dismiss()
-                        }, label: {
-                            Text("Dismiss")
-                        })
-                        Spacer()
-                        Button(action: {
-                            viewModel.createOrUpdate {
-                                presentationMode.wrappedValue.dismiss()
-                            }
-                        }, label: {
-                            Text("Save")
-                        })
-                    }
+                    title
+                    images
+                    fields
+                    tags
+                    controls
                 }
                 .padding()
-            }
+//            }
             
             if viewModel.isLoading {
                 Color.black.opacity(0.5)
@@ -77,7 +36,7 @@ struct EditWorkView: View {
                 }
             }
         }
-        .frame(minWidth: 1000, minHeight: 400)
+        .frame(minWidth: 450, maxWidth: 800, minHeight: 400)
         .background(BlurView())
         .alert(item: $viewModel.error) { error in
             Alert(
@@ -89,38 +48,74 @@ struct EditWorkView: View {
     }
     
     // MARK: - Boxes
-    var boxes: some View {
-        VStack(spacing: 0) {
-            ForEach($viewModel.work.twoDArray) { $row in
-                HStack(spacing: 0) {
-                    ForEach($row) { $item in
-                        EditWorkItemView(
-                            item: $item,
-                            work: $viewModel.work,
-                            onMoveBackward: nil,
-                            onMoveForward: nil
-                        )
-                            .padding(.bottom, 8)
-                    }
+    var title: some View {
+        Text(viewModel.title)
+            .font(.title)
+            .padding(.top, 16)
+    }
+    
+    var images: some View {
+        ScrollView(.horizontal, showsIndicators: true) {
+            HStack {
+                ForEach($viewModel.work.images, id: \.self) { $image in
+                    EditWorkItemImageView(
+                        remoteImage: image.currentImage,
+                        newImageURL: $image.newImageURL,
+                        onDeleteImage: { viewModel.work.images.removeAll(where: { $0 == image}) },
+                        onMoveLeft: { moveImageForward(item: image) },
+                        onMoveRight: { moveImageBackward(item: image) }
+                    )
                 }
+                Button {
+                    selectImage { url in
+                        viewModel.work.images.append(.init(url: url))
+                    }
+                } label: {
+                    Image(systemName: "plus")
+                }
+                .padding()
+                .frame(minHeight: 300)
             }
         }
     }
     
-    
-    private var canRemoveRow: Bool {
-        viewModel.work.canRemoveRow
+    var fields: some View {
+        VStack {
+            TextEditor(text: $viewModel.work.title)
+                .roundedBorderTextView()
+            TextEditor(text: $viewModel.work.description)
+                .roundedBorderTextView()
+        }
     }
     
-    private func removeRow() {
-        viewModel.work.removeRow()
+    var tags: some View {
+        HStack {
+            TagInputView(tags: $viewModel.work.tags)
+            TagSelectView(selectedTags: $viewModel.work.tags,
+                          availableTags: viewModel.availableTags)
+            Spacer()
+        }
     }
     
-    private func moveItemBackward(item: Work.Item.Create) {
+    var controls: some View {
+        HStack {
+            Spacer()
+            Button("Dismiss", action: dismiss.callAsFunction)
+                .keyboardShortcut(.cancelAction)
+            Button("Save") {
+                viewModel.createOrUpdate(
+                    completion: dismiss.callAsFunction
+                )
+            }
+            .keyboardShortcut(.defaultAction)
+        }
+    }
+    
+    private func moveImageBackward(item: Work.Image.Create) {
         
     }
     
-    private func moveItemForward(item: Work.Item.Create) {
+    private func moveImageForward(item: Work.Image.Create) {
         
     }
 }

@@ -16,45 +16,52 @@ struct EditWorkItemImageView: View {
         }
         return remoteImage
     }
-    var onClearImage: () -> ()
-    let onMoveBackward: (() -> ())?
-    let onMoveForward: (() -> ())?
+    var onDeleteImage: () -> ()
+    let onMoveLeft: (() -> ())?
+    let onMoveRight: (() -> ())?
     
     var body: some View {
         EditWorkItemContainer {
             DropImage(image, droppedImageURL: $newImageURL)
         } controls: {
-            if let onMoveBackward = onMoveBackward {
-                IconButton("arrow_left",
-                           action: onMoveBackward)
-            }
+            VStack {
+                Spacer()
             
-            Button(action: selectImage) {
-                Text("Select image")
-            }
-            if newImageURL != nil && remoteImage != nil {
-                Button(action: restoreImage) {
-                    Text("Restore")
+                HStack(spacing: 24) {
+                    if needArrows {
+                        HStack(spacing: 8) {
+                            if let onMoveLeft = onMoveLeft {
+                                IconButton("arrow.left", action: onMoveLeft)
+                            }
+                            
+                            if let onMoveRight = onMoveRight {
+                                IconButton("arrow.right", action: onMoveRight)
+                            }
+                        }
+                    }
+                    
+                    IconButton("square.and.pencil", action: selectImage)
+                    IconButton("trash", action: onDeleteImage)
+                        .foregroundColor(.red)
+                    
+                    if newImageURL != nil && remoteImage != nil {
+                        Button(action: restoreImage) {
+                            Text("Restore")
+                        }
+                    }
+                    
                 }
             }
-            if newImageURL != nil || remoteImage != nil {
-                Button(action: onClearImage) {
-                    Text("Clear")
-                }
-            }
-            
-            if let onMoveForward = onMoveForward {
-                IconButton("arrow_right",
-                           action: onMoveForward)
-            }
+            .padding()
         }
     }
     
+    private var needArrows: Bool {
+        onMoveLeft != nil || onMoveRight != nil
+    }
+    
     private func selectImage() {
-        let panel = NSOpenPanel()
-        panel.allowsMultipleSelection = false
-        panel.canChooseDirectories = false
-        if panel.runModal() == .OK, let url = panel.url {
+        selectImage { url in
             newImageURL = url
         }
     }
@@ -70,9 +77,9 @@ struct EditWorkItemImageView_Previews: PreviewProvider {
             remoteImage: nil,
             newImageURL: .constant(nil)) {
                 
-            } onMoveBackward: {
+            } onMoveLeft: {
                 
-            } onMoveForward: {
+            } onMoveRight: {
                 
             }
     }

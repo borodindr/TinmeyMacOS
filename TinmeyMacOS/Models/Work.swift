@@ -14,12 +14,6 @@ struct Work {
     let description: String
     let tags: [String]
     let images: [Image]
-    
-    var items: [Item] {
-        var items = images.map { Item.image($0) }
-        items.insert(.body(self), at: 0)
-        return items
-    }
 }
 
 extension Work: Identifiable { }
@@ -43,38 +37,11 @@ extension Work: APIOutput {
 }
 
 extension Work {
-    var twoDArray: [[Work.Item]] {
-        let columns = 3
-        var column = 0
-        var columnIndex = 0
-        var result = [[Work.Item]]()
-        
-        for object in items {
-            if columnIndex < columns {
-                if columnIndex == 0 {
-                    result.insert([object], at: column)
-                    columnIndex += 1
-                } else {
-                    result[column].append(object)
-                    columnIndex += 1
-                }
-            } else {
-                column += 1
-                result.insert([object], at: column)
-                columnIndex = 1
-            }
-        }
-        return result
-    }
-    
-}
-
-extension Work {
     static var preview: Work {
         Work(
-            id: .zero,
+            id: UUID(),
             title: "Title of the cover",
-            description: "?Some interesting description of the cover",
+            description: "Some interesting description of the cover",
             tags: ["Some", "tag", "example"],
             images: [.preview, .preview]
         )
@@ -82,14 +49,6 @@ extension Work {
 }
 
 extension Work {
-    var firstImageURL: URL? {
-        baseImageURLBuilder.path("firstImage").buildURL()
-    }
-    
-    var secondImageURL: URL? {
-        baseImageURLBuilder.path("secondImage").buildURL()
-    }
-    
     private var baseImageURLBuilder: APIURLBuilder {
         let idString: String
         if id.uuidString == "00000000-0000-0000-0000-000000000000" {
@@ -105,29 +64,10 @@ extension Work {
 }
 
 extension Array where Element == Work {
-    static var preview: [Work] { []
-//        [.preview(layout: .leftBody),
-//         .preview(layout: .middleBody),
-//         .preview(layout: .rightBody),
-//         .preview(layout: .leftLargeBody),
-//         .preview(layout: .rightLargeBody)]
-    }
-    
+    static var preview: [Work] { [.preview] }
 }
 
-
-
-
-
 extension SectionAPIModel {
-    var firstImageURL: URL? {
-        baseImageURLBuilder.path("firstImage").buildURL()
-    }
-    
-    var secondImageURL: URL? {
-        baseImageURLBuilder.path("secondImage").buildURL()
-    }
-    
     private var baseImageURLBuilder: APIURLBuilder {
         APIURLBuilder.api()
             .path("sections")

@@ -15,41 +15,29 @@ struct WorkView: View {
     var onEdit: (Work) -> ()
     var onDelete: (Work) -> ()
     
-    @State
-    private var showControls = false
-    
     var body: some View {
         image
-            .overlay(overlay)
-            .onHover { hovering in
-                withAnimation {
-                    showControls = hovering
-                }
-        }
+            .overlayOnHover(overlay: {
+                overlay
+            })
     }
     
     private var image: some View {
         WorkItemImageView(imagePath: work.images.first?.path)
     }
     
-    @ViewBuilder
     private var overlay: some View {
-        if showControls {
-            VStack(spacing: 16) {
-                Spacer()
-                VStack(alignment: .leading, spacing: 8) {
-                    Text(work.title)
-                        .font(.title)
-                    Text(work.description)
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                controls
+        VStack(spacing: 16) {
+            Spacer()
+            VStack(alignment: .leading, spacing: 8) {
+                Text(work.title)
+                    .font(.title)
+                Text(work.description)
             }
-            .padding()
-            .background(
-                Color.black.opacity(0.7)
-            )
+            .frame(maxWidth: .infinity, alignment: .leading)
+            controls
         }
+        .padding()
     }
     
     private var controls: some View {
@@ -77,6 +65,7 @@ struct WorkView: View {
             IconButton("trash") {
                 onDelete(work)
             }
+            .foregroundColor(.red)
         }
     }
     

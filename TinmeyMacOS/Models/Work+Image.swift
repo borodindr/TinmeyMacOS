@@ -36,6 +36,6 @@ extension Work.Image {
 
 extension Work.Image {
     static var preview: Self {
-        .init(id: .zero, path: nil)
+        .init(id: UUID(), path: nil)
     }
 }

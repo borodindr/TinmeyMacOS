@@ -22,16 +22,14 @@ struct EditWorkItemContainer<Content, Controls>: View where Content: View, Contr
     }
     
     var body: some View {
-        VStack(spacing: 8) {
+        if AuthAPIService.isAuthorized {
             WorkItemContainer {
                 content()
             }
-            Spacer()
-            if AuthAPIService.isAuthorized {
-                HStack {
-                    controls()
-                }
-                Spacer()
+            .overlayOnHover(overlay: controls)
+        } else {
+            WorkItemContainer {
+                content()
             }
         }
     }

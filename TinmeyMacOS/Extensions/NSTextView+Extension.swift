@@ -17,4 +17,12 @@ extension NSTextView {
         layoutManager.ensureLayout(for: textContainer)
         return layoutManager.usedRect(for: textContainer).size
     }
+    
+    open override var frame: CGRect {
+            didSet {
+                backgroundColor = .clear
+                drawsBackground = true
+            }
+
+        }
 }

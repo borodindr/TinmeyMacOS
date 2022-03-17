@@ -32,7 +32,6 @@ struct WorksListView: View {
                 }
             }
             .padding()
-//            Spacer()
         }
         .sheet(item: $editWork, onDismiss: {
             viewModel.loadAllWorks()
@@ -52,6 +51,9 @@ struct WorksListView: View {
             )
         }
         .toolbar {
+            Button("Add new") {
+                editWork = .new
+            }
             Button("Reload") {
                 viewModel.loadAllWorks()
             }
@@ -60,9 +62,12 @@ struct WorksListView: View {
     
     private var grid: some View {
         LazyVGrid(
-            columns: Array(repeating: GridItem(.fixed(300)), count: 3),
+            columns: Array(
+                repeating: GridItem(.fixed(300), spacing: 32),
+                count: 3
+            ),
             alignment: .center,
-            spacing: 8) {
+            spacing: 32) {
                 ForEach(viewModel.works, id: \.self) { work in
                     let workIndex = viewModel.works.firstIndex(of: work)
                     let isFirst = workIndex == 0
