@@ -10,6 +10,10 @@ import SwiftUI
 struct WorksListView: View {
     @ObservedObject private var viewModel: WorksListViewModel
     @State private var editWork: EditWorkType?
+    @State
+    private var showDeleteAlert = false
+    @State
+    private var workToDelete: Work? = nil
     
     init() {
         self.viewModel = WorksListViewModel()
@@ -58,6 +62,13 @@ struct WorksListView: View {
                 viewModel.loadAllWorks()
             }
         }
+        .alert("Delete work?",
+               isPresented: $showDeleteAlert,
+               presenting: workToDelete) { workToDelete in
+            Button("Delete", role: .destructive, action: {
+                viewModel.delete(work: workToDelete)
+            })
+        }
     }
     
     private var grid: some View {
@@ -94,7 +105,8 @@ struct WorksListView: View {
     }
     
     private func deleteWork(_ work: Work) {
-        viewModel.delete(work: work)
+        workToDelete = work
+        showDeleteAlert.toggle()
     }
 }
 
