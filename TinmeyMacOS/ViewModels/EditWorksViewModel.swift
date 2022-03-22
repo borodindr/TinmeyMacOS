@@ -46,7 +46,7 @@ class EditWorksViewModel: ObservableObject {
     
     private let lock = NSRecursiveLock()
     
-    func createOrUpdate(completion: @escaping () -> ()) {
+    func save(completion: @escaping () -> ()) {
         if let id = id {
             update(workID: id, to: work, completionHandler: completion)
         } else {

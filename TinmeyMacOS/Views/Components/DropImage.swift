@@ -16,20 +16,18 @@ struct DropImage: View {
     }
     
     var body: some View {
-        Group {
-            AsyncImage(url: droppedImageURL, content: { phase in
-                switch phase {
-                case .success(let image):
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                case .failure, .empty:
-                    Spacer()
-                @unknown default:
-                    fatalError()
-                }
-            })
-        }
+        AsyncImage(url: droppedImageURL, content: { phase in
+            switch phase {
+            case .success(let image):
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            case .failure, .empty:
+                Spacer()
+            @unknown default:
+                fatalError()
+            }
+        })
         .frame(minWidth: 0, maxWidth: .infinity,
                minHeight: 0, maxHeight: .infinity)
         .border(border, width: 3)

@@ -10,6 +10,11 @@ import SwiftUI
 struct EditWorkView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject private var viewModel: EditWorksViewModel
+    @State
+    private var showDeleteAlert = false
+    @State
+    private var imageToDelete: Work.Image.Create? = nil
+    
     init(work: Work?, availableTags: [String]) {
         self.viewModel = EditWorksViewModel(work: work, availableTags: availableTags)
     }
@@ -18,10 +23,16 @@ struct EditWorkView: View {
         ZStack {
             VStack(alignment: .center, spacing: 8) {
                 title
-                images
-                fields
-                tags
-                controls
+                ScrollView {
+                    images
+                    fields
+                    tagsList
+                }
+                HStack {
+                    tagsControls
+                    Spacer()
+                    controls
+                }
             }
             .padding()
             
@@ -34,8 +45,15 @@ struct EditWorkView: View {
                 }
             }
         }
-        .frame(minWidth: 450, maxWidth: 800, minHeight: 400)
+        .frame(minWidth: 450, maxWidth: 800, minHeight: 400, idealHeight: 600)
         .background(BlurView())
+        .alert("Delete image?",
+               isPresented: $showDeleteAlert,
+               presenting: imageToDelete) { imageToDelete in
+            Button("Delete", role: .destructive, action: {
+                viewModel.work.images.removeAll(where: { $0 == imageToDelete })
+            })
+        }
         .alert(item: $viewModel.error) { error in
             Alert(
                 title: Text("Error"),
@@ -58,7 +76,10 @@ struct EditWorkView: View {
                 ForEach($viewModel.work.images, id: \.self) { $image in
                     EditWorkItemImageView(
                         image: $image,
-                        onDeleteImage: { viewModel.work.images.removeAll(where: { $0 == image}) },
+                        onDeleteImage: {
+                            imageToDelete = image
+                            showDeleteAlert.toggle()
+                        },
                         onMoveLeft: { moveImageForward(item: image) },
                         onMoveRight: { moveImageBackward(item: image) }
                     )
@@ -80,12 +101,23 @@ struct EditWorkView: View {
         VStack {
             TextEditor(text: $viewModel.work.title)
                 .roundedBorderTextView()
+                .frame(minHeight: 30)
             TextEditor(text: $viewModel.work.description)
                 .roundedBorderTextView()
+                .frame(minHeight: 50)
         }
     }
     
-    var tags: some View {
+    var tagsList: some View {
+        TagsListView(tags: viewModel.work.tags) { tagToDelete in
+            guard let indexToDelete = viewModel.work.tags.firstIndex(of: tagToDelete) else {
+                return
+            }
+            viewModel.work.tags.remove(at: indexToDelete)
+        }
+    }
+    
+    var tagsControls: some View {
         HStack {
             TagInputView(tags: $viewModel.work.tags)
             TagSelectView(selectedTags: $viewModel.work.tags,
@@ -96,11 +128,10 @@ struct EditWorkView: View {
     
     var controls: some View {
         HStack {
-            Spacer()
             Button("Dismiss", action: dismiss.callAsFunction)
                 .keyboardShortcut(.cancelAction)
             Button("Save") {
-                viewModel.createOrUpdate(
+                viewModel.save(
                     completion: dismiss.callAsFunction
                 )
             }

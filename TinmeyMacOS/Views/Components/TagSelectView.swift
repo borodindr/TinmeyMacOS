@@ -27,7 +27,7 @@ struct TagSelectView: View {
             .fixedSize()
             
             
-            IconButton("add") {
+            IconButton("plus.square") {
                 addTag(at: selectedTagIndex)
             }
             .disabled(disableAddButton)

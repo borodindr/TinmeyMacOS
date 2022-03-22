@@ -13,6 +13,9 @@ struct EditWorkItemImageView: View {
     let onMoveLeft: (() -> ())?
     let onMoveRight: (() -> ())?
     
+    @State
+    private var showDeleteAlert = false
+    
     var body: some View {
         EditWorkItemContainer {
             DropImage(droppedImageURL: $image.url)
@@ -39,6 +42,10 @@ struct EditWorkItemImageView: View {
                 }
             }
             .padding()
+//            .alert("Delete image?", isPresented: $showDeleteAlert) {
+//                Button("Cancel", action: { showDeleteAlert.toggle() })
+//                Button("Delete", action: onDeleteImage)
+//            }
         }
     }
     

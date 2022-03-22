@@ -19,7 +19,7 @@ struct TagInputView: View {
             TextField("Enter new tag name", text: $name)
                 .font(.caption)
                 .fixedSize()
-            IconButton("add") {
+            IconButton("plus.square") {
                 addTag(name)
                 name = ""
             }
