@@ -80,8 +80,8 @@ struct EditWorkView: View {
                             imageToDelete = image
                             showDeleteAlert.toggle()
                         },
-                        onMoveLeft: { moveImageForward(item: image) },
-                        onMoveRight: { moveImageBackward(item: image) }
+                        onMoveLeft: viewModel.moveImageBackward(item: image),
+                        onMoveRight: viewModel.moveImageForward(item: image)
                     )
                 }
                 Button {
@@ -137,14 +137,6 @@ struct EditWorkView: View {
             }
             .keyboardShortcut(.defaultAction)
         }
-    }
-    
-    private func moveImageBackward(item: Work.Image.Create) {
-        
-    }
-    
-    private func moveImageForward(item: Work.Image.Create) {
-        
     }
 }
 

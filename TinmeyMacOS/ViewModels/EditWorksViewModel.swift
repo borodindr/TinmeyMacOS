@@ -117,6 +117,22 @@ class EditWorksViewModel: ObservableObject {
             .store(in: &subscriptions)
     }
     
+    func moveImageBackward(item: Work.Image.Create) -> (() -> ())? {
+        guard canMoveImageBackward(item: item) else { return nil }
+        return { [weak self] in
+            guard let self = self, let currentIndex = self.work.images.firstIndex(of: item) else { return }
+            self.work.images.move(item, to: currentIndex - 1)
+        }
+    }
+    
+    func moveImageForward(item: Work.Image.Create) -> (() -> ())? {
+        guard canMoveImageForward(item: item) else { return nil }
+        return { [weak self] in
+            guard let self = self, let currentIndex = self.work.images.firstIndex(of: item) else { return }
+            self.work.images.move(item, to: currentIndex + 1)
+        }
+    }
+    
     private func addNewImages(to work: Work) -> AnyPublisher<Void, Error> {
         let tasks = zip(
             work.images.map(\.id),
@@ -128,4 +144,13 @@ class EditWorksViewModel: ObservableObject {
         return Publishers.MergeMany(tasks).eraseToAnyPublisher()
     }
     
+    private func canMoveImageBackward(item: Work.Image.Create) -> Bool {
+        let first = work.images.first
+        return item != first
+    }
+    
+    private func canMoveImageForward(item: Work.Image.Create) -> Bool {
+        let last = work.images.last
+        return item != last
+    }
 }
