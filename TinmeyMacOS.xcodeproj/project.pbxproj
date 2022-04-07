@@ -913,7 +913,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/borodindr/TinmeyCore.git";
 			requirement = {
-				branch = "version-2";
+				branch = main;
 				kind = branch;
 			};
 		};

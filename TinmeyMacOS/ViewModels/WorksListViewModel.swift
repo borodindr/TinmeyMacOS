@@ -73,7 +73,7 @@ class WorksListViewModel: ObservableObject {
         moveWork(work, direction: .backward)
     }
     
-    private func moveWork(_ work: Work, direction: Work.ReorderDirection) {
+    private func moveWork(_ work: Work, direction: ReorderDirection) {
         guard let currentIndex = works.firstIndex(of: work) else { return }
         startLoading()
         let newIndex: Int

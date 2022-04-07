@@ -19,7 +19,7 @@ protocol WorksProviderService {
     func delete(workID: UUID) -> AnyPublisher<Void, Error>
     func addImage(from fileURL: URL, to imageID: UUID) -> AnyPublisher<Void, Error>
     func deleteImage(imageID: UUID) -> AnyPublisher<Void, Error>
-    func reorder(workID: UUID, direction: Work.ReorderDirection) -> AnyPublisher<Work, Error>
+    func reorder(workID: UUID, direction: ReorderDirection) -> AnyPublisher<Work, Error>
     func swapImages(workID: UUID) -> AnyPublisher<Work, Error>
 }
 
@@ -61,7 +61,7 @@ class WorksPreviewService: WorksProviderService {
             .eraseToAnyPublisher()
     }
     
-    func reorder(workID: UUID, direction: Work.ReorderDirection) -> AnyPublisher<Work, Error> {
+    func reorder(workID: UUID, direction: ReorderDirection) -> AnyPublisher<Work, Error> {
         Fail(error: WorksPreviewError.notImplemented)
             .eraseToAnyPublisher()
     }
@@ -75,7 +75,7 @@ class WorksPreviewService: WorksProviderService {
 
 class WorksAPIService: WorksProviderService {
     private struct ReorderParameters: Encodable {
-        let direction: Work.ReorderDirection
+        let direction: ReorderDirection
     }
     
     private let api = APIService(basePathComponents: "works")
@@ -119,7 +119,7 @@ class WorksAPIService: WorksProviderService {
         imagesService.download(workImageID.uuidString)
     }
     
-    func reorder(workID: UUID, direction: WorkAPIModel.ReorderDirection) -> AnyPublisher<Work, Error> {
+    func reorder(workID: UUID, direction: ReorderDirection) -> AnyPublisher<Work, Error> {
         api.put(workID.uuidString, "reorder", direction.rawValue)
     }
     
