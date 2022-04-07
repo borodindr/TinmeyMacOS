@@ -17,6 +17,7 @@ class WorksListViewModel: ObservableObject {
     
     private let service: WorksProviderService
     private let tagsService = TagsAPIService()
+    var loadingDebounceTimer: Timer? = nil
     private var subscriptions = Set<AnyCancellable>()
     
     init(service: WorksProviderService = WorksAPIService()) {
@@ -25,7 +26,7 @@ class WorksListViewModel: ObservableObject {
     }
     
     func loadAllWorks() {
-        isLoading = true
+        startLoading()
         service.allWorks()
             .flatMap { [tagsService] works in
                 tagsService.getAll()
@@ -34,9 +35,9 @@ class WorksListViewModel: ObservableObject {
             .sink(receiveCompletion: { [weak self] completion in
                 switch completion {
                 case .finished:
-                    self?.isLoading = false
+                    self?.stopLoading()
                 case .failure(let error):
-                    self?.isLoading = false
+                    self?.stopLoading()
                     self?.error = ErrorDescription(text: error.localizedDescription)
                 }
             }, receiveValue: { [weak self] works, tags in
@@ -47,15 +48,15 @@ class WorksListViewModel: ObservableObject {
     }
     
     func delete(work: Work) {
-        isLoading = true
+        startLoading()
         service.delete(workID: work.id)
             .sink(receiveCompletion: { [weak self] completion in
                 switch completion {
                 case .finished:
-                    self?.isLoading = false
+                    self?.stopLoading()
                     self?.loadAllWorks()
                 case .failure(let error):
-                    self?.isLoading = false
+                    self?.stopLoading()
                     self?.error = ErrorDescription(text: error.localizedDescription)
                 }
             }, receiveValue: { _ in
@@ -73,19 +74,36 @@ class WorksListViewModel: ObservableObject {
     }
     
     private func moveWork(_ work: Work, direction: Work.ReorderDirection) {
+        guard let currentIndex = works.firstIndex(of: work) else { return }
+        startLoading()
+        let newIndex: Int
+        switch direction {
+        case .forward:
+            newIndex = currentIndex - 1
+        case .backward:
+            newIndex = currentIndex + 1
+        }
+        works.move(work, to: newIndex)
         service.reorder(workID: work.id, direction: direction)
             .sink(receiveCompletion: { [weak self] completion in
                 switch completion {
                 case .finished:
-                    self?.isLoading = false
+                    self?.stopLoading()
                     self?.loadAllWorks()
                 case .failure(let error):
-                    self?.isLoading = false
+                    self?.stopLoading()
                     self?.error = ErrorDescription(text: error.localizedDescription)
                 }
             }, receiveValue: { _ in
                 
             })
             .store(in: &subscriptions)
+    }
+    
+}
+
+extension WorksListViewModel: LoadableViewModel {
+    func onNew(loadingState: Bool) {
+        isLoading = loadingState
     }
 }

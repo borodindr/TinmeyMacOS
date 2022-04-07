@@ -21,6 +21,7 @@ class EditWorksViewModel: ObservableObject {
     @Published private(set) var isLoading = false
     @Published var error: ErrorDescription? = nil
     @Published var needImageSwap = false
+    var loadingDebounceTimer: Timer?
     
     var title: String {
         if id != nil {
@@ -56,7 +57,7 @@ class EditWorksViewModel: ObservableObject {
     
     func create(newWork: Work.Create, completionHandler: @escaping () -> ()) {
         // TODO: Implement
-        isLoading = true
+        startLoading()
         worksService.create(newWork: newWork)
             .flatMap { [weak self] work -> AnyPublisher<Void, Error> in
                 guard let self = self else {
@@ -70,11 +71,11 @@ class EditWorksViewModel: ObservableObject {
             .sink { [weak self] completion in
                 switch completion {
                 case .finished:
-                    self?.isLoading = false
+                    self?.stopLoading()
                     completionHandler()
                 case .failure(let error):
                     print("Create Error:", error)
-                    self?.isLoading = false
+                    self?.stopLoading()
                     self?.error = ErrorDescription(text: error.localizedDescription)
                 }
             } receiveValue: { work in
@@ -85,7 +86,7 @@ class EditWorksViewModel: ObservableObject {
     
     func update(workID: UUID, to newWork: Work.Create, completionHandler: @escaping () -> ()) {
         // TODO: Implement
-        isLoading = true
+        startLoading()
         worksService.update(workID: workID, to: newWork)
             .flatMap { [worksService] work -> AnyPublisher<Void, Error> in
                 let tasks = zip(
@@ -105,10 +106,10 @@ class EditWorksViewModel: ObservableObject {
             .sink { [weak self] completion in
                 switch completion {
                 case .finished:
-                    self?.isLoading = false
+                    self?.stopLoading()
                     completionHandler()
                 case .failure(let error):
-                    self?.isLoading = false
+                    self?.stopLoading()
                     self?.error = ErrorDescription(text: error.localizedDescription)
                 }
             } receiveValue: {
@@ -152,5 +153,11 @@ class EditWorksViewModel: ObservableObject {
     private func canMoveImageForward(item: Work.Image.Create) -> Bool {
         let last = work.images.last
         return item != last
+    }
+}
+
+extension EditWorksViewModel: LoadableViewModel {
+    func onNew(loadingState: Bool) {
+        isLoading = loadingState
     }
 }
