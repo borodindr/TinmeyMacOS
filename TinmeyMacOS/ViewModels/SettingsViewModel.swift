@@ -20,14 +20,16 @@ final class SettingsViewModel: ObservableObject {
     @Published var newPassword = ""
     @Published var repeatNewPassword = ""
     
+    var loadingDebounceTimer: Timer?
+    
     private let service = AuthAPIService()
     private var subscriptions = Set<AnyCancellable>()
     
     func login() {
-        isLoading = true
+        startLoading()
         service.login(username: username, password: password)
             .sink { [weak self] completion in
-                self?.isLoading = false
+                self?.stopLoading()
                 self?.isAuthorized = AuthAPIService.isAuthorized
                 self?.username = ""
                 self?.password = ""
@@ -49,7 +51,7 @@ final class SettingsViewModel: ObservableObject {
     }
     
     func changePassword() {
-        isLoading = true
+        startLoading()
         service
             .change(
                 currentPassword: currentPassword,
@@ -57,7 +59,7 @@ final class SettingsViewModel: ObservableObject {
                 repeatNewPassword: repeatNewPassword
             )
             .sink { [weak self] completion in
-                self?.isLoading = false
+                self?.stopLoading()
                 self?.currentPassword = ""
                 self?.newPassword = ""
                 self?.repeatNewPassword = ""
@@ -71,5 +73,11 @@ final class SettingsViewModel: ObservableObject {
                 
             }
             .store(in: &subscriptions)
+    }
+}
+
+extension SettingsViewModel: LoadableViewModel {
+    func onNew(loadingState: Bool) {
+        isLoading = loadingState
     }
 }

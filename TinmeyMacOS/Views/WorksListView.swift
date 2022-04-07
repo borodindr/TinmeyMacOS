@@ -27,16 +27,11 @@ struct WorksListView: View {
     var body: some View {
         ScrollView {
             VStack {
-                if viewModel.isLoading && viewModel.works.isEmpty {
-                    Spacer()
-                    ProgressIndicator(size: .regular)
-                    Spacer()
-                } else {
-                    grid
-                }
+                grid
             }
             .padding()
         }
+        .dimmedLoading(viewModel.isLoading)
         .sheet(item: $editWork, onDismiss: {
             viewModel.loadAllWorks()
         }, content: { editWork in

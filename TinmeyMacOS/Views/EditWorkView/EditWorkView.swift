@@ -20,31 +20,21 @@ struct EditWorkView: View {
     }
     
     var body: some View {
-        ZStack {
-            VStack(alignment: .center, spacing: 8) {
-                title
-                ScrollView {
-                    images
-                    fields
-                    tagsList
-                }
-                HStack {
-                    tagsControls
-                    Spacer()
-                    controls
-                }
+        VStack(alignment: .center, spacing: 8) {
+            title
+            ScrollView {
+                images
+                fields
+                tagsList
             }
-            .padding()
-            
-            if viewModel.isLoading {
-                Color.black.opacity(0.5)
-                VStack {
-                    Spacer()
-                    ProgressIndicator(size: .regular)
-                    Spacer()
-                }
+            HStack {
+                tagsControls
+                Spacer()
+                controls
             }
         }
+        .padding()
+        .dimmedLoading(viewModel.isLoading)
         .frame(minWidth: 450, maxWidth: 800, minHeight: 400, idealHeight: 600)
         .background(BlurView())
         .alert("Delete image?",
