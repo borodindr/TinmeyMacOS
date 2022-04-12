@@ -913,8 +913,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/borodindr/TinmeyCore.git";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 		3236C7DD26DC0FCF002122B3 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
