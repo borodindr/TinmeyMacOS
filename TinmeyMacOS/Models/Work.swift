@@ -62,11 +62,3 @@ extension Work {
 extension Array where Element == Work {
     static var preview: [Work] { [.preview] }
 }
-
-extension SectionAPIModel {
-    private var baseImageURLBuilder: APIURLBuilder {
-        APIURLBuilder.api()
-            .path("sections")
-            .path(type.rawValue)
-    }
-}

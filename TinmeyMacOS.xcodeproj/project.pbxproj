@@ -20,7 +20,6 @@
 		3234CBAC27145D570069A3CC /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234CBAB27145D570069A3CC /* Keychain.swift */; };
 		3234CBAE271468E70069A3CC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234CBAD271468E70069A3CC /* SettingsView.swift */; };
 		3234CBB02714691A0069A3CC /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234CBAF2714691A0069A3CC /* SettingsViewModel.swift */; };
-		3234CBBB2714BEA20069A3CC /* SectionsAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234CBBA2714BEA20069A3CC /* SectionsAPIService.swift */; };
 		3234CBBF2714C0E10069A3CC /* AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234CBBE2714C0E10069A3CC /* AlertType.swift */; };
 		3236C78526DC0EBC002122B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C78426DC0EBC002122B3 /* AppDelegate.swift */; };
 		3236C78A26DC0EBC002122B3 /* TinmeyMacOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3236C78826DC0EBC002122B3 /* TinmeyMacOS.xcdatamodeld */; };
@@ -92,7 +91,6 @@
 		3234CBAB27145D570069A3CC /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		3234CBAD271468E70069A3CC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		3234CBAF2714691A0069A3CC /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
-		3234CBBA2714BEA20069A3CC /* SectionsAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionsAPIService.swift; sourceTree = "<group>"; };
 		3234CBBE2714C0E10069A3CC /* AlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertType.swift; sourceTree = "<group>"; };
 		3236C78126DC0EBC002122B3 /* Tinmey portfolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tinmey portfolio.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3236C78426DC0EBC002122B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -304,7 +302,6 @@
 				3236C7E126DC105E002122B3 /* WorksAPIService.swift */,
 				323FB1E32717282400B31A22 /* TagsAPIService.swift */,
 				3234CBA927145A700069A3CC /* AuthAPIService.swift */,
-				3234CBBA2714BEA20069A3CC /* SectionsAPIService.swift */,
 				3234CBAB27145D570069A3CC /* Keychain.swift */,
 			);
 			path = Services;
@@ -468,7 +465,6 @@
 				3236C7D226DC0F6C002122B3 /* WorkView.swift in Sources */,
 				32932A6E272B219B004DD0B9 /* InfoPlist.swift in Sources */,
 				32EA3A9B27FF7C3B002F92E4 /* DimmedLoadingViewModifier.swift in Sources */,
-				3234CBBB2714BEA20069A3CC /* SectionsAPIService.swift in Sources */,
 				326EA03426DE751600C94B5E /* ProgressIndicator.swift in Sources */,
 				3228555627E136D400256A1A /* View+Extension.swift in Sources */,
 				324A8A55278396390044D622 /* Work+Image.swift in Sources */,
