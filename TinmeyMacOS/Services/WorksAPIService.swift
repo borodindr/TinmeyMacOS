@@ -19,63 +19,14 @@ protocol WorksProviderService {
     func delete(workID: UUID) -> AnyPublisher<Void, Error>
     func addImage(from fileURL: URL, to imageID: UUID) -> AnyPublisher<Void, Error>
     func deleteImage(imageID: UUID) -> AnyPublisher<Void, Error>
-    func reorder(workID: UUID, direction: Work.ReorderDirection) -> AnyPublisher<Work, Error>
+    func reorder(workID: UUID, direction: ReorderDirection) -> AnyPublisher<Work, Error>
+    func move(workID: UUID, newIndex: Int) -> AnyPublisher<Work, Error>
     func swapImages(workID: UUID) -> AnyPublisher<Work, Error>
-}
-
-class WorksPreviewService: WorksProviderService {
-    enum WorksPreviewError: Error {
-        case notImplemented
-    }
-    
-    required init() { }
-    
-    func allWorks() -> AnyPublisher<[Work], Error> {
-        Just([Work].preview)
-            .setFailureType(to: Error.self)
-            .eraseToAnyPublisher()
-    }
-    
-    func create(newWork: Work.Create) -> AnyPublisher<Work, Error> {
-        Fail(error: WorksPreviewError.notImplemented)
-            .eraseToAnyPublisher()
-    }
-    
-    func update(workID: UUID, to newWork: Work.Create) -> AnyPublisher<Work, Error> {
-        Fail(error: WorksPreviewError.notImplemented)
-            .eraseToAnyPublisher()
-    }
-    
-    func delete(workID: UUID) -> AnyPublisher<Void, Error> {
-        Fail(error: WorksPreviewError.notImplemented)
-            .eraseToAnyPublisher()
-    }
-    
-    func addImage(from fileURL: URL, to imageID: UUID) -> AnyPublisher<Void, Error> {
-        Fail(error: WorksPreviewError.notImplemented)
-            .eraseToAnyPublisher()
-    }
-    
-    func deleteImage(imageID: UUID) -> AnyPublisher<Void, Error> {
-        Fail(error: WorksPreviewError.notImplemented)
-            .eraseToAnyPublisher()
-    }
-    
-    func reorder(workID: UUID, direction: Work.ReorderDirection) -> AnyPublisher<Work, Error> {
-        Fail(error: WorksPreviewError.notImplemented)
-            .eraseToAnyPublisher()
-    }
-    
-    func swapImages(workID: UUID) -> AnyPublisher<Work, Error> {
-        Fail(error: WorksPreviewError.notImplemented)
-            .eraseToAnyPublisher()
-    }
-    
 }
 
 class WorksAPIService: WorksProviderService {
     private struct ReorderParameters: Encodable {
-        let direction: Work.ReorderDirection
+        let direction: ReorderDirection
     }
     
     private let api = APIService(basePathComponents: "works")
@@ -119,8 +70,12 @@ class WorksAPIService: WorksProviderService {
         imagesService.download(workImageID.uuidString)
     }
     
-    func reorder(workID: UUID, direction: WorkAPIModel.ReorderDirection) -> AnyPublisher<Work, Error> {
+    func reorder(workID: UUID, direction: ReorderDirection) -> AnyPublisher<Work, Error> {
         api.put(workID.uuidString, "reorder", direction.rawValue)
+    }
+    
+    func move(workID: UUID, newIndex: Int) -> AnyPublisher<Work, Error> {
+        api.put(workID.uuidString, "move", "\(newIndex)")
     }
     
     func swapImages(workID: UUID) -> AnyPublisher<Work, Error> {
