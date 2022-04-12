@@ -19,16 +19,11 @@ protocol WorksProviderService {
     func delete(workID: UUID) -> AnyPublisher<Void, Error>
     func addImage(from fileURL: URL, to imageID: UUID) -> AnyPublisher<Void, Error>
     func deleteImage(imageID: UUID) -> AnyPublisher<Void, Error>
-    func reorder(workID: UUID, direction: ReorderDirection) -> AnyPublisher<Work, Error>
     func move(workID: UUID, newIndex: Int) -> AnyPublisher<Work, Error>
     func swapImages(workID: UUID) -> AnyPublisher<Work, Error>
 }
 
 class WorksAPIService: WorksProviderService {
-    private struct ReorderParameters: Encodable {
-        let direction: ReorderDirection
-    }
-    
     private let api = APIService(basePathComponents: "works")
     private let imagesService = APIService(basePathComponents: "work_images")
     
@@ -68,10 +63,6 @@ class WorksAPIService: WorksProviderService {
     
     func loadImage(workImageID: UUID) -> AnyPublisher<Data, Error> {
         imagesService.download(workImageID.uuidString)
-    }
-    
-    func reorder(workID: UUID, direction: ReorderDirection) -> AnyPublisher<Work, Error> {
-        api.put(workID.uuidString, "reorder", direction.rawValue)
     }
     
     func move(workID: UUID, newIndex: Int) -> AnyPublisher<Work, Error> {

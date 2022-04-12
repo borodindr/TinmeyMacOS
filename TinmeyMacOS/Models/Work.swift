@@ -20,8 +20,6 @@ extension Work: Identifiable { }
 extension Work: Codable { }
 extension Work: Hashable { }
 
-typealias ReorderDirection = ReorderDirectionAPIModel
-
 extension Work: APIOutput {
     init(_ apiModel: WorkAPIModel) {
         self.init(
