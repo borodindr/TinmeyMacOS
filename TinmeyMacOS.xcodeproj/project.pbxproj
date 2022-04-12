@@ -20,7 +20,6 @@
 		3234CBAC27145D570069A3CC /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234CBAB27145D570069A3CC /* Keychain.swift */; };
 		3234CBAE271468E70069A3CC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234CBAD271468E70069A3CC /* SettingsView.swift */; };
 		3234CBB02714691A0069A3CC /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234CBAF2714691A0069A3CC /* SettingsViewModel.swift */; };
-		3234CBB92714BC410069A3CC /* ProfileAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234CBB82714BC410069A3CC /* ProfileAPIService.swift */; };
 		3234CBBB2714BEA20069A3CC /* SectionsAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234CBBA2714BEA20069A3CC /* SectionsAPIService.swift */; };
 		3234CBBF2714C0E10069A3CC /* AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234CBBE2714C0E10069A3CC /* AlertType.swift */; };
 		3236C78526DC0EBC002122B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236C78426DC0EBC002122B3 /* AppDelegate.swift */; };
@@ -93,7 +92,6 @@
 		3234CBAB27145D570069A3CC /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		3234CBAD271468E70069A3CC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		3234CBAF2714691A0069A3CC /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
-		3234CBB82714BC410069A3CC /* ProfileAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAPIService.swift; sourceTree = "<group>"; };
 		3234CBBA2714BEA20069A3CC /* SectionsAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionsAPIService.swift; sourceTree = "<group>"; };
 		3234CBBE2714C0E10069A3CC /* AlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertType.swift; sourceTree = "<group>"; };
 		3236C78126DC0EBC002122B3 /* Tinmey portfolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tinmey portfolio.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -306,7 +304,6 @@
 				3236C7E126DC105E002122B3 /* WorksAPIService.swift */,
 				323FB1E32717282400B31A22 /* TagsAPIService.swift */,
 				3234CBA927145A700069A3CC /* AuthAPIService.swift */,
-				3234CBB82714BC410069A3CC /* ProfileAPIService.swift */,
 				3234CBBA2714BEA20069A3CC /* SectionsAPIService.swift */,
 				3234CBAB27145D570069A3CC /* Keychain.swift */,
 			);
@@ -479,7 +476,6 @@
 				324A8A5F2783B9D40044D622 /* Array+Extension.swift in Sources */,
 				32BEEC3A2783C7FC005013EF /* APIModelConvertable.swift in Sources */,
 				3228555927E13CFE00256A1A /* OverlayOnHoverViewModifier.swift in Sources */,
-				3234CBB92714BC410069A3CC /* ProfileAPIService.swift in Sources */,
 				3219602E270C9944002A0E11 /* TextView.swift in Sources */,
 				32B1B76B278C7FE200371261 /* DropInfo+Extension.swift in Sources */,
 				321D1C3C2778F60100A28468 /* WorkItemContainer.swift in Sources */,
