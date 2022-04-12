@@ -8,21 +8,12 @@
 import SwiftUI
 
 struct WorksListView: View {
-    @ObservedObject private var viewModel: WorksListViewModel
+    @StateObject private var viewModel = WorksListViewModel()
     @State private var editWork: EditWorkType?
     @State
     private var showDeleteAlert = false
     @State
     private var workToDelete: Work? = nil
-    
-    init() {
-        self.viewModel = WorksListViewModel()
-    }
-    
-    // for preview
-    fileprivate init(viewModel: WorksListViewModel) {
-        self.viewModel = viewModel
-    }
     
     var body: some View {
         ScrollView {
@@ -32,16 +23,16 @@ struct WorksListView: View {
             .padding()
         }
         .dimmedLoading(viewModel.isLoading)
-        .sheet(item: $editWork, onDismiss: {
+        .sheet(item: $editWork) {
             viewModel.loadAllWorks()
-        }, content: { editWork in
+        } content: { editWork in
             switch editWork {
             case .edit(let work):
                 EditWorkView(work: work, availableTags: viewModel.availableTags)
             case .new:
                 EditWorkView(work: nil, availableTags: viewModel.availableTags)
             }
-        })
+        }
         .alert(item: $viewModel.error) { error in
             Alert(
                 title: Text("Error"),
@@ -49,14 +40,7 @@ struct WorksListView: View {
                 dismissButton: .default(Text("Close"))
             )
         }
-        .toolbar {
-            Button("Add new") {
-                editWork = .new
-            }
-            Button("Reload") {
-                viewModel.loadAllWorks()
-            }
-        }
+        .toolbar(content: toolbars)
         .alert("Delete work?",
                isPresented: $showDeleteAlert,
                presenting: workToDelete) { workToDelete in
@@ -67,32 +51,50 @@ struct WorksListView: View {
     }
     
     private var grid: some View {
-        LazyVGrid(
-            columns: Array(
-                repeating: GridItem(.fixed(300), spacing: 32),
-                count: 3
-            ),
-            alignment: .center,
-            spacing: 32) {
-                ForEach(viewModel.works, id: \.self) { work in
-                    let workIndex = viewModel.works.firstIndex(of: work)
-                    let isFirst = workIndex == 0
-                    let isLast = workIndex == viewModel.works.count - 1
-                    WorkView(work: work,
-                             onMoveLeft: isFirst ? nil : moveWorkUp,
-                             onMoveRight: isLast ? nil : moveWorkDown,
-                             onEdit: editWork,
-                             onDelete: deleteWork)
-                }
+        LazyVGrid(columns: gridColumns, alignment: .center, spacing: 32) {
+            works
+        }
+    }
+    
+    private var gridColumns: [GridItem] {
+        let item = GridItem(.fixed(300), spacing: 32)
+        return Array(repeating: item, count: 3)
+    }
+    
+    private var works: some View {
+        ForEach(viewModel.works, id: \.self) { work in
+            let workIndex = viewModel.works.firstIndex(of: work)
+            let isFirst = workIndex == 0
+            let isLast = workIndex == viewModel.works.count - 1
+            WorkView(work: work,
+                     onMoveLeft: isFirst ? nil : moveWorkLeft,
+                     onMoveRight: isLast ? nil : moveWorkRight,
+                     onEdit: editWork,
+                     onDelete: deleteWork)
+            .onDrag {
+                viewModel.draggingWork = work
+                return NSItemProvider(object: work.id.uuidString as NSString)
             }
+            .onDrop(of: [.text], delegate: WorkDropDelegate(work: work, viewModel: viewModel))
+        }
     }
     
-    private func moveWorkUp(_ work: Work) {
-        viewModel.moveWorkUp(work)
+    @ViewBuilder
+    private func toolbars() -> some View {
+        Button("Add new") {
+            editWork = .new
+        }
+        Button("Reload") {
+            viewModel.loadAllWorks()
+        }
     }
     
-    private func moveWorkDown(_ work: Work) {
-        viewModel.moveWorkDown(work)
+    private func moveWorkLeft(_ work: Work) {
+        viewModel.moveWorkLeft(work)
+    }
+    
+    private func moveWorkRight(_ work: Work) {
+        viewModel.moveWorkRight(work)
     }
     
     private func editWork(_ work: Work) {
@@ -121,11 +123,7 @@ extension WorksListView.EditWorkType: Identifiable {
 
 struct WorksListView_Previews: PreviewProvider {
     static var previews: some View {
-        WorksListView(
-            viewModel: WorksListViewModel(
-                service: WorksPreviewService()
-            )
-        )
+        WorksListView()
             .frame(width: 1200, height: 2000)
     }
 }

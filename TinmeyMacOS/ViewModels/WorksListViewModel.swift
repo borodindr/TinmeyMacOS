@@ -14,6 +14,7 @@ class WorksListViewModel: ObservableObject {
     @Published var selectedWork: Work? = nil
     @Published private(set) var isLoading = false
     @Published var error: ErrorDescription? = nil
+    @Published var draggingWork: Work?
     
     private let service: WorksProviderService
     private let tagsService = TagsAPIService()
@@ -65,26 +66,19 @@ class WorksListViewModel: ObservableObject {
             .store(in: &subscriptions)
     }
     
-    func moveWorkUp(_ work: Work) {
-        moveWork(work, direction: .forward)
+    func dragWork(insteadOf work: Work) {
+        guard let draggingWork = draggingWork,
+              let fromIndex = works.firstIndex(of: draggingWork),
+              let toIndex = works.firstIndex(of: work) else { return }
+        let indexSet = IndexSet(integer: fromIndex)
+        let toOffset = toIndex > fromIndex ? toIndex + 1 : toIndex
+        works.move(fromOffsets: indexSet, toOffset: toOffset)
     }
     
-    func moveWorkDown(_ work: Work) {
-        moveWork(work, direction: .backward)
-    }
-    
-    private func moveWork(_ work: Work, direction: ReorderDirection) {
-        guard let currentIndex = works.firstIndex(of: work) else { return }
+    func applyMove(for work: Work) {
+        guard let newIndex = works.firstIndex(of: work) else { return }
         startLoading()
-        let newIndex: Int
-        switch direction {
-        case .forward:
-            newIndex = currentIndex - 1
-        case .backward:
-            newIndex = currentIndex + 1
-        }
-        works.move(work, to: newIndex)
-        service.reorder(workID: work.id, direction: direction)
+        service.move(workID: work.id, newIndex: newIndex)
             .sink(receiveCompletion: { [weak self] completion in
                 switch completion {
                 case .finished:
@@ -100,10 +94,44 @@ class WorksListViewModel: ObservableObject {
             .store(in: &subscriptions)
     }
     
+    func moveWorkLeft(_ work: Work) {
+        guard let currentIndex = works.firstIndex(of: work) else { return }
+        let newIndex = currentIndex - 1
+        works.move(work, to: newIndex)
+        applyMove(for: work)
+    }
+    
+    func moveWorkRight(_ work: Work) {
+        guard let currentIndex = works.firstIndex(of: work) else { return }
+        let newIndex = currentIndex + 1
+        works.move(work, to: newIndex)
+        applyMove(for: work)
+    }
 }
 
 extension WorksListViewModel: LoadableViewModel {
     func onNew(loadingState: Bool) {
         isLoading = loadingState
+    }
+}
+
+struct WorkDropDelegate: DropDelegate {
+    let work: Work
+    let viewModel: WorksListViewModel
+
+    func dropEntered(info: DropInfo) {
+        guard work != viewModel.draggingWork else { return }
+        withAnimation {
+            viewModel.dragWork(insteadOf: work)
+        }
+    }
+
+    func dropUpdated(info: DropInfo) -> DropProposal? {
+        return DropProposal(operation: .move)
+    }
+
+    func performDrop(info: DropInfo) -> Bool {
+        viewModel.applyMove(for: work)
+        return true
     }
 }
