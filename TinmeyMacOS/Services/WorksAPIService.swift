@@ -74,10 +74,8 @@ class WorksAPIService: WorksProviderService {
     }
 }
 
-
 private extension WorksAPIService {
     enum ImageType: String {
         case firstImage, secondImage
     }
 }
-

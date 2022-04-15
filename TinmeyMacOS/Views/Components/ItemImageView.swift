@@ -1,5 +1,5 @@
 //
-//  WorkItemImageView.swift
+//  ItemImageView.swift
 //  TinmeyMacOS
 //
 //  Created by Dmitry Borodin on 26.12.2021.
@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct WorkItemImageView: View {
+struct ItemImageView: View {
     let imageURL: URL?
     
     var body: some View {
-        WorkItemContainer {
+        ItemContainer {
             AsyncImage(url: imageURL, content: { image in
                 image.resizable()
             }, placeholder: {
@@ -25,8 +25,8 @@ struct WorkItemImageView: View {
     }
 }
 
-struct WorkItemImageView_Previews: PreviewProvider {
+struct ItemImageView_Previews: PreviewProvider {
     static var previews: some View {
-        WorkItemImageView(imageURL: nil)
+        ItemImageView(imageURL: nil)
     }
 }

@@ -1,5 +1,5 @@
 //
-//  EditWorkItemContainer.swift
+//  EditItemContainer.swift
 //  TinmeyMacOS
 //
 //  Created by Dmitry Borodin on 28.12.2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EditWorkItemContainer<Content, Controls>: View where Content: View, Controls: View {
+struct EditItemContainer<Content, Controls>: View where Content: View, Controls: View {
     let content: () -> Content
     let controls: () -> Controls
     
@@ -23,21 +23,21 @@ struct EditWorkItemContainer<Content, Controls>: View where Content: View, Contr
     
     var body: some View {
         if AuthAPIService.isAuthorized {
-            WorkItemContainer {
+            ItemContainer {
                 content()
             }
             .overlayOnHover(overlay: controls)
         } else {
-            WorkItemContainer {
+            ItemContainer {
                 content()
             }
         }
     }
 }
 
-struct EditWorkItemContainer_Previews: PreviewProvider {
+struct EditItemContainer_Previews: PreviewProvider {
     static var previews: some View {
-        EditWorkItemContainer {
+        EditItemContainer {
             Text("A")
         } controls: {
             Button { } label: {

@@ -19,6 +19,7 @@ struct Work {
 extension Work: Identifiable { }
 extension Work: Codable { }
 extension Work: Hashable { }
+extension Work: TaggedItemObject { }
 
 extension Work: APIOutput {
     init(_ apiModel: WorkAPIModel) {
@@ -41,21 +42,6 @@ extension Work {
             tags: ["Some", "tag", "example"],
             images: [.preview, .preview]
         )
-    }
-}
-
-extension Work {
-    private var baseImageURLBuilder: APIURLBuilder {
-        let idString: String
-        if id.uuidString == "00000000-0000-0000-0000-000000000000" {
-            // For preview
-            idString = "preview"
-        } else {
-            idString = id.uuidString
-        }
-        return APIURLBuilder.api()
-            .path("works")
-            .path(idString)
     }
 }
 

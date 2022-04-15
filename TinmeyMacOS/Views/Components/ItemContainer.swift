@@ -1,5 +1,5 @@
 //
-//  WorkItemContainer.swift
+//  ItemContainer.swift
 //  TinmeyMacOS
 //
 //  Created by Dmitry Borodin on 26.12.2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct WorkItemContainer<Content: View>: View {
+struct ItemContainer<Content: View>: View {
     init(@ViewBuilder _ content: () -> Content) {
         self.content = content()
     }
@@ -20,9 +20,9 @@ struct WorkItemContainer<Content: View>: View {
     }
 }
 
-struct WorkItemContainer_Previews: PreviewProvider {
+struct ItemContainer_Previews: PreviewProvider {
     static var previews: some View {
-        WorkItemContainer {
+        ItemContainer {
             VStack {
                 Text("A")
                 Text("B")

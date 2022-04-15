@@ -64,7 +64,7 @@ struct EditWorkView: View {
         ScrollView(.horizontal, showsIndicators: true) {
             HStack {
                 ForEach($viewModel.work.images, id: \.self) { $image in
-                    EditWorkItemImageView(
+                    EditItemImageView(
                         image: $image,
                         onDeleteImage: {
                             imageToDelete = image
@@ -132,7 +132,7 @@ struct EditWorkView: View {
 
 
 
-struct EditBookCoverView_Previews: PreviewProvider {
+struct EditWorkView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             EditWorkView(work: .preview,

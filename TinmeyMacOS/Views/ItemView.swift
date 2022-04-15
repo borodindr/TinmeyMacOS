@@ -1,5 +1,5 @@
 //
-//  BookCoverView.swift
+//  ItemView.swift
 //  TinmeyMacOS
 //
 //  Created by Dmitry Borodin on 19.08.2021.
@@ -8,12 +8,12 @@
 import SwiftUI
 import TinmeyCore
 
-struct WorkView: View {
-    var work: Work
-    var onMoveLeft: ((Work) -> ())?
-    var onMoveRight: ((Work) -> ())?
-    var onEdit: (Work) -> ()
-    var onDelete: (Work) -> ()
+struct ItemView<Item: ItemObject>: View {
+    var item: Item
+    var onMoveLeft: ((Item) -> ())?
+    var onMoveRight: ((Item) -> ())?
+    var onEdit: (Item) -> ()
+    var onDelete: (Item) -> ()
     
     var body: some View {
         image
@@ -23,16 +23,16 @@ struct WorkView: View {
     }
     
     private var image: some View {
-        WorkItemImageView(imageURL: work.images.first?.url)
+        ItemImageView(imageURL: item.images.first?.url)
     }
     
     private var overlay: some View {
         VStack(spacing: 16) {
             Spacer()
             VStack(alignment: .leading, spacing: 8) {
-                Text(work.title)
+                Text(item.title)
                     .font(.title)
-                Text(work.description)
+                Text(item.description)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             controls
@@ -46,24 +46,24 @@ struct WorkView: View {
                 HStack(spacing: 8) {
                     if let onMoveLeft = onMoveLeft {
                         IconButton("arrow.left") {
-                            onMoveLeft(work)
+                            onMoveLeft(item)
                         }
                     }
                     
                     if let onMoveRight = onMoveRight {
                         IconButton("arrow.right") {
-                            onMoveRight(work)
+                            onMoveRight(item)
                         }
                     }
                 }
             }
             
             IconButton("square.and.pencil") {
-                onEdit(work)
+                onEdit(item)
             }
             
             IconButton("trash") {
-                onDelete(work)
+                onDelete(item)
             }
             .foregroundColor(.red)
         }
@@ -74,9 +74,9 @@ struct WorkView: View {
     }
 }
 
-struct BookCoverView_Previews: PreviewProvider {
+struct ItemView_Previews: PreviewProvider {
     static var previews: some View {
-        WorkView(work: .preview) { _ in
+        ItemView(item: Work.preview) { _ in
             
         } onDelete: { _ in
             
