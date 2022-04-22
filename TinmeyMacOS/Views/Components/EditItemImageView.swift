@@ -1,5 +1,5 @@
 //
-//  EditWorkImageItemView.swift
+//  EditImageItemView.swift
 //  TinmeyMacOS
 //
 //  Created by Dmitry Borodin on 28.12.2021.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct EditWorkItemImageView: View {
-    @Binding var image: Work.Image.Create
+struct EditItemImageView<CreateImage: CreateImageObject>: View {
+    @Binding var image: CreateImage
     var onDeleteImage: () -> ()
     let onMoveLeft: (() -> ())?
     let onMoveRight: (() -> ())?
@@ -17,7 +17,7 @@ struct EditWorkItemImageView: View {
     private var showDeleteAlert = false
     
     var body: some View {
-        EditWorkItemContainer {
+        EditItemContainer {
             DropImage(droppedImageURL: $image.url)
         } controls: {
             VStack {
@@ -60,10 +60,10 @@ struct EditWorkItemImageView: View {
     }
 }
 
-struct EditWorkItemImageView_Previews: PreviewProvider {
+struct EditItemImageView_Previews: PreviewProvider {
     static var previews: some View {
-        EditWorkItemImageView(
-            image: .constant(.init(.preview))) {
+        EditItemImageView(
+            image: .constant(Work.Image.Create(.preview))) {
                 
             } onMoveLeft: {
                 

@@ -24,6 +24,7 @@ extension Work {
 extension Work.Image: Identifiable { }
 extension Work.Image: Hashable { }
 extension Work.Image: Codable { }
+extension Work.Image: ImageObject { }
 
 extension Work.Image: APIOutput {
     init(_ apiModel: WorkAPIModel.Image) {

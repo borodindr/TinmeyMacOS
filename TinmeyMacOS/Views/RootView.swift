@@ -50,7 +50,7 @@ struct RootView: View {
         case .works:
             WorksListView()
         case .layouts:
-            Text("In development :(")
+            LayoutsListView()
         case .settings:
             SettingsView()
         }

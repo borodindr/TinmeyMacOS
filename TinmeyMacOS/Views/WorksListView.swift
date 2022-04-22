@@ -66,7 +66,7 @@ struct WorksListView: View {
             let workIndex = viewModel.works.firstIndex(of: work)
             let isFirst = workIndex == 0
             let isLast = workIndex == viewModel.works.count - 1
-            WorkView(work: work,
+            ItemView(item: work,
                      onMoveLeft: isFirst ? nil : moveWorkLeft,
                      onMoveRight: isLast ? nil : moveWorkRight,
                      onEdit: editWork,
