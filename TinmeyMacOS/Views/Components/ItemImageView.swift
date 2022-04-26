@@ -6,22 +6,30 @@
 //
 
 import SwiftUI
+import URLImage
 
 struct ItemImageView: View {
     let imageURL: URL?
     
     var body: some View {
         ItemContainer {
-            AsyncImage(url: imageURL, content: { image in
-                image.resizable()
-            }, placeholder: {
-                Image("no_image")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 40, height: 40)
-            })
-            .aspectRatio(contentMode: .fit)
+            if let imageURL = imageURL {
+                URLImage(imageURL) { image in
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                }
+            } else {
+                placeholder
+            }
         }
+    }
+    
+    private var placeholder: some View {
+        Image("no_image")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 40, height: 40)
     }
 }
 

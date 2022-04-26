@@ -75,6 +75,8 @@
 		32B1B76F278CF40700371261 /* DropImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B1B76E278CF40700371261 /* DropImage.swift */; };
 		32B1B771278E483400371261 /* NSTextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B1B770278E483400371261 /* NSTextView+Extension.swift */; };
 		32BEEC3A2783C7FC005013EF /* APIModelConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BEEC392783C7FC005013EF /* APIModelConvertable.swift */; };
+		32C1D69828182C7900F19AE7 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 32C1D69728182C7900F19AE7 /* URLImage */; };
+		32C1D69A28182C7900F19AE7 /* URLImageStore in Frameworks */ = {isa = PBXBuildFile; productRef = 32C1D69928182C7900F19AE7 /* URLImageStore */; };
 		32EA3A9B27FF7C3B002F92E4 /* DimmedLoadingViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EA3A9A27FF7C3B002F92E4 /* DimmedLoadingViewModifier.swift */; };
 		32EA3A9E27FF8417002F92E4 /* LoadableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EA3A9D27FF8417002F92E4 /* LoadableViewModel.swift */; };
 		32FD4E79276AB0AB0086B242 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 32FD4E78276AB0AB0086B242 /* KeychainAccess */; };
@@ -173,6 +175,8 @@
 				32FD4E79276AB0AB0086B242 /* KeychainAccess in Frameworks */,
 				3236C7DC26DC0F9A002122B3 /* TinmeyCore in Frameworks */,
 				324BEB6827170909001AEE0D /* WrappingHStack in Frameworks */,
+				32C1D69828182C7900F19AE7 /* URLImage in Frameworks */,
+				32C1D69A28182C7900F19AE7 /* URLImageStore in Frameworks */,
 				3236C7DF26DC0FCF002122B3 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,6 +411,8 @@
 				3236C7DE26DC0FCF002122B3 /* Alamofire */,
 				324BEB6727170909001AEE0D /* WrappingHStack */,
 				32FD4E78276AB0AB0086B242 /* KeychainAccess */,
+				32C1D69728182C7900F19AE7 /* URLImage */,
+				32C1D69928182C7900F19AE7 /* URLImageStore */,
 			);
 			productName = TinmeyMacOS;
 			productReference = 3236C78126DC0EBC002122B3 /* Tinmey portfolio.app */;
@@ -462,6 +468,7 @@
 				3236C7DD26DC0FCF002122B3 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				324BEB6627170909001AEE0D /* XCRemoteSwiftPackageReference "WrappingHStack" */,
 				32FD4E77276AB0AB0086B242 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				32C1D69628182C7900F19AE7 /* XCRemoteSwiftPackageReference "url-image" */,
 			);
 			productRefGroup = 3236C78226DC0EBC002122B3 /* Products */;
 			projectDirPath = "";
@@ -977,6 +984,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		32C1D69628182C7900F19AE7 /* XCRemoteSwiftPackageReference "url-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dmytro-anokhin/url-image";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		32FD4E77276AB0AB0086B242 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
@@ -1002,6 +1017,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 324BEB6627170909001AEE0D /* XCRemoteSwiftPackageReference "WrappingHStack" */;
 			productName = WrappingHStack;
+		};
+		32C1D69728182C7900F19AE7 /* URLImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 32C1D69628182C7900F19AE7 /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImage;
+		};
+		32C1D69928182C7900F19AE7 /* URLImageStore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 32C1D69628182C7900F19AE7 /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImageStore;
 		};
 		32FD4E78276AB0AB0086B242 /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
